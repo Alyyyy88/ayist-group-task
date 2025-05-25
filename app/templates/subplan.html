@@ -1,0 +1,20 @@
+<!-- Subscription Plan Section -->
+
+{% extends 'layout.html' %} {% block title %}Subscription Plan{% endblock %} {%
+block content %}
+<div
+  class="text-center p-8 rounded-lg mx-auto shadow-md max-w-2xl my-20 bg-white"
+>
+  <h1
+    class="text-3xl font-bold text-gray-800 mb-4 flex justify-center items-center gap-2"
+  >
+    <i class="fa-solid fa-chart-simple text-red-400"></i>
+    {{ _('Subscription Plan') }}
+  </h1>
+  <p class="text-gray-600 mb-6">
+    {{ _('This feature is coming soon. We\'re working hard to bring you an
+    improved subscription experience.') }}
+  </p>
+  <p class="text-gray-600">{{ _('Thank you for your patience!') }}</p>
+</div>
+{% endblock %}

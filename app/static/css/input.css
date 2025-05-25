@@ -1,0 +1,14 @@
+@import "tailwindcss";
+:root {
+            --sidebar-width: 280px;
+            --sidebar-collapsed-width: 70px;
+            --primary-color: #0046b5;
+            --primary-hover: #003580;
+            --bg-color: #f8f9fe;
+            --border-color: #e5e7eb;
+            --text-color: #4b5563;
+            --text-dark: #1a1a1a;
+            --active-bg: #e7efff;
+            --active-text: #0046b5;
+            --transition-speed: 0.3s;
+        }

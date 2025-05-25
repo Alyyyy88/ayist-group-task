@@ -1,0 +1,292 @@
+{% extends "layout.html" %} {% block content %}
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-2xl font-bold mb-6">{{ _('Dashboard') }}</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {# Total Staff - Visible to Admin, HR, Superadmin #} {% if
+    session.get('user_role') in ['Admin', 'Hr', 'Superadmin'] %}
+    <div class="bg-white rounded-lg shadow-md p-6" id="card1">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold">{{ _('Total Staff') }}</h3>
+        <i class="fa-solid fa-users text-purple-500 text-2xl"></i>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-3xl font-bold count-up" data-target="42">0</p>
+          <p class="text-sm text-gray-500 mt-2">{{ _('Active employees') }}</p>
+        </div>
+
+        <div
+          class="flex items-center justify-center gap-2 py-2 px-4 rounded bg-purple-500"
+        >
+          <i class="fa-solid fa-user-plus text-white"></i>
+          <p class="text-white count-up" data-target="3">0</p>
+        </div>
+      </div>
+    </div>
+    {% endif %} {# Active Projects - Visible to Admin, Finance, Superadmin #} {%
+    if session.get('user_role') in ['Admin', 'Finance', 'Superadmin'] %}
+    <div class="bg-white rounded-lg shadow-md p-6" id="card2">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold">{{ _('Active Projects') }}</h3>
+        <i class="fa-solid fa-folder text-yellow-600 text-2xl"></i>
+      </div>
+      <p class="text-3xl font-bold count-up" data-target="7">0</p>
+      <p class="text-sm text-gray-500 mt-2">{{ _('In progress') }}</p>
+    </div>
+    {% endif %} {# Document Count - Visible to Admin, Finance, Superadmin #} {%
+    if session.get('user_role') in ['Admin', 'Finance', 'Superadmin' , 'Hr'] %}
+    <div class="bg-white rounded-lg shadow-md p-6" id="card3">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold">{{_('Document Count')}}</h3>
+        <i class="fa-solid fa-file-alt text-yellow-700 text-2xl"></i>
+      </div>
+      <p class="text-3xl font-bold count-up" data-target="150">0</p>
+      <p class="text-sm text-gray-500 mt-2">{{ _('Total documents') }}</p>
+    </div>
+    {% endif %} {# Profit - Visible to Finance and Superadmin #} {% if
+    session.get('user_role') in ['Finance', 'Superadmin'] %}
+    <div class="bg-white rounded-lg shadow-md p-6" id="card3">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold">
+          {{ _('Profit (Income - Expenses)') }}
+        </h3>
+        <i class="fa-solid fa-sack-dollar text-green-500 text-2xl"></i>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-3xl font-bold currency-count-up" data-target="24500">
+            $0
+          </p>
+          <p class="text-sm text-gray-500 mt-2">{{ _('Current month') }}</p>
+        </div>
+
+        <div
+          class="flex items-center justify-center gap-2 py-2 px-4 rounded bg-green-500"
+        >
+          <p class="text-white percent-count-up" data-target="24.6">0%</p>
+          <i class="fa-solid fa-arrow-trend-up text-white"></i>
+        </div>
+      </div>
+    </div>
+    {% endif %} {# Company Storage Usage - Visible to Admin and Superadmin #} {%
+    if session.get('user_role') in ['Admin', 'Superadmin'] %}
+    <div class="bg-white rounded-lg shadow-md p-6" id="card4">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold">{{ _('Company Storage Usage') }}</h3>
+        <i class="fa-solid fa-database text-blue-500 text-2xl"></i>
+      </div>
+      <div class="mt-2">
+        <div class="w-full bg-gray-200 rounded-full h-2.5">
+          <div
+            id="storageBar"
+            class="bg-blue-600 h-2.5 rounded-full"
+            style="width: 0%"
+          ></div>
+        </div>
+        <p class="mt-2">
+          <span class="font-bold decimal-count-up" data-target="4.5">0</span> GB
+          / 10 GB
+        </p>
+      </div>
+    </div>
+    {% endif %} {# System Version & Footer Info - Visible to all users #}
+    <div class="bg-white rounded-lg shadow-md p-6" id="card5">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold">{{ _('System Info') }}</h3>
+        <i class="fa-solid fa-info-circle text-gray-500 text-2xl"></i>
+      </div>
+      <p class="mb-2">{{ _('Version') }}: 1.0.0</p>
+      <p class="text-sm text-gray-500">
+        {{ _('Last updated') }}: {{ '2025-05-24' }}
+      </p>
+      <p class="text-xs text-gray-400 mt-4">© 2025 AysitGroup</p>
+      <p class="text-xs text-gray-400">
+        Current User: {{ session.get('user_role', 'None') }}
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+  // Wait for the page to load completely
+  window.addEventListener("load", function () {
+    console.log("Window loaded, starting animations");
+
+    // First attempt with window.onload
+    try {
+      // Simple counter without GSAP for fallback
+      function simpleCounter(element, target, duration, step) {
+        if (!element) return;
+
+        let current = 0;
+        const increment = target / ((duration * 1000) / step);
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+
+          if (element.classList.contains("currency-count-up")) {
+            element.textContent = "$" + Math.floor(current).toLocaleString();
+          } else if (element.classList.contains("percent-count-up")) {
+            element.textContent = current.toFixed(1) + "%";
+          } else if (element.classList.contains("decimal-count-up")) {
+            element.textContent = current.toFixed(1);
+          } else {
+            element.textContent = Math.floor(current);
+          }
+        }, step);
+      }
+
+      // Animate all counter elements
+      document
+        .querySelectorAll(
+          ".count-up, .currency-count-up, .percent-count-up, .decimal-count-up"
+        )
+        .forEach((el) => {
+          const target = parseFloat(el.getAttribute("data-target"));
+          simpleCounter(el, target, 2, 30); // 2 seconds duration, update every 30ms
+        });
+
+      // Animate storage bar
+      const storageBar = document.getElementById("storageBar");
+      if (storageBar) {
+        let width = 0;
+        const maxWidth = 45; // 45%
+        const interval = setInterval(() => {
+          width += 1;
+          if (width > maxWidth) {
+            clearInterval(interval);
+            width = maxWidth;
+          }
+          storageBar.style.width = width + "%";
+        }, 40); // ~2 seconds to complete
+      }
+
+      // Animate cards
+      const cards = document.querySelectorAll('[id^="card"]');
+      cards.forEach((card, index) => {
+        // Set initial state
+        card.style.opacity = "0";
+        card.style.transform = "translateY(20px)";
+
+        // Animate with setTimeout for sequence
+        setTimeout(() => {
+          card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+          card.style.opacity = "1";
+          card.style.transform = "translateY(0)";
+        }, index * 100);
+      });
+    } catch (e) {
+      console.error("Error in animation:", e);
+    }
+
+    // Second attempt with GSAP if available
+    setTimeout(() => {
+      try {
+        if (typeof gsap !== "undefined") {
+          console.log("GSAP found, running GSAP animations");
+
+          // Simple entrance animation for cards
+          const cards = document.querySelectorAll('[id^="card"]');
+          gsap.set(cards, { y: 20, opacity: 0 });
+
+          gsap.to(cards, {
+            duration: 0.5,
+            y: 0,
+            opacity: 1,
+            stagger: 0.1,
+            ease: "power1.out",
+          });
+
+          // Number counters
+          document.querySelectorAll(".count-up").forEach((el) => {
+            const target = parseInt(el.getAttribute("data-target"));
+            gsap.to(el, {
+              innerHTML: target,
+              duration: 2,
+              ease: "power1.out",
+              snap: { innerHTML: 1 },
+            });
+          });
+
+          // Currency counters
+          document.querySelectorAll(".currency-count-up").forEach((el) => {
+            const target = parseInt(el.getAttribute("data-target"));
+            const obj = { val: 0 };
+            gsap.to(obj, {
+              val: target,
+              duration: 2,
+              onUpdate: function () {
+                el.innerHTML = "$" + Math.floor(obj.val).toLocaleString();
+              },
+            });
+          });
+
+          // Percentage counters
+          document.querySelectorAll(".percent-count-up").forEach((el) => {
+            const target = parseFloat(el.getAttribute("data-target"));
+            const obj = { val: 0 };
+            gsap.to(obj, {
+              val: target,
+              duration: 2,
+              onUpdate: function () {
+                el.innerHTML = obj.val.toFixed(1) + "%";
+              },
+            });
+          });
+
+          // Decimal counters
+          document.querySelectorAll(".decimal-count-up").forEach((el) => {
+            const target = parseFloat(el.getAttribute("data-target"));
+            const obj = { val: 0 };
+            gsap.to(obj, {
+              val: target,
+              duration: 2,
+              onUpdate: function () {
+                el.innerHTML = obj.val.toFixed(1);
+              },
+            });
+          });
+
+          // Storage bar
+          const storageBar = document.getElementById("storageBar");
+          if (storageBar) {
+            gsap.to(storageBar, {
+              width: "45%",
+              duration: 2,
+              ease: "power2.out",
+            });
+          }
+        }
+      } catch (e) {
+        console.error("Error in GSAP animation:", e);
+      }
+    }, 500);
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOMContentLoaded event fired");
+    setTimeout(() => {
+      const counterElements = document.querySelectorAll(
+        ".count-up, .currency-count-up, .percent-count-up, .decimal-count-up"
+      );
+      console.log("Found counter elements:", counterElements.length);
+
+      counterElements.forEach((el) => {
+        el.style.transition = "color 1s ease";
+        el.style.color = "#ff0000";
+
+        setTimeout(() => {
+          el.style.color = "";
+        }, 1000);
+      });
+    }, 1000);
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,294 @@
+# Polish translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-05-25 04:43+0300\n"
+"PO-Revision-Date: 2025-05-23 15:00+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: pl\n"
+"Language-Team: pl <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && "
+"(n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: app/app.py:112 app/templates/dashboard.html:3 app/templates/topbar.html:126
+msgid "Dashboard"
+msgstr "Panel sterowania"
+
+#: app/app.py:119 app/app.py:143 app/templates/topbar.html:131
+msgid "Projects"
+msgstr "Projekty"
+
+#: app/app.py:120 app/app.py:136 app/app.py:146
+msgid "Finance"
+msgstr "Zestaw finansów"
+
+#: app/app.py:121 app/app.py:137 app/app.py:147
+msgid "Invoices"
+msgstr "faktury"
+
+#: app/app.py:122 app/app.py:138 app/app.py:148
+msgid "Reporting"
+msgstr "Raportowanie"
+
+#: app/app.py:123 app/app.py:130 app/app.py:144
+msgid "Staff"
+msgstr "Personel"
+
+#: app/app.py:124 app/app.py:131 app/app.py:139 app/app.py:145
+msgid "Documents"
+msgstr "Dokumenty"
+
+#: app/app.py:125 app/app.py:151
+msgid "Company Registration"
+msgstr "Rejestracja spółki"
+
+#: app/app.py:126 app/app.py:149
+msgid "User Management"
+msgstr "Zarządzanie projektami"
+
+#: app/app.py:127 app/app.py:150 app/templates/subplan.html:12
+msgid "Subscription Plan"
+msgstr "Plan subskrypcji"
+
+#: app/app.py:132 app/templates/payroll.html:12
+msgid "Payroll"
+msgstr "Lista płac"
+
+#: app/app.py:152 app/templates/topbar.html:66
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: app/templates/companyreg.html:11
+msgid "Company Registration Section"
+msgstr "Sekcja raportowania"
+
+#: app/templates/companyreg.html:13
+msgid ""
+"This feature is coming soon. We're working hard to bring you an improved "
+"company registration experience."
+msgstr ""
+"Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad ulepszeniem "
+"doświadczenia rejestracji spółki."
+
+#: app/templates/companyreg.html:14 app/templates/document.html:14
+#: app/templates/finance.html:18 app/templates/invoices.html:18
+#: app/templates/payroll.html:18 app/templates/projects.html:12
+#: app/templates/reporting.html:14 app/templates/settings.html:14
+#: app/templates/staff.html:18 app/templates/subplan.html:18
+#: app/templates/usermanagement.html:14
+msgid "Thank you for your patience!"
+msgstr "Dziękujemy za cierpliwość!"
+
+#: app/templates/dashboard.html:10
+msgid "Total Staff"
+msgstr "całkowity personel"
+
+#: app/templates/dashboard.html:17
+msgid "Active employees"
+msgstr "aktywnych pracowników"
+
+#: app/templates/dashboard.html:32
+msgid "Active Projects"
+msgstr "aktywne projekty"
+
+#: app/templates/dashboard.html:36
+msgid "In progress"
+msgstr "W trakcie"
+
+#: app/templates/dashboard.html:42
+msgid "Document Count"
+msgstr "liczba dokumentów"
+
+#: app/templates/dashboard.html:46
+msgid "Total documents"
+msgstr "dokumenty ogółem"
+
+#: app/templates/dashboard.html:53
+msgid "Profit (Income - Expenses)"
+msgstr "Zysk (Przychody - Wydatki)"
+
+#: app/templates/dashboard.html:63
+msgid "Current month"
+msgstr "Bieżący miesiąc"
+
+#: app/templates/dashboard.html:78
+msgid "Company Storage Usage"
+msgstr "Wykorzystanie pamięci masowej firmy"
+
+#: app/templates/dashboard.html:98
+msgid "System Info"
+msgstr "Informacje o systemie"
+
+#: app/templates/dashboard.html:101
+msgid "Version"
+msgstr "Wersja"
+
+#: app/templates/dashboard.html:103
+msgid "Last updated"
+msgstr "Ostatnia aktualizacja"
+
+#: app/templates/document.html:11
+msgid "Document Management Section"
+msgstr "Sekcja zarządzania dokumentami"
+
+#: app/templates/document.html:13
+msgid ""
+"This feature is coming soon. We're working hard to bring you an improved "
+"document management experience."
+msgstr ""
+"Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad ulepszeniem "
+"doświadczenia w zarządzaniu dokumentami."
+
+#: app/templates/finance.html:12
+msgid "Finance Section"
+msgstr "Sekcja finansowa"
+
+#: app/templates/finance.html:15
+msgid ""
+"This feature is coming soon. We're working hard to bring you an\n"
+"    improved finance experience."
+msgstr ""
+"Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad ulepszoną obsługą "
+"finansów."
+
+#: app/templates/invoices.html:12
+msgid "Invoices Section"
+msgstr "Sekcja faktur"
+
+#: app/templates/invoices.html:15
+msgid ""
+"This feature is coming soon. We're working hard to bring you an\n"
+"    improved invoices experience."
+msgstr ""
+"Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad ulepszoną obsługą "
+"faktur."
+
+#: app/templates/payroll.html:15
+msgid ""
+"This feature is coming soon. We're working hard to bring you an\n"
+"    improved payroll experience."
+msgstr ""
+"Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad lepszą obsługą listy "
+"płac."
+
+#: app/templates/projects.html:9
+msgid "Projects Section"
+msgstr "Sekcja projektów"
+
+#: app/templates/projects.html:11
+msgid ""
+"This feature is coming soon. We're working hard to bring you an improved "
+"projects experience."
+msgstr ""
+"Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad ulepszeniem "
+"doświadczenia w projektach."
+
+#: app/templates/reporting.html:11
+msgid "Reporting Section"
+msgstr "Sekcja raportowania"
+
+#: app/templates/reporting.html:13
+msgid ""
+"This feature is coming soon. We're working hard to bring you an improved "
+"reporting experience."
+msgstr ""
+"Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad ulepszeniem "
+"doświadczenia w raportowaniu."
+
+#: app/templates/settings.html:11
+msgid "Settings Section"
+msgstr "Sekcja ustawień"
+
+#: app/templates/settings.html:13
+msgid ""
+"This feature is coming soon. We're working hard to bring you an improved "
+"settings experience."
+msgstr ""
+"Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad ulepszeniem "
+"doświadczenia ustawień."
+
+#: app/templates/sidebar.html:10
+msgid "Project Management"
+msgstr "Zarządzanie projektami"
+
+#: app/templates/sidebar.html:34
+msgid "All right reserved. Developed 2025"
+msgstr "Wszelkie prawa zastrzeżone. Opracowano 2025"
+
+#: app/templates/staff.html:12
+msgid "Staff Section"
+msgstr "Sekcja personelu"
+
+#: app/templates/staff.html:15
+msgid ""
+"This feature is coming soon. We're working hard to bring you an\n"
+"    improved staff experience."
+msgstr ""
+"Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad lepszym "
+"doświadczeniem personelu."
+
+#: app/templates/subplan.html:15
+msgid ""
+"This feature is coming soon. We're working hard to bring you an\n"
+"    improved subscription experience."
+msgstr ""
+"Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad ulepszoną obsługą "
+"subskrypcji."
+
+#: app/templates/topbar.html:3
+msgid "Welcome"
+msgstr "Witamy"
+
+#: app/templates/topbar.html:14
+msgid "Language"
+msgstr "Język"
+
+#: app/templates/topbar.html:57
+msgid "Signed in as"
+msgstr "Zalogowany jako"
+
+#: app/templates/topbar.html:63
+msgid "Your Profile"
+msgstr "Twój profil"
+
+#: app/templates/topbar.html:70
+msgid "Sign out"
+msgstr "Wyloguj się"
+
+#: app/templates/topbar.html:78
+msgid "Set Admin"
+msgstr "Ustaw administratora"
+
+#: app/templates/topbar.html:84
+msgid "Set HR"
+msgstr "Ustaw HR"
+
+#: app/templates/topbar.html:90
+msgid "Set Finance"
+msgstr "Ustaw finanse"
+
+#: app/templates/topbar.html:96
+msgid "Set Superadmin"
+msgstr "Ustaw superadmina"
+
+#: app/templates/usermanagement.html:11
+msgid "User Management Section"
+msgstr "Sekcja zarządzania użytkownikami"
+
+#: app/templates/usermanagement.html:13
+msgid ""
+"This feature is coming soon. We're working hard to bring you an improved "
+"user management experience."
+msgstr ""
+"Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad ulepszeniem "
+"doświadczenia w zarządzaniu użytkownikami."
+

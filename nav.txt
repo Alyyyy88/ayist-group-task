@@ -1,0 +1,48 @@
+Admin:✅
+Dashboard
+Projects
+Finance
+Invoices
+Reporting
+Staff
+Documents
+Company Registration
+Subscription Plan
+User Management
+
+
+HR:✅
+Dashboard
+Staff
+Documents
+Payroll
+User Activity (if available)
+
+
+Superadmin:✅
+
+All modules visible:
+
+Dashboard✅
+Projects✅
+Invoices ✅
+Reporting ✅
+Finance ✅
+Staff ✅
+Documents✅
+Company Registration✅
+Subscription Plan✅
+User Management✅
+System Logs / Settings (if applicable)✅
+
+
+
+Finance:
+
+Only finance-related modules:
+Dashboard
+Finance
+Invoices
+Reporting
+Documents (for uploading financial docs)
+
