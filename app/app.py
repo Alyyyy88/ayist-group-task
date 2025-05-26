@@ -144,7 +144,7 @@ def get_projects():
 
 def get_hr_data():
     hr_data = {
-            'employee_activities': [
+            'recent_employee_activities': [
                 {
                     'employee_name': 'Sarah Johnson',
                     'activity': 'Checked in at 08:45 AM',
@@ -168,6 +168,50 @@ def get_hr_data():
                     'color': 'purple'
                 },
                  
+            ],
+            'employee_activities': [
+                {
+                    'employee_name': 'John Doe',
+                    'activity': 'Checked in at 09:00 AM',
+                    'time': '1h ago',
+                    'icon': 'fa-clock',
+                    'color': 'green',
+                    'attendance': 'Present'
+                },
+                {
+                    'employee_name': 'Jane Smith',
+                    'activity': 'Submitted expense report',
+                    'time': '2h ago',
+                    'icon': 'fa-file-alt',
+                    'color': 'blue',
+                    'attendance': 'Present'
+                },
+                {
+                    'employee_name': 'Alice Johnson',
+                    'activity': 'Updated project status',
+                    'time': '3h ago',
+                    'icon': 'fa-tasks',
+                    'color': 'orange',
+                    'attendance': 'Present'
+                },
+                {
+                    'employee_name': 'Bob Brown',
+                    'activity': 'Checked out at 05:00 PM',
+                    'time': '4h ago',
+                    'icon': 'fa-sign-out-alt',
+                    'color': 'red',
+                    'attendance': 'Absent'
+                },
+                {
+                    'employee_name': 'Charlie Green',
+                    'activity': 'Attended team meeting',
+                    'time': '5h ago',
+                    'icon': 'fa-users',
+                    'color': 'purple',
+                    'attendance': 'Absent'
+
+                },
+
             ],
             'new_joiners': [
                 {

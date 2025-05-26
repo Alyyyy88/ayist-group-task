@@ -1,15 +1,71 @@
-{% extends 'layout.html' %}
+{% extends 'layout.html' %} {% block title %}User Activity{% endblock %} {%
+block content %}
+<!-- Employee Activities Section -->
+<div class="bg-white rounded-lg shadow-md p-6 mt-8">
+  <div class="flex items-center justify-between mb-4">
+    <h3 class="text-lg font-semibold">{{ _('Recent Employee Activities') }}</h3>
+  </div>
 
-{% block title %}User Activity{% endblock %}
+  <!-- Activity Filters -->
+  <div class="flex flex-wrap gap-2 mb-4">
+    <button
+      class="px-3 py-1 text-xs font-medium rounded-full bg-indigo-100 text-indigo-800"
+    >
+      {{ _('All') }}
+    </button>
+    <button
+      class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
+    >
+      {{ _('Attendance') }}
+    </button>
+    <button
+      class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
+    >
+      {{ _('Leave') }}
+    </button>
+    <button
+      class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
+    >
+      {{ _('Performance') }}
+    </button>
+    <button
+      class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
+    >
+      {{ _('Documents') }}
+    </button>
+  </div>
 
-{% block content %}
-<div class="text-center p-8 rounded-lg mx-auto shadow-md max-w-2xl my-20 bg-white">
-  <h1 class="text-3xl font-bold text-gray-800 mb-4 flex justify-center items-center gap-2">
-    <i class="fa-solid fa-user-clock text-indigo-600"></i>
-    {{ _('User Activity') }}
-  </h1>
-  <p class="text-gray-600 mb-6">{{ _('This feature is coming soon. We\'re working hard to bring you an improved user activity experience.') }}</p>
-  <p class="text-gray-600">{{ _('Thank you for your patience!') }}</p>
+  <!-- Activity List -->
+  <div class="space-y-4 max-h-96 overflow-y-auto pr-2">
+    {% if hr_data and hr_data['employee_activities'] %} {% for activity in
+    hr_data['employee_activities'] %}
+    <div
+      class="flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors"
+    >
+      <div class="flex-shrink-0 mr-3">
+        <div
+          class="w-10 h-10 rounded-full bg-{{ activity.color }}-100 flex items-center justify-center"
+        >
+          <i
+            class="fa-solid {{ activity.icon }} text-{{ activity.color }}-600"
+          ></i>
+        </div>
+      </div>
+      <div class="flex-grow">
+        <div class="flex justify-between items-start">
+          <p class="font-medium text-sm">{{ activity.employee_name }}</p>
+          <span class="text-xs text-gray-500">{{ activity.time }}</span>
+        </div>
+        <p class="text-sm text-gray-600">{{ activity.activity }}</p>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <div class="text-center py-8 text-gray-500">
+      <i class="fa-solid fa-user-clock text-3xl mb-2"></i>
+      <p>{{ _('No recent activities to display') }}</p>
+    </div>
+    {% endif %}
+  </div>
+
+  {% endblock %}
 </div>
-
-{% endblock %}

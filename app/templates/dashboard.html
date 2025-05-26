@@ -354,8 +354,8 @@
       
       <!-- Activity List -->
       <div class="space-y-4 max-h-96 overflow-y-auto pr-2">
-        {% if hr_data and hr_data['employee_activities'] %}
-          {% for activity in hr_data['employee_activities'] %}
+        {% if hr_data and hr_data['recent_employee_activities'] %}
+          {% for activity in hr_data['recent_employee_activities'] %}
           <div class="flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors">
             <div class="flex-shrink-0 mr-3">
               <div class="w-10 h-10 rounded-full bg-{{ activity.color }}-100 flex items-center justify-center">
