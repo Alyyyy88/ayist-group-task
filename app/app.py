@@ -96,7 +96,8 @@ def payroll():
 
 @app.route('/useractivity')
 def useractivity():
-    return render_template('useractivity.html')
+    hr_data = get_hr_data()
+    return render_template('useractivity.html', hr_data=hr_data)
 
 
 
@@ -176,7 +177,8 @@ def get_hr_data():
                     'time': '1h ago',
                     'icon': 'fa-clock',
                     'color': 'green',
-                    'attendance': 'Present'
+                    'attendance': 'Present',
+                    'type': 'check-in'
                 },
                 {
                     'employee_name': 'Jane Smith',
@@ -184,7 +186,8 @@ def get_hr_data():
                     'time': '2h ago',
                     'icon': 'fa-file-alt',
                     'color': 'blue',
-                    'attendance': 'Present'
+                    'attendance': 'Present',
+                    'type': 'expense'
                 },
                 {
                     'employee_name': 'Alice Johnson',
@@ -192,7 +195,8 @@ def get_hr_data():
                     'time': '3h ago',
                     'icon': 'fa-tasks',
                     'color': 'orange',
-                    'attendance': 'Present'
+                    'attendance': 'Present',
+                    'type': 'update'
                 },
                 {
                     'employee_name': 'Bob Brown',
@@ -200,7 +204,8 @@ def get_hr_data():
                     'time': '4h ago',
                     'icon': 'fa-sign-out-alt',
                     'color': 'red',
-                    'attendance': 'Absent'
+                    'attendance': 'Absent',
+                    'type': 'check-out'
                 },
                 {
                     'employee_name': 'Charlie Green',
@@ -208,9 +213,18 @@ def get_hr_data():
                     'time': '5h ago',
                     'icon': 'fa-users',
                     'color': 'purple',
-                    'attendance': 'Absent'
-
+                    'attendance': 'Absent',
+                    'type': 'meeting'
                 },
+                {
+                    'employee_name': 'David Kim',
+                    'activity': 'Checked out at 05:30 AM',
+                    'time': '6h ago',
+                    'icon': 'fa-sign-out-alt',
+                    'color': 'red',
+                    'attendance': 'On Leave',
+                    'type': 'Check-out'
+                }
 
             ],
             'new_joiners': [
@@ -244,6 +258,61 @@ def get_hr_data():
                     'status': 'active'
                 
                 },
+            ],
+            'performance_evaluations': [
+                {
+                    'title': 'Quarterly Performance Review',
+                    'date': '2025-05-15',
+                    'comment': 'John Doe has shown excellent performance in the last quarter, exceeding expectations in project delivery and team collaboration.',
+                    'rating': 4,
+        
+                },
+                {
+                    'title': 'Mid-Year Evaluation',
+                    'date': '2025-06-01',
+                    'comment': 'Jane Smith has made significant contributions to the team, particularly in improving client relationships and project management.',
+                    'rating': 4,
+                },
+                {
+                    'title': 'Annual Performance Appraisal',
+                    'date': '2025-12-20',
+                    'comment': 'Alice Johnson has consistently performed at a high level, demonstrating leadership and innovation in her role.',
+                    'rating': 3,
+                },
+                {
+                    'title': 'Project Completion Review',
+                    'date': '2025-07-10',
+                    'comment': 'Bob Brown successfully led the project team to complete the XYZ project ahead of schedule, showcasing excellent project management skills.',
+                    'rating': 2,
+                }    
+
+            ],
+            'documents': [
+                {
+                    'title': 'Employee Handbook',
+                    'type': 'PDF',
+                    'uptated_date': '2025-05-01',
+                    'description': 'The employee handbook outlines company policies, procedures, and benefits for all employees.',
+                },{
+                    'title': 'Code of Conduct',
+                    'type': 'PDF',
+                    'uptated_date': '2025-04-15',
+                    'description': 'The code of conduct sets the standards for professional behavior and ethics expected from all employees.',
+                },
+                {
+                    'title': 'Health and Safety Guidelines',
+                    'type': 'PDF',
+                    'uptated_date': '2025-03-10',
+                    'description': 'These guidelines provide essential information on workplace safety and health protocols.',
+
+                },
+                {
+                    'title': 'Performance Evaluation Form',
+                    'type': 'DOCX',
+                    'uptated_date': '2025-02-20',
+                    'description': 'The performance evaluation form is used to assess employee performance and set goals for the upcoming period.',
+                }
+
             ],
             'hr_stats': {
                 'attendance_rate': 96.5,

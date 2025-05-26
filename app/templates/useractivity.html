@@ -3,69 +3,415 @@ block content %}
 <!-- Employee Activities Section -->
 <div class="bg-white rounded-lg shadow-md p-6 mt-8">
   <div class="flex items-center justify-between mb-4">
-    <h3 class="text-lg font-semibold">{{ _('Recent Employee Activities') }}</h3>
+    <h3 class="text-lg font-semibold">{{ _('Employee Activities') }}</h3>
   </div>
 
   <!-- Activity Filters -->
-  <div class="flex flex-wrap gap-2 mb-4">
+  <div class="flex flex-wrap gap-2 mb-4 activity-filter">
     <button
-      class="px-3 py-1 text-xs font-medium rounded-full bg-indigo-100 text-indigo-800"
+      class="px-3 py-1 text-xs font-medium rounded-full bg-indigo-100 text-indigo-800 active cursor-pointer"
+      data-filter="all"
+      data-tab="all-content"
     >
       {{ _('All') }}
     </button>
     <button
       class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
+      data-filter="attendance"
+      data-tab="attendance-content"
     >
       {{ _('Attendance') }}
     </button>
     <button
       class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
+      data-filter="leave"
+      data-tab="leave-content"
     >
       {{ _('Leave') }}
     </button>
     <button
       class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
+      data-filter="performance"
+      data-tab="performance-content"
     >
       {{ _('Performance') }}
     </button>
     <button
       class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
+      data-filter="documents"
+      data-tab="documents-content"
     >
       {{ _('Documents') }}
     </button>
   </div>
 
-  <!-- Activity List -->
-  <div class="space-y-4 max-h-96 overflow-y-auto pr-2">
-    {% if hr_data and hr_data['employee_activities'] %} {% for activity in
-    hr_data['employee_activities'] %}
-    <div
-      class="flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors"
-    >
-      <div class="flex-shrink-0 mr-3">
+  <!-- Tab content -->
+  <div class="tab-content">
+    <!-- All content (activities list) -->
+    <div id="all-content" class="tab-pane active">
+      <!-- Activity List -->
+      <div class="space-y-4 max-h-96 overflow-y-auto pr-2">
+        {% if hr_data and hr_data['employee_activities'] %} 
+        {% for activity in hr_data['employee_activities'] %}
         <div
-          class="w-10 h-10 rounded-full bg-{{ activity.color }}-100 flex items-center justify-center"
+          class="flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors activity-item {{ activity.type|lower }}"
         >
-          <i
-            class="fa-solid {{ activity.icon }} text-{{ activity.color }}-600"
-          ></i>
+          <div class="flex-shrink-0 mr-3">
+            <div
+              class="w-10 h-10 rounded-full bg-{{ activity.color }}-100 flex items-center justify-center"
+            >
+              <i
+                class="fa-solid {{ activity.icon }} text-{{ activity.color }}-600"
+              ></i>
+            </div>
+          </div>
+          <div class="flex-grow">
+            <div class="flex justify-between items-start">
+              <p class="font-medium text-sm">{{ activity.employee_name }}</p>
+              <span class="text-xs text-gray-500">{{ activity.time }}</span>
+            </div>
+            <p class="text-sm text-gray-600">{{ activity.activity }}</p>
+          </div>
         </div>
-      </div>
-      <div class="flex-grow">
-        <div class="flex justify-between items-start">
-          <p class="font-medium text-sm">{{ activity.employee_name }}</p>
-          <span class="text-xs text-gray-500">{{ activity.time }}</span>
+        {% endfor %} 
+        {% else %}
+        <div class="text-center py-8 text-gray-500">
+          <i class="fa-solid fa-user-clock text-3xl mb-2"></i>
+          <p>{{ _('No recent activities to display') }}</p>
         </div>
-        <p class="text-sm text-gray-600">{{ activity.activity }}</p>
+        {% endif %}
       </div>
     </div>
-    {% endfor %} {% else %}
-    <div class="text-center py-8 text-gray-500">
-      <i class="fa-solid fa-user-clock text-3xl mb-2"></i>
-      <p>{{ _('No recent activities to display') }}</p>
-    </div>
-    {% endif %}
-  </div>
 
-  {% endblock %}
+    <!-- Attendance tab content -->
+    <div id="attendance-content" class="tab-pane hidden">
+      <div class="mb-4">
+        <h4 class="text-md font-medium mb-2">{{ _('Attendance Rate') }}</h4>
+        <div class="bg-gray-50 p-2 rounded-lg">
+          <canvas id="attendanceChart" height="100"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leave tab content -->
+    <div id="leave-content" class="tab-pane hidden">
+      <div class="space-y-4 max-h-96 overflow-y-auto pr-2">
+        {% if hr_data and hr_data['employee_activities'] %} 
+        {% for activity in hr_data['employee_activities'] %}
+        {% if activity.type|lower == 'check-out' %}
+        <div class="flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors">
+          <div class="flex-shrink-0 mr-3">
+            <div class="w-10 h-10 rounded-full bg-{{ activity.color }}-100 flex items-center justify-center">
+              <i class="fa-solid {{ activity.icon }} text-{{ activity.color }}-600"></i>
+            </div>
+          </div>
+          <div class="flex-grow">
+            <div class="flex justify-between items-start">
+              <p class="font-medium text-sm">{{ activity.employee_name }}</p>
+              <span class="text-xs text-gray-500">{{ activity.time }}</span>
+            </div>
+            <p class="text-sm text-gray-600">{{ activity.activity }}</p>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        <div class="text-center py-8 text-gray-500">
+          <i class="fa-solid fa-user-clock text-3xl mb-2"></i>
+          <p>{{ _('No leave activities to display') }}</p>
+        </div>
+        {% endif %}
+      </div>
+      
+    </div>
+
+    <!-- Performance tab content -->
+    <div id="performance-content" class="tab-pane hidden">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+      <!-- Performance Overview -->
+      <div class="bg-gray-50 p-4 rounded-lg">
+        <h4 class="text-md font-medium mb-3">{{ _('Performance Overview') }}</h4>
+        <div class="flex justify-between items-center mb-2">
+        <span class="text-sm text-gray-600">{{ _('Overall Rating') }}</span>
+        <div class="flex items-center">
+          <div class="flex">
+          {% for i in range(1, 5) %}
+            <i class="fas fa-star text-yellow-400 text-sm"></i>
+          {% endfor %}
+          <i class="fas fa-star-half-alt text-yellow-400 text-sm"></i>
+          </div>
+          <span class="ml-2 font-medium">4.5/5</span>
+        </div>
+        </div>
+        <div class="space-y-2">
+        <div>
+          <div class="flex justify-between text-xs mb-1">
+          <span>{{ _('Productivity') }}</span>
+          <span>85%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2">
+          <div class="bg-green-500 h-2 rounded-full" style="width: 85%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-xs mb-1">
+          <span>{{ _('Quality') }}</span>
+          <span>92%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2">
+          <div class="bg-blue-500 h-2 rounded-full" style="width: 92%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-xs mb-1">
+          <span>{{ _('Teamwork') }}</span>
+          <span>88%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2">
+          <div class="bg-purple-500 h-2 rounded-full" style="width: 88%"></div>
+          </div>
+        </div>
+        </div>
+      </div>
+      
+      <!-- Performance Trends -->
+      <div class="bg-gray-50 p-4 rounded-lg">
+        <h4 class="text-md font-medium mb-2">{{ _('Performance Trends') }}</h4>
+        <canvas id="performanceChart" height="140"></canvas>
+      </div>
+      </div>
+      
+      <!-- Recent Evaluations -->
+      <div class="mt-4">
+      <h4 class="text-md font-medium mb-3">{{ _('Recent Evaluations') }}</h4>
+      <div class="space-y-3 max-h-64 overflow-y-auto pr-2">
+        {% if hr_data and hr_data.get('performance_evaluations') %}
+        {% for eval in hr_data.get('performance_evaluations', []) %}
+          <div class="bg-white border border-gray-100 rounded-lg p-3 hover:shadow-sm transition-shadow">
+          <div class="flex justify-between items-start">
+            <p class="font-medium text-sm">{{ eval.title }}</p>
+            <span class="text-xs text-gray-500">{{ eval.date }}</span>
+          </div>
+          <p class="text-sm text-gray-600 mt-1">{{ eval.comment }}</p>
+          <div class="mt-2 flex items-center">
+            <span class="text-xs font-medium mr-2">{{ _('Rating:') }}</span>
+            <div class="flex">
+            {% for i in range(1, eval.rating + 1) %}
+              <i class="fas fa-star text-yellow-400 text-xs"></i>
+            {% endfor %}
+            {% for i in range(eval.rating, 5) %}
+              <i class="far fa-star text-yellow-400 text-xs"></i>
+            {% endfor %}
+            </div>
+          </div>
+          </div>
+        {% endfor %}
+        {% else %}
+        <div class="text-center py-6 text-gray-500 bg-gray-50 rounded-lg">
+          <i class="fa-solid fa-chart-line text-3xl mb-2"></i>
+          <p>{{ _('No performance evaluations available') }}</p>
+        </div>
+        {% endif %}
+      </div>
+      </div>
+    </div>
+
+    <!-- Documents tab content -->
+    <div id="documents-content" class="tab-pane hidden">
+      <div class="mb-4"></div>
+      <h4 class="text-md font-medium mb-2">{{ _('Recent Documents') }}</h4>
+      <div class="space-y-3 max-h-96 overflow-y-auto pr-2">
+        {% if hr_data and hr_data.get('documents') %}
+        {% for doc in hr_data.get('documents', []) %}
+          <div class="bg-white border border-gray-100 rounded-lg p-3 hover:shadow-sm transition-shadow">
+          <div class="flex items-start">
+            <div class="flex-shrink-0 mr-3">
+            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+              <i class="fa-solid fa-file-lines text-blue-600"></i>
+            </div>
+            </div>
+            <div class="flex-grow">
+            <div class="flex justify-between items-start">
+              <p class="font-medium text-sm">{{ doc.title }}</p>
+              <span class="text-xs text-gray-500">{{ doc.updated_date }}</span>
+            </div>
+            <p class="text-sm text-gray-600 mt-1">{{ doc.description }}</p>
+            <div class="mt-2">
+              <span class="inline-block px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded-full">{{ doc.type }}</span>
+              <a href="#" class="inline-block ml-2 text-xs text-indigo-600 hover:text-indigo-800">{{ _('View Document') }}</a>
+            </div>
+            </div>
+          </div>
+          </div>
+        {% endfor %}
+        {% else %}
+        <div class="text-center py-8 text-gray-500 bg-gray-50 rounded-lg">
+          <i class="fa-solid fa-file-circle-exclamation text-3xl mb-2"></i>
+          <p>{{ _('No documents available') }}</p>
+        </div>
+        {% endif %}
+      </div>
+
+          <!-- Document Categories -->
+      <div class="mt-6">
+      <h4 class="text-md font-medium mb-3">{{ _('Document Categories') }}</h4>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="bg-gray-50 p-3 rounded-lg flex items-center hover:bg-gray-100 transition-colors cursor-pointer">
+        <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
+          <i class="fa-solid fa-file-contract text-green-600 text-sm"></i>
+        </div>
+        <div>
+          <p class="font-medium text-sm">{{ _('Contracts') }}</p>
+          <p class="text-xs text-gray-500">{{ _('Employment agreements') }}</p>
+        </div>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg flex items-center hover:bg-gray-100 transition-colors cursor-pointer">
+        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+          <i class="fa-solid fa-file-invoice text-purple-600 text-sm"></i>
+        </div>
+        <div>
+          <p class="font-medium text-sm">{{ _('Payroll') }}</p>
+          <p class="text-xs text-gray-500">{{ _('Salary statements') }}</p>
+        </div>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg flex items-center hover:bg-gray-100 transition-colors cursor-pointer">
+        <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-3">
+          <i class="fa-solid fa-certificate text-red-600 text-sm"></i>
+        </div>
+        <div>
+          <p class="font-medium text-sm">{{ _('Certificates') }}</p>
+          <p class="text-xs text-gray-500">{{ _('Training & awards') }}</p>
+        </div>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg flex items-center hover:bg-gray-100 transition-colors cursor-pointer">
+        <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
+          <i class="fa-solid fa-file-circle-check text-yellow-600 text-sm"></i>
+        </div>
+        <div>
+          <p class="font-medium text-sm">{{ _('Policies') }}</p>
+          <p class="text-xs text-gray-500">{{ _('Company guidelines') }}</p>
+        </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      
+  
+    </div>
+  </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('.activity-filter button');
+    const activities = document.querySelectorAll('.activity-item');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+
+    const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+    const performanceChart = new Chart(performanceCtx, {
+      type: 'line',
+      data: {
+        labels: [
+          __('Jan'), __('Feb'), __('Mar'), __('Apr'), __('May'), __('Jun')
+        ],
+        datasets: [{
+          label: 'Performance Rating',
+          data: [4.2, 4.5, 4.3, 4.6, 4.7, 4.5],
+          borderColor: '#6366f1',
+          backgroundColor: 'rgba(99, 102, 241, 0.2)',
+          fill: true,
+          tension: 0.3
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 5
+          }
+        },
+        responsive: true,
+        maintainAspectRatio: true
+      }
+    });
+
+    const attendanceCtx = document.getElementById('attendanceChart').getContext('2d');
+    const attendanceChart = new Chart(attendanceCtx, {
+      type: 'bar',
+      data: {
+        labels: [
+          __('Monday'),
+          __('Tuesday'),
+          __('Wednesday'),
+          __('Thursday'),
+          __('Friday')
+        ],
+        datasets: [{
+          label: 'Attendance Rate (%)',
+          data: [95, 88, 92, 97, 96.5],
+          backgroundColor: [
+            '#16a34a',
+            '#16a34a',
+            '#16a34a',
+            '#16a34a',
+            '#16a34a'
+          ],
+          borderColor: [
+            '#16a34a',
+            '#16a34a',
+            '#16a34a',
+            '#16a34a',
+            '#16a34a',
+            '#16a34a',
+            '#16a34a'
+          ],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100
+          }
+        },
+        responsive: true,
+        maintainAspectRatio: true
+      }
+    });
+
+    buttons.forEach(button => {
+      button.addEventListener('click', function () {
+        buttons.forEach(btn => {
+          btn.classList.remove('bg-indigo-100', 'text-indigo-800');
+          btn.classList.add('bg-gray-100', 'text-gray-800');
+        });
+        this.classList.remove('bg-gray-100', 'text-gray-800');
+        this.classList.add('bg-indigo-100', 'text-indigo-800');
+        
+        const tabId = this.getAttribute('data-tab');
+        tabPanes.forEach(pane => {
+          pane.classList.add('hidden');
+        });
+        document.getElementById(tabId).classList.remove('hidden');
+        
+        const filter = this.getAttribute('data-filter');
+        if (filter === 'all') {
+          activities.forEach(activity => {
+            activity.style.display = 'flex';
+          });
+        } else {
+          activities.forEach(activity => {
+            if (activity.classList.contains(filter)) {
+              activity.style.display = 'flex';
+            } else {
+              activity.style.display = 'none';
+            }
+          });
+        }
+      });
+    });
+  });
+</script>
+{% endblock %}
