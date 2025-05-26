@@ -42,7 +42,7 @@
     <div class="bg-white rounded-lg shadow-md p-6" id="card3">
       <div class="flex items-center justify-between mb-4">
         <h3 class="text-lg font-semibold">{{_('Document Count')}}</h3>
-        <i class="fa-solid fa-file-alt text-yellow-700 text-2xl"></i>
+        <i class="fa-solid fa-file-alt text-orange-500 text-2xl"></i>
       </div>
 
       <div class="flex items-center justify-between">
@@ -51,7 +51,7 @@
           <p class="text-sm text-gray-500 mt-2">{{ _('Total documents') }}</p>
         </div>
         <div
-          class="flex items-center justify-center gap-2 py-1 px-2 rounded bg-yellow-700"
+          class="flex items-center justify-center gap-2 py-1 px-2 rounded bg-orange-500"
         >
           <p class="text-white count-up" data-target="5">0</p>
           <i class="fa-solid fa-plus text-white"></i>
@@ -381,9 +381,9 @@
       
       <!-- View All Button -->
       <div class="mt-4 text-center">
-        <button class="text-sm font-medium text-indigo-600 hover:text-indigo-800 cursor-pointer">
+        <a href="{{ url_for('useractivity') }}" class="text-sm font-medium text-indigo-600 hover:text-indigo-800 cursor-pointer">
           {{ _('View All Activities') }} <i class="fa-solid fa-arrow-right ml-1"></i>
-        </button>
+        </a>
       </div>
     </div>
     

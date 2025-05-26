@@ -28,8 +28,8 @@ def set_language(lang_code):
 
 @app.route('/')
 def index():
-    hr_data = get_hr_data()
-    return render_template('dashboard.html' , hr_data=hr_data)
+
+    return redirect(url_for('dashboard'))
 
 
 @app.route('/set_role/<role>')
@@ -93,6 +93,11 @@ def settings():
 @app.route('/payroll')
 def payroll():
     return render_template('payroll.html')
+
+@app.route('/useractivity')
+def useractivity():
+    return render_template('useractivity.html')
+
 
 
 def get_projects():
@@ -209,6 +214,8 @@ def get_hr_data():
 @app.context_processor
 def utility_processor():
     def is_active(path, current):
+        if path == '/dashboard' and (current == '/dashboard' or current == '/'):
+            return "bg-indigo-100 text-blue-800 font-bold"
         return "bg-indigo-100 text-blue-800  font-bold" if path == current else ""
      # Define navigation items by role
     def get_nav_items():
@@ -226,28 +233,29 @@ def utility_processor():
                 {'url': '/invoices', 'icon': 'fa-solid fa-receipt text-blue-500', 'label': _('Invoices')},
                 {'url': '/reporting', 'icon': 'fa-solid fa-chart-line text-orange-300', 'label': _('Reporting')},
                 {'url': '/staff', 'icon': 'fa-solid fa-users text-purple-500', 'label': _('Staff')},
-                {'url': '/document', 'icon': 'fa-solid fa-file-text text-orange-300', 'label': _('Documents')},
+                {'url': '/document', 'icon': 'fa-solid fa-file-text text-orange-500', 'label': _('Documents')},
                 {'url': '/companyreg', 'icon': 'fa-solid fa-address-card text-red-400', 'label': _('Company Registration')},
                 {'url': '/usermanagement', 'icon': 'fa-solid fa-user text-black', 'label': _('User Management')},
                 {'url': '/subplan', 'icon': 'fa-solid fa-business-time text-orange-300', 'label': _('Subscription Plan')},
             ],
             'Hr': [
                 {'url': '/staff', 'icon': 'fa-solid fa-users text-purple-500', 'label': _('Staff')},
-                {'url': '/document', 'icon': 'fa-solid fa-file-text text-orange-300', 'label': _('Documents')},
+                {'url': '/document', 'icon': 'fa-solid fa-file-text text-orange-500', 'label': _('Documents')},
                 {'url': '/payroll', 'icon': 'fa-solid fa-money-bill text-green-500', 'label': _('Payroll')},
+                {'url': '/useractivity', 'icon': 'fa-solid fa-user-clock text-indigo-500', 'label': _('User Activity')},
 
             ],
             'Finance': [
                 {'url': '/finance', 'icon': 'fa-solid fa-sack-dollar text-green-500', 'label': _('Finance')},
                 {'url': '/invoices', 'icon': 'fa-solid fa-receipt text-blue-500', 'label': _('Invoices')},  
                 {'url': '/reporting', 'icon': 'fa-solid fa-chart-line text-orange-300', 'label': _('Reporting')},
-                {'url': '/document', 'icon': 'fa-solid fa-file-text text-orange-300', 'label': _('Documents')}
+                {'url': '/document', 'icon': 'fa-solid fa-file-text text-orange-500', 'label': _('Documents')}
 
             ],
             'Superadmin': [
                 {'url': '/projects', 'icon': 'fa-solid fa-folder text-yellow-200', 'label': _('Projects')},
                 {'url': '/staff', 'icon': 'fa-solid fa-users text-purple-500', 'label': _('Staff')},
-                {'url': '/document', 'icon': 'fa-solid fa-file-text text-orange-300', 'label': _('Documents')},
+                {'url': '/document', 'icon': 'fa-solid fa-file-text text-orange-500', 'label': _('Documents')},
                 {'url': '/finance', 'icon': 'fa-solid fa-sack-dollar text-green-500', 'label': _('Finance')},
                 {'url': '/invoices', 'icon': 'fa-solid fa-receipt text-blue-500', 'label': _('Invoices')},
                 {'url': '/reporting', 'icon': 'fa-solid fa-chart-line text-orange-300', 'label': _('Reporting')},
@@ -259,7 +267,7 @@ def utility_processor():
             ]
         }
         
-        role = session.get('user_role')
+        role = session.get('user_role')  
         if not role:
             return []  # No nav if no role
         return common_items + role_items.get(role, [])
