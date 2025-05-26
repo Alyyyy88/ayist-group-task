@@ -147,24 +147,24 @@ def get_hr_data():
     hr_data = {
             'recent_employee_activities': [
                 {
-                    'employee_name': 'Sarah Johnson',
-                    'activity': 'Checked in at 08:45 AM',
-                    'time': '30m ago',
+                    'employee_name': _('Sarah Johnson'),
+                    'activity': _('Checked in at 08:45 AM'),
+                    'time': _('30m ago'),
                     'icon': 'fa-clock',
                     'color': 'green'
                 },
 
                 {
-                    'employee_name': 'Michael Smith',
-                    'activity': 'Submitted leave request',
-                    'time': '1h ago',
+                    'employee_name': _('Michael Smith'),
+                    'activity': _('Submitted leave request'),
+                    'time': _('1h ago'),
                     'icon': 'fa-paper-plane',
                     'color': 'blue'
-                    },
-              {
-                    'employee_name': 'Emily Davis',
-                    'activity': 'Completed training module',
-                    'time': '2h ago',
+                },
+                {
+                    'employee_name': _('Emily Davis'),
+                    'activity': _('Completed training module'),
+                    'time': _('2h ago'),
                     'icon': 'fa-graduation-cap',
                     'color': 'purple'
                 },
@@ -172,54 +172,54 @@ def get_hr_data():
             ],
             'employee_activities': [
                 {
-                    'employee_name': 'John Doe',
-                    'activity': 'Checked in at 09:00 AM',
-                    'time': '1h ago',
+                    'employee_name': _('John Doe'),
+                    'activity': _('Checked in at 09:00 AM'),
+                    'time': _('1h ago'),
                     'icon': 'fa-clock',
                     'color': 'green',
                     'attendance': 'Present',
                     'type': 'check-in'
                 },
                 {
-                    'employee_name': 'Jane Smith',
-                    'activity': 'Submitted expense report',
-                    'time': '2h ago',
+                    'employee_name': _('Jane Smith'),
+                    'activity': _('Submitted expense report'),
+                    'time': _('2h ago'),
                     'icon': 'fa-file-alt',
                     'color': 'blue',
                     'attendance': 'Present',
                     'type': 'expense'
                 },
                 {
-                    'employee_name': 'Alice Johnson',
-                    'activity': 'Updated project status',
-                    'time': '3h ago',
+                    'employee_name': _('Alice Johnson'),
+                    'activity': _('Updated project status'),
+                    'time': _('3h ago'),
                     'icon': 'fa-tasks',
                     'color': 'orange',
                     'attendance': 'Present',
                     'type': 'update'
                 },
                 {
-                    'employee_name': 'Bob Brown',
-                    'activity': 'Checked out at 05:00 PM',
-                    'time': '4h ago',
+                    'employee_name': _('Bob Brown'),
+                    'activity': _('Checked out at 05:00 PM'),
+                    'time': _('4h ago'),
                     'icon': 'fa-sign-out-alt',
                     'color': 'red',
                     'attendance': 'Absent',
                     'type': 'check-out'
                 },
                 {
-                    'employee_name': 'Charlie Green',
-                    'activity': 'Attended team meeting',
-                    'time': '5h ago',
+                    'employee_name': _('Charlie Green'),
+                    'activity': _('Attended team meeting'),
+                    'time': _('5h ago'),
                     'icon': 'fa-users',
                     'color': 'purple',
                     'attendance': 'Absent',
                     'type': 'meeting'
                 },
                 {
-                    'employee_name': 'David Kim',
-                    'activity': 'Checked out at 05:30 AM',
-                    'time': '6h ago',
+                    'employee_name': _('David Kim'),
+                    'activity': _('Checked out at 05:30 AM'),
+                    'time': _('6h ago'),
                     'icon': 'fa-sign-out-alt',
                     'color': 'red',
                     'attendance': 'On Leave',
@@ -261,56 +261,56 @@ def get_hr_data():
             ],
             'performance_evaluations': [
                 {
-                    'title': 'Quarterly Performance Review',
+                    'title': _('Quarterly Performance Review'),
                     'date': '2025-05-15',
-                    'comment': 'John Doe has shown excellent performance in the last quarter, exceeding expectations in project delivery and team collaboration.',
+                    'comment': _('John Doe has shown excellent performance in the last quarter, exceeding expectations in project delivery and team collaboration.'),
                     'rating': 4,
         
                 },
                 {
-                    'title': 'Mid-Year Evaluation',
+                    'title': _('Mid-Year Evaluation'),
                     'date': '2025-06-01',
-                    'comment': 'Jane Smith has made significant contributions to the team, particularly in improving client relationships and project management.',
+                    'comment': _('Jane Smith has made significant contributions to the team, particularly in improving client relationships and project management.'),
                     'rating': 4,
                 },
                 {
-                    'title': 'Annual Performance Appraisal',
+                    'title': _('Annual Performance Appraisal'),
                     'date': '2025-12-20',
-                    'comment': 'Alice Johnson has consistently performed at a high level, demonstrating leadership and innovation in her role.',
+                    'comment': _('Alice Johnson has consistently performed at a high level, demonstrating leadership and innovation in her role.'),
                     'rating': 3,
                 },
                 {
-                    'title': 'Project Completion Review',
+                    'title': _('Project Completion Review'),
                     'date': '2025-07-10',
-                    'comment': 'Bob Brown successfully led the project team to complete the XYZ project ahead of schedule, showcasing excellent project management skills.',
+                    'comment': _('Bob Brown successfully led the project team to complete the XYZ project ahead of schedule, showcasing excellent project management skills.'),
                     'rating': 2,
                 }    
 
             ],
             'documents': [
                 {
-                    'title': 'Employee Handbook',
+                    'title': _('Employee Handbook'),
                     'type': 'PDF',
                     'uptated_date': '2025-05-01',
-                    'description': 'The employee handbook outlines company policies, procedures, and benefits for all employees.',
+                    'description': _('The employee handbook outlines company policies, procedures, and benefits for all employees.'),
                 },{
-                    'title': 'Code of Conduct',
+                    'title': _('Code of Conduct'),
                     'type': 'PDF',
                     'uptated_date': '2025-04-15',
-                    'description': 'The code of conduct sets the standards for professional behavior and ethics expected from all employees.',
+                    'description': _('The code of conduct sets the standards for professional behavior and ethics expected from all employees.'),
                 },
                 {
-                    'title': 'Health and Safety Guidelines',
+                    'title': _('Health and Safety Guidelines'),
                     'type': 'PDF',
                     'uptated_date': '2025-03-10',
-                    'description': 'These guidelines provide essential information on workplace safety and health protocols.',
+                    'description': _('These guidelines provide essential information on workplace safety and health protocols.'),
 
                 },
                 {
-                    'title': 'Performance Evaluation Form',
+                    'title': _('Performance Evaluation Form'),
                     'type': 'DOCX',
                     'uptated_date': '2025-02-20',
-                    'description': 'The performance evaluation form is used to assess employee performance and set goals for the upcoming period.',
+                    'description': _('The performance evaluation form is used to assess employee performance and set goals for the upcoming period.'),
                 }
 
             ],

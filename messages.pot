@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-05-26 05:01+0300\n"
+"POT-Creation-Date: 2025-05-26 16:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,69 +17,253 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/app.py:105 app/app.py:126
+#: app/app.py:111 app/app.py:132
 msgid "In Progress"
 msgstr ""
 
-#: app/app.py:112
+#: app/app.py:118
 msgid "Pending"
 msgstr ""
 
-#: app/app.py:119
+#: app/app.py:125
 msgid "Completed"
 msgstr ""
 
-#: app/app.py:133
+#: app/app.py:139
 msgid "On Hold"
 msgstr ""
 
-#: app/app.py:217 app/templates/dashboard.html:3
+#: app/app.py:150
+msgid "Sarah Johnson"
+msgstr ""
+
+#: app/app.py:151
+msgid "Checked in at 08:45 AM"
+msgstr ""
+
+#: app/app.py:152
+msgid "30m ago"
+msgstr ""
+
+#: app/app.py:158
+msgid "Michael Smith"
+msgstr ""
+
+#: app/app.py:159
+msgid "Submitted leave request"
+msgstr ""
+
+#: app/app.py:160 app/app.py:177
+msgid "1h ago"
+msgstr ""
+
+#: app/app.py:165
+msgid "Emily Davis"
+msgstr ""
+
+#: app/app.py:166
+msgid "Completed training module"
+msgstr ""
+
+#: app/app.py:167 app/app.py:186
+msgid "2h ago"
+msgstr ""
+
+#: app/app.py:175
+msgid "John Doe"
+msgstr ""
+
+#: app/app.py:176
+msgid "Checked in at 09:00 AM"
+msgstr ""
+
+#: app/app.py:184
+msgid "Jane Smith"
+msgstr ""
+
+#: app/app.py:185
+msgid "Submitted expense report"
+msgstr ""
+
+#: app/app.py:193
+msgid "Alice Johnson"
+msgstr ""
+
+#: app/app.py:194
+msgid "Updated project status"
+msgstr ""
+
+#: app/app.py:195
+msgid "3h ago"
+msgstr ""
+
+#: app/app.py:202
+msgid "Bob Brown"
+msgstr ""
+
+#: app/app.py:203
+msgid "Checked out at 05:00 PM"
+msgstr ""
+
+#: app/app.py:204
+msgid "4h ago"
+msgstr ""
+
+#: app/app.py:211
+msgid "Charlie Green"
+msgstr ""
+
+#: app/app.py:212
+msgid "Attended team meeting"
+msgstr ""
+
+#: app/app.py:213
+msgid "5h ago"
+msgstr ""
+
+#: app/app.py:220
+msgid "David Kim"
+msgstr ""
+
+#: app/app.py:221
+msgid "Checked out at 05:30 AM"
+msgstr ""
+
+#: app/app.py:222
+msgid "6h ago"
+msgstr ""
+
+#: app/app.py:264
+msgid "Quarterly Performance Review"
+msgstr ""
+
+#: app/app.py:266
+msgid ""
+"John Doe has shown excellent performance in the last quarter, exceeding "
+"expectations in project delivery and team collaboration."
+msgstr ""
+
+#: app/app.py:271
+msgid "Mid-Year Evaluation"
+msgstr ""
+
+#: app/app.py:273
+msgid ""
+"Jane Smith has made significant contributions to the team, particularly "
+"in improving client relationships and project management."
+msgstr ""
+
+#: app/app.py:277
+msgid "Annual Performance Appraisal"
+msgstr ""
+
+#: app/app.py:279
+msgid ""
+"Alice Johnson has consistently performed at a high level, demonstrating "
+"leadership and innovation in her role."
+msgstr ""
+
+#: app/app.py:283
+msgid "Project Completion Review"
+msgstr ""
+
+#: app/app.py:285
+msgid ""
+"Bob Brown successfully led the project team to complete the XYZ project "
+"ahead of schedule, showcasing excellent project management skills."
+msgstr ""
+
+#: app/app.py:292
+msgid "Employee Handbook"
+msgstr ""
+
+#: app/app.py:295
+msgid ""
+"The employee handbook outlines company policies, procedures, and benefits"
+" for all employees."
+msgstr ""
+
+#: app/app.py:297
+msgid "Code of Conduct"
+msgstr ""
+
+#: app/app.py:300
+msgid ""
+"The code of conduct sets the standards for professional behavior and "
+"ethics expected from all employees."
+msgstr ""
+
+#: app/app.py:303
+msgid "Health and Safety Guidelines"
+msgstr ""
+
+#: app/app.py:306
+msgid ""
+"These guidelines provide essential information on workplace safety and "
+"health protocols."
+msgstr ""
+
+#: app/app.py:310
+msgid "Performance Evaluation Form"
+msgstr ""
+
+#: app/app.py:313
+msgid ""
+"The performance evaluation form is used to assess employee performance "
+"and set goals for the upcoming period."
+msgstr ""
+
+#: app/app.py:337 app/templates/dashboard.html:3
 msgid "Dashboard"
 msgstr ""
 
-#: app/app.py:224 app/app.py:248
+#: app/app.py:344 app/app.py:369
 msgid "Projects"
 msgstr ""
 
-#: app/app.py:225 app/app.py:241 app/app.py:251
+#: app/app.py:345 app/app.py:362 app/app.py:372
 msgid "Finance"
 msgstr ""
 
-#: app/app.py:226 app/app.py:242 app/app.py:252
+#: app/app.py:346 app/app.py:363 app/app.py:373
 msgid "Invoices"
 msgstr ""
 
-#: app/app.py:227 app/app.py:243 app/app.py:253
+#: app/app.py:347 app/app.py:364 app/app.py:374
 msgid "Reporting"
 msgstr ""
 
-#: app/app.py:228 app/app.py:235 app/app.py:249
+#: app/app.py:348 app/app.py:355 app/app.py:370
 msgid "Staff"
 msgstr ""
 
-#: app/app.py:229 app/app.py:236 app/app.py:244 app/app.py:250
-#: app/templates/dashboard.html:352
+#: app/app.py:349 app/app.py:356 app/app.py:365 app/app.py:371
+#: app/templates/dashboard.html:352 app/templates/useractivity.html:44
 msgid "Documents"
 msgstr ""
 
-#: app/app.py:230 app/app.py:256
+#: app/app.py:350 app/app.py:377
 msgid "Company Registration"
 msgstr ""
 
-#: app/app.py:231 app/app.py:254
+#: app/app.py:351 app/app.py:375
 msgid "User Management"
 msgstr ""
 
-#: app/app.py:232 app/app.py:255 app/templates/subplan.html:12
+#: app/app.py:352 app/app.py:376 app/templates/subplan.html:12
 msgid "Subscription Plan"
 msgstr ""
 
-#: app/app.py:237 app/templates/dashboard.html:138
-#: app/templates/payroll.html:12
+#: app/app.py:357 app/templates/dashboard.html:138
+#: app/templates/payroll.html:12 app/templates/useractivity.html:273
 msgid "Payroll"
 msgstr ""
 
-#: app/app.py:257 app/templates/topbar.html:72
+#: app/app.py:358
+msgid "User Activity"
+msgstr ""
+
+#: app/app.py:378 app/templates/topbar.html:72
 msgid "Settings"
 msgstr ""
 
@@ -228,23 +412,23 @@ msgstr ""
 msgid "Recent Employee Activities"
 msgstr ""
 
-#: app/templates/dashboard.html:348
+#: app/templates/dashboard.html:348 app/templates/useractivity.html:16
 msgid "All"
 msgstr ""
 
-#: app/templates/dashboard.html:349
+#: app/templates/dashboard.html:349 app/templates/useractivity.html:23
 msgid "Attendance"
 msgstr ""
 
-#: app/templates/dashboard.html:350
+#: app/templates/dashboard.html:350 app/templates/useractivity.html:30
 msgid "Leave"
 msgstr ""
 
-#: app/templates/dashboard.html:351
+#: app/templates/dashboard.html:351 app/templates/useractivity.html:37
 msgid "Performance"
 msgstr ""
 
-#: app/templates/dashboard.html:377
+#: app/templates/dashboard.html:377 app/templates/useractivity.html:80
 msgid "No recent activities to display"
 msgstr ""
 
@@ -297,6 +481,7 @@ msgid "This Quarter"
 msgstr ""
 
 #: app/templates/dashboard.html:483 app/templates/dashboard.html:519
+#: app/templates/useractivity.html:89
 msgid "Attendance Rate"
 msgstr ""
 
@@ -380,6 +565,26 @@ msgstr ""
 
 #: app/templates/layout.html:42
 msgid "Jun"
+msgstr ""
+
+#: app/templates/layout.html:46
+msgid "Monday"
+msgstr ""
+
+#: app/templates/layout.html:47
+msgid "Tuesday"
+msgstr ""
+
+#: app/templates/layout.html:48
+msgid "Wednesday"
+msgstr ""
+
+#: app/templates/layout.html:49
+msgid "Thursday"
+msgstr ""
+
+#: app/templates/layout.html:50
+msgid "Friday"
 msgstr ""
 
 #: app/templates/mobilesidebar.html:8 app/templates/sidebar.html:10
@@ -476,6 +681,94 @@ msgstr ""
 
 #: app/templates/topbar.html:103
 msgid "Set Superadmin"
+msgstr ""
+
+#: app/templates/useractivity.html:6
+msgid "Employee Activities"
+msgstr ""
+
+#: app/templates/useractivity.html:121
+msgid "No leave activities to display"
+msgstr ""
+
+#: app/templates/useractivity.html:133
+msgid "Performance Overview"
+msgstr ""
+
+#: app/templates/useractivity.html:135
+msgid "Overall Rating"
+msgstr ""
+
+#: app/templates/useractivity.html:149
+msgid "Productivity"
+msgstr ""
+
+#: app/templates/useractivity.html:158
+msgid "Quality"
+msgstr ""
+
+#: app/templates/useractivity.html:167
+msgid "Teamwork"
+msgstr ""
+
+#: app/templates/useractivity.html:179
+msgid "Performance Trends"
+msgstr ""
+
+#: app/templates/useractivity.html:186
+msgid "Recent Evaluations"
+msgstr ""
+
+#: app/templates/useractivity.html:197
+msgid "Rating:"
+msgstr ""
+
+#: app/templates/useractivity.html:212
+msgid "No performance evaluations available"
+msgstr ""
+
+#: app/templates/useractivity.html:222
+msgid "Recent Documents"
+msgstr ""
+
+#: app/templates/useractivity.html:241
+msgid "View Document"
+msgstr ""
+
+#: app/templates/useractivity.html:250
+msgid "No documents available"
+msgstr ""
+
+#: app/templates/useractivity.html:257
+msgid "Document Categories"
+msgstr ""
+
+#: app/templates/useractivity.html:264
+msgid "Contracts"
+msgstr ""
+
+#: app/templates/useractivity.html:265
+msgid "Employment agreements"
+msgstr ""
+
+#: app/templates/useractivity.html:274
+msgid "Salary statements"
+msgstr ""
+
+#: app/templates/useractivity.html:282
+msgid "Certificates"
+msgstr ""
+
+#: app/templates/useractivity.html:283
+msgid "Training & awards"
+msgstr ""
+
+#: app/templates/useractivity.html:291
+msgid "Policies"
+msgstr ""
+
+#: app/templates/useractivity.html:292
+msgid "Company guidelines"
 msgstr ""
 
 #: app/templates/usermanagement.html:11
