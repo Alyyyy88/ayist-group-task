@@ -37,7 +37,7 @@ Follow these steps to set up the project locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/ayist-group/ayist-dashboard.git
+   [git clone https://github.com/ayist-group/ayist-dashboard.git](https://github.com/Alyyyy88/ayist-group-task.git)
    cd app
    ```
 
