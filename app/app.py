@@ -28,8 +28,8 @@ def set_language(lang_code):
 
 @app.route('/')
 def index():
-    print('Current language:', session.get('language'))
-    return render_template('layout.html')
+    hr_data = get_hr_data()
+    return render_template('dashboard.html' , hr_data=hr_data)
 
 
 @app.route('/set_role/<role>')
@@ -40,21 +40,14 @@ def set_role(role):
 
 def get_user_role():
     return session.get('user_role')
-# ROUTES FOR PAGES
 
+
+# ROUTES FOR PAGES
 @app.route('/dashboard')
 def dashboard():
-    dashboard_data = {
-        'total_staff': 42,
-        'active_projects': 7,
-        'new_documents': 12,
-        'profit': 24500,
-        'storage_used': 4.5,
-        'storage_limit': 10,
-        'system_version': '1.0.0',
-        'last_updated': '2025-05-24'
-    }
-    return render_template('dashboard.html', data=dashboard_data)
+
+    hr_data = get_hr_data()
+    return render_template('dashboard.html' , hr_data=hr_data,)
 
 
 @app.route('/projects')
@@ -100,6 +93,118 @@ def settings():
 @app.route('/payroll')
 def payroll():
     return render_template('payroll.html')
+
+
+def get_projects():
+        # Return a list of dummy projects
+        projects = [
+            {
+                'id': 1,
+                'name': 'Website Redesign',
+                'client': 'ABC Corporation',
+                'status': _('In Progress'),
+                'progress': 65
+            },
+            {
+                'id': 2,
+                'name': 'Mobile App Development',
+                'client': 'TechStart Inc.',
+                'status': _('Pending'),
+                'progress': 30
+            },
+            {
+                'id': 3,
+                'name': 'ERP Implementation',
+                'client': 'Global Logistics Ltd.',
+                'status': _('Completed'),
+                'progress': 100
+            },
+            {
+                'id': 4,
+                'name': 'Network Infrastructure',
+                'client': 'City Hospital',
+                'status': _('In Progress'),
+                'progress': 45
+            },
+            {
+                'id': 5,
+                'name': 'Data Migration',
+                'client': 'Financial Services Co.',
+                'status': _('On Hold'),
+                'progress': 20
+            }
+        ]
+        return projects
+
+
+def get_hr_data():
+    hr_data = {
+            'employee_activities': [
+                {
+                    'employee_name': 'Sarah Johnson',
+                    'activity': 'Checked in at 08:45 AM',
+                    'time': '30m ago',
+                    'icon': 'fa-clock',
+                    'color': 'green'
+                },
+
+                {
+                    'employee_name': 'Michael Smith',
+                    'activity': 'Submitted leave request',
+                    'time': '1h ago',
+                    'icon': 'fa-paper-plane',
+                    'color': 'blue'
+                    },
+              {
+                    'employee_name': 'Emily Davis',
+                    'activity': 'Completed training module',
+                    'time': '2h ago',
+                    'icon': 'fa-graduation-cap',
+                    'color': 'purple'
+                },
+                 
+            ],
+            'new_joiners': [
+                {
+                    'name': 'David Kim',
+                    'position': 'Senior UI/UX Designer',
+                    'join_date': 'May 24, 2025',
+                    'onboarding_progress': 75,
+                    'status': 'active' 
+                },
+                {
+                    'name': 'Laura Chen',
+                    'position': 'Data Analyst',
+                    'join_date': 'May 20, 2025',
+                    'onboarding_progress': 50,
+                    'status': 'away'
+
+                },
+                {
+                    'name': 'James Brown',
+                    'position': 'Project Manager',
+                    'join_date': 'May 18, 2025',
+                    'onboarding_progress': 100,
+                    'status': 'inactive'
+                },
+                {
+                    'name': 'Olivia Garcia',
+                    'position': 'Software Engineer',
+                    'join_date': 'May 15, 2025',
+                    'onboarding_progress': 30,
+                    'status': 'active'
+                
+                },
+            ],
+            'hr_stats': {
+                'attendance_rate': 96.5,
+                'leave_requests': 8,
+                'open_positions': 5,
+                'training_completion': 87
+            }
+        }
+    return hr_data
+
 
 @app.context_processor
 def utility_processor():
@@ -159,12 +264,6 @@ def utility_processor():
             return []  # No nav if no role
         return common_items + role_items.get(role, [])
 
-    def has_document_access():
-        role = session.get('user_role')
-        # All roles in your system appear to have document access based on your navigation items
-        return role in ['Admin', 'Hr', 'Finance', 'Superadmin']
-    
-    # Add a function to check if user has specific roles
     def has_any_role(roles):
         user_role = session.get('user_role')
         return user_role in roles
@@ -172,8 +271,8 @@ def utility_processor():
     return dict(
         is_active=is_active, 
         get_nav_items=get_nav_items, 
-        has_document_access=has_document_access,
-        has_any_role=has_any_role
+        has_any_role=has_any_role,
+        get_projects=get_projects,
     ) 
 
 if __name__ == '__main__':

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-05-25 04:43+0300\n"
+"POT-Creation-Date: 2025-05-26 05:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,51 +17,69 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/app.py:112 app/templates/dashboard.html:3 app/templates/topbar.html:126
+#: app/app.py:105 app/app.py:126
+msgid "In Progress"
+msgstr ""
+
+#: app/app.py:112
+msgid "Pending"
+msgstr ""
+
+#: app/app.py:119
+msgid "Completed"
+msgstr ""
+
+#: app/app.py:133
+msgid "On Hold"
+msgstr ""
+
+#: app/app.py:217 app/templates/dashboard.html:3
 msgid "Dashboard"
 msgstr ""
 
-#: app/app.py:119 app/app.py:143 app/templates/topbar.html:131
+#: app/app.py:224 app/app.py:248
 msgid "Projects"
 msgstr ""
 
-#: app/app.py:120 app/app.py:136 app/app.py:146
+#: app/app.py:225 app/app.py:241 app/app.py:251
 msgid "Finance"
 msgstr ""
 
-#: app/app.py:121 app/app.py:137 app/app.py:147
+#: app/app.py:226 app/app.py:242 app/app.py:252
 msgid "Invoices"
 msgstr ""
 
-#: app/app.py:122 app/app.py:138 app/app.py:148
+#: app/app.py:227 app/app.py:243 app/app.py:253
 msgid "Reporting"
 msgstr ""
 
-#: app/app.py:123 app/app.py:130 app/app.py:144
+#: app/app.py:228 app/app.py:235 app/app.py:249
 msgid "Staff"
 msgstr ""
 
-#: app/app.py:124 app/app.py:131 app/app.py:139 app/app.py:145
+#: app/app.py:229 app/app.py:236 app/app.py:244 app/app.py:250
+#: app/templates/dashboard.html:352
 msgid "Documents"
 msgstr ""
 
-#: app/app.py:125 app/app.py:151
+#: app/app.py:230 app/app.py:256
 msgid "Company Registration"
 msgstr ""
 
-#: app/app.py:126 app/app.py:149
+#: app/app.py:231 app/app.py:254
 msgid "User Management"
 msgstr ""
 
-#: app/app.py:127 app/app.py:150 app/templates/subplan.html:12
+#: app/app.py:232 app/app.py:255 app/templates/subplan.html:12
 msgid "Subscription Plan"
 msgstr ""
 
-#: app/app.py:132 app/templates/payroll.html:12
+#: app/app.py:237 app/templates/dashboard.html:138
+#: app/templates/payroll.html:12
 msgid "Payroll"
 msgstr ""
 
-#: app/app.py:152 app/templates/topbar.html:66
+#: app/app.py:257 app/templates/topbar.html:72
 msgid "Settings"
 msgstr ""
 
@@ -84,51 +102,229 @@ msgstr ""
 msgid "Thank you for your patience!"
 msgstr ""
 
-#: app/templates/dashboard.html:10
+#: app/templates/dashboard.html:12
 msgid "Total Staff"
 msgstr ""
 
-#: app/templates/dashboard.html:17
+#: app/templates/dashboard.html:19
 msgid "Active employees"
 msgstr ""
 
-#: app/templates/dashboard.html:32
+#: app/templates/dashboard.html:34
 msgid "Active Projects"
 msgstr ""
 
-#: app/templates/dashboard.html:36
+#: app/templates/dashboard.html:38
 msgid "In progress"
 msgstr ""
 
-#: app/templates/dashboard.html:42
+#: app/templates/dashboard.html:44
 msgid "Document Count"
 msgstr ""
 
-#: app/templates/dashboard.html:46
+#: app/templates/dashboard.html:51
 msgid "Total documents"
 msgstr ""
 
-#: app/templates/dashboard.html:53
-msgid "Profit (Income - Expenses)"
+#: app/templates/dashboard.html:65 app/templates/dashboard.html:239
+#: app/templates/layout.html:45
+msgid "Profit"
 msgstr ""
 
-#: app/templates/dashboard.html:63
+#: app/templates/dashboard.html:74 app/templates/dashboard.html:99
+#: app/templates/dashboard.html:123 app/templates/dashboard.html:147
 msgid "Current month"
 msgstr ""
 
-#: app/templates/dashboard.html:78
+#: app/templates/dashboard.html:90
+msgid "Monthly Income"
+msgstr ""
+
+#: app/templates/dashboard.html:114
+msgid "Monthly Expenses"
+msgstr ""
+
+#: app/templates/dashboard.html:152
+msgid "Employees"
+msgstr ""
+
+#: app/templates/dashboard.html:156
+msgid "Avg"
+msgstr ""
+
+#: app/templates/dashboard.html:176
+msgid "Outstanding Invoices"
+msgstr ""
+
+#: app/templates/dashboard.html:185
+msgid "Total amount"
+msgstr ""
+
+#: app/templates/dashboard.html:190
+msgid "Count"
+msgstr ""
+
+#: app/templates/dashboard.html:194
+msgid "Overdue"
+msgstr ""
+
+#: app/templates/dashboard.html:211
+msgid "Cash Flow (Last 6 Months)"
+msgstr ""
+
+#: app/templates/dashboard.html:222
+msgid "Loading chart..."
+msgstr ""
+
+#: app/templates/dashboard.html:231 app/templates/layout.html:43
+msgid "Income"
+msgstr ""
+
+#: app/templates/dashboard.html:235 app/templates/layout.html:44
+msgid "Expenses"
+msgstr ""
+
+#: app/templates/dashboard.html:250
+msgid "Project Summaries"
+msgstr ""
+
+#: app/templates/dashboard.html:254
+msgid "Sort by"
+msgstr ""
+
+#: app/templates/dashboard.html:260
+msgid "Name"
+msgstr ""
+
+#: app/templates/dashboard.html:261
+msgid "Status"
+msgstr ""
+
+#: app/templates/dashboard.html:262
+msgid "Completion"
+msgstr ""
+
+#: app/templates/dashboard.html:275
+msgid "Search projects..."
+msgstr ""
+
+#: app/templates/dashboard.html:298
+msgid "Client"
+msgstr ""
+
+#: app/templates/dashboard.html:301
+msgid "Progress"
+msgstr ""
+
+#: app/templates/dashboard.html:312
+msgid "View Details"
+msgstr ""
+
+#: app/templates/dashboard.html:336
+msgid "HR Dashboard"
+msgstr ""
+
+#: app/templates/dashboard.html:342
+msgid "Recent Employee Activities"
+msgstr ""
+
+#: app/templates/dashboard.html:348
+msgid "All"
+msgstr ""
+
+#: app/templates/dashboard.html:349
+msgid "Attendance"
+msgstr ""
+
+#: app/templates/dashboard.html:350
+msgid "Leave"
+msgstr ""
+
+#: app/templates/dashboard.html:351
+msgid "Performance"
+msgstr ""
+
+#: app/templates/dashboard.html:377
+msgid "No recent activities to display"
+msgstr ""
+
+#: app/templates/dashboard.html:385
+msgid "View All Activities"
+msgstr ""
+
+#: app/templates/dashboard.html:393
+msgid "New Joiners This Month"
+msgstr ""
+
+#: app/templates/dashboard.html:395
+msgid "New"
+msgstr ""
+
+#: app/templates/dashboard.html:420
+msgid "Joined"
+msgstr ""
+
+#: app/templates/dashboard.html:423
+msgid "Send Message"
+msgstr ""
+
+#: app/templates/dashboard.html:426
+msgid "View Profile"
+msgstr ""
+
+#: app/templates/dashboard.html:435
+msgid "No new joiners this month"
+msgstr ""
+
+#: app/templates/dashboard.html:444
+msgid "Onboarding Progress"
+msgstr ""
+
+#: app/templates/dashboard.html:467
+msgid "HR Overview"
+msgstr ""
+
+#: app/templates/dashboard.html:469
+msgid "This Month"
+msgstr ""
+
+#: app/templates/dashboard.html:470
+msgid "Last Month"
+msgstr ""
+
+#: app/templates/dashboard.html:471
+msgid "This Quarter"
+msgstr ""
+
+#: app/templates/dashboard.html:483 app/templates/dashboard.html:519
+msgid "Attendance Rate"
+msgstr ""
+
+#: app/templates/dashboard.html:492
+msgid "Leave Requests"
+msgstr ""
+
+#: app/templates/dashboard.html:501
+msgid "Open Positions"
+msgstr ""
+
+#: app/templates/dashboard.html:510
+msgid "Training Completion"
+msgstr ""
+
+#: app/templates/dashboard.html:543
 msgid "Company Storage Usage"
 msgstr ""
 
-#: app/templates/dashboard.html:98
+#: app/templates/dashboard.html:564
 msgid "System Info"
 msgstr ""
 
-#: app/templates/dashboard.html:101
+#: app/templates/dashboard.html:567
 msgid "Version"
 msgstr ""
 
-#: app/templates/dashboard.html:103
+#: app/templates/dashboard.html:569
 msgid "Last updated"
 msgstr ""
 
@@ -160,6 +356,34 @@ msgstr ""
 msgid ""
 "This feature is coming soon. We're working hard to bring you an\n"
 "    improved invoices experience."
+msgstr ""
+
+#: app/templates/layout.html:37
+msgid "Jan"
+msgstr ""
+
+#: app/templates/layout.html:38
+msgid "Feb"
+msgstr ""
+
+#: app/templates/layout.html:39
+msgid "Mar"
+msgstr ""
+
+#: app/templates/layout.html:40
+msgid "Apr"
+msgstr ""
+
+#: app/templates/layout.html:41
+msgid "May"
+msgstr ""
+
+#: app/templates/layout.html:42
+msgid "Jun"
+msgstr ""
+
+#: app/templates/mobilesidebar.html:8 app/templates/sidebar.html:10
+msgid "Project Management"
 msgstr ""
 
 #: app/templates/payroll.html:15
@@ -198,10 +422,6 @@ msgid ""
 "settings experience."
 msgstr ""
 
-#: app/templates/sidebar.html:10
-msgid "Project Management"
-msgstr ""
-
 #: app/templates/sidebar.html:34
 msgid "All right reserved. Developed 2025"
 msgstr ""
@@ -222,39 +442,39 @@ msgid ""
 "    improved subscription experience."
 msgstr ""
 
-#: app/templates/topbar.html:3
+#: app/templates/topbar.html:5
 msgid "Welcome"
 msgstr ""
 
-#: app/templates/topbar.html:14
+#: app/templates/topbar.html:16
 msgid "Language"
 msgstr ""
 
-#: app/templates/topbar.html:57
+#: app/templates/topbar.html:59
 msgid "Signed in as"
 msgstr ""
 
-#: app/templates/topbar.html:63
+#: app/templates/topbar.html:65
 msgid "Your Profile"
 msgstr ""
 
-#: app/templates/topbar.html:70
+#: app/templates/topbar.html:77
 msgid "Sign out"
 msgstr ""
 
-#: app/templates/topbar.html:78
+#: app/templates/topbar.html:85
 msgid "Set Admin"
 msgstr ""
 
-#: app/templates/topbar.html:84
+#: app/templates/topbar.html:91
 msgid "Set HR"
 msgstr ""
 
-#: app/templates/topbar.html:90
+#: app/templates/topbar.html:97
 msgid "Set Finance"
 msgstr ""
 
-#: app/templates/topbar.html:96
+#: app/templates/topbar.html:103
 msgid "Set Superadmin"
 msgstr ""
 

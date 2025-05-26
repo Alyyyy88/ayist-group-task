@@ -1,5 +1,7 @@
 <!-- topbar with  user menu -->
-<div class="bg-cyan-700 p-4 flex justify-between items-center">
+<div
+  class="bg-cyan-700 p-4 flex justify-between items-center rounded-md shadow-lg"
+>
   <h1 class="text-3xl text-white">{{ _('Welcome') }}</h1>
 
   <!-- LANGUAGE DROP DOWN -->
@@ -62,9 +64,14 @@
         <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
           <i class="fa-solid fa-user mr-2"></i> {{ _('Your Profile') }}
         </a>
-        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+        {% if session.get('user_role') == 'Superadmin' %}
+        <a
+          href="{{ url_for('settings') }}"
+          class="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+        >
           <i class="fa-solid fa-cog mr-2"></i> {{ _('Settings') }}
         </a>
+        {% endif %}
         <div class="border-t border-gray-200"></div>
         <a href="#" class="block px-4 py-2 text-red-600 hover:bg-gray-100">
           <i class="fa-solid fa-sign-out-alt mr-2"></i> {{ _('Sign out') }}
@@ -99,84 +106,10 @@
       </div>
     </div>
 
-    <!-- Mobile Menu Toggle  -->
-    <div class="lg:hidden cursor-pointer" onclick="toggleMobileMenu()">
+    <div class="xl:hidden cursor-pointer" onclick="toggleMobileMenu()">
       <i class="fa-solid fa-bars text-white text-xl"></i>
     </div>
   </div>
 </div>
 
-<!-- Mobile sidebar (add this) -->
-<div
-  id="mobileSidebar"
-  class="fixed inset-0 bg-gray-800 bg-opacity-75 z-50 hidden lg:hidden"
->
-  <div class="bg-white h-full w-64 p-4 overflow-y-auto">
-    <div class="flex justify-between items-center mb-6">
-      <span class="text-xl font-bold">Project Management</span>
-      <button onclick="toggleMobileMenu()" class="text-gray-500">
-        <i class="fa-solid fa-times"></i>
-      </button>
-    </div>
-
-    <!-- Mobile Nav Links -->
-    <div class="flex flex-col gap-4">
-      <a href="#" class="flex items-center gap-2 p-3 rounded-md">
-        <i class="fa-solid fa-house"></i>
-        <span>{{ _('Dashboard') }}</span>
-      </a>
-
-      <a href="#" class="flex items-center gap-2 p-3 rounded-md">
-        <i class="fa-solid fa-folder"></i>
-        <span>{{ _('Projects') }}</span>
-      </a>
-
-      <!-- Continue with other menu items same as sidebar -->
-    </div>
-  </div>
-</div>
-
-<script>
-  function toggleDropdown(menuId) {
-    const menu = document.getElementById(menuId);
-    menu.classList.toggle("hidden");
-  }
-
-  function changeLanguage(langCode) {
-    window.location.href = "/set_language/" + langCode;
-  }
-
-  function toggleMobileMenu() {
-    const mobileSidebar = document.getElementById("mobileSidebar");
-    mobileSidebar.classList.toggle("hidden");
-
-    // Prevent background scrolling when menu is open
-    document.body.classList.toggle("overflow-hidden");
-  }
-
-  document.addEventListener("click", function (e) {
-    // Close language dropdown when clicking outside
-    const langButton = document.getElementById("dropdownButton");
-    const langMenu = document.getElementById("dropdownMenu");
-    if (
-      langButton &&
-      langMenu &&
-      !langButton.contains(e.target) &&
-      !langMenu.contains(e.target)
-    ) {
-      langMenu.classList.add("hidden");
-    }
-
-    // Close user dropdown when clicking outside
-    const userButton = document.getElementById("userDropdownButton");
-    const userMenu = document.getElementById("userDropdownMenu");
-    if (
-      userButton &&
-      userMenu &&
-      !userButton.contains(e.target) &&
-      !userMenu.contains(e.target)
-    ) {
-      userMenu.classList.add("hidden");
-    }
-  });
-</script>
+<script src="../static/js/topbar.js"></script>
