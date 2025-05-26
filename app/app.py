@@ -39,7 +39,7 @@ def set_role(role):
     return redirect(request.referrer or url_for('index'))
 
 def get_user_role():
-    return session.get('user_role')
+    return session.get('user_role' , 'Admin')
 
 
 # ROUTES FOR PAGES
