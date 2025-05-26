@@ -1,16 +1,11 @@
 {% extends "layout.html" %} {% block content %}
 <div class="container mx-auto px-4 py-8">
- <div class="flex justify-between items-center mb-6">
+ <div class="flex gap-4 items-center mb-6 ">
     <h1 class="text-2xl font-bold">{{ _('Dashboard') }}</h1>
     {% if session.get('user_role') in ['Finance', 'Superadmin'] %}
-    <div class="flex items-center space-x-4 bg-indigo-50 p-4 rounded-lg shadow-md">
-      <p class="text-sm text-gray-500 font-bold">
-        {{ _('Open Financial Snapshot') }}
-      </p>
       <button id="toggleFinancialSnapshot" class="bg-indigo-500 cursor-pointer hover:bg-indigo-600 text-white rounded-full p-2" title="{{ _('Show Financial Snapshot') }}">
         <i class="fa-solid fa-eye"></i>
       </button>
-    </div>
     {% endif %}
   </div>
 
@@ -145,7 +140,7 @@
     </div>
 
     <!-- Payroll Card -->
-    <div class="bg-white rounded-lg shadow-md p-6" id="payrollCard">
+    <div class="bg-white rounded-lg shadow-md p-6 md:col-span-3 lg:col-span-1" id="payrollCard">
       <div class="flex items-center justify-between mb-4">
         <h3 class="text-lg font-semibold">{{ _('Payroll') }}</h3>
         <i class="fa-solid fa-money-bill-wave text-blue-500 text-2xl"></i>
@@ -181,8 +176,8 @@
 
     <!-- Outstanding Invoices -->
     <div class="bg-white rounded-lg shadow-md p-6
-    {% if session.get('user_role') == 'Finance' %}hover:shadow-lg transition-shadow duration-300 col-span-3{% endif %}
-    {% if session.get('user_role') == 'Superadmin' %}hover:shadow-lg transition-shadow duration-300 col-span-2{% endif %}
+    {% if session.get('user_role') == 'Finance' %}hover:shadow-lg transition-shadow duration-300 md:col-span-3{% endif %}
+    {% if session.get('user_role') == 'Superadmin' %}hover:shadow-lg transition-shadow duration-300 md:col-span-3 lg:col-span-2 {% endif %}
     " id="invoicesCard">
       <div class="flex items-center justify-between mb-4">
         <h3 class="text-lg font-semibold">{{ _('Outstanding Invoices') }}</h3>
@@ -664,7 +659,9 @@
     </div>
     {% endif %}
      {# System Version & Footer Info - Visible to all users #}
-    <div class="bg-white rounded-lg shadow-md p-6 md:col-span-2 lg:col-span-3" id="card5">
+    <div class="bg-white rounded-lg shadow-md p-6 md:col-span-2 lg:col-span-3
+    {% if session.get('user_role') in ['Finance'] %} md:col-span-3 {% endif %}
+    " id="card5">
       <div class="flex items-center justify-between mb-4">
         <h3 class="text-lg font-semibold">{{ _('System Info') }}</h3>
         <i class="fa-solid fa-info-circle text-gray-500 text-2xl"></i>
