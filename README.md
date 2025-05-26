@@ -38,7 +38,7 @@ Follow these steps to set up the project locally:
 1. Clone the repository:
    ```bash
    git clone https://github.com/ayist-group/ayist-dashboard.git
-   cd ayist-dashboard
+   cd app
    ```
 
 2. Create and activate a virtual environment:
@@ -89,7 +89,7 @@ Follow these steps to set up the project locally:
 ## Directory Structure
 
 ```
-ayist-dashboard/
+app/
 ├── static/                # CSS, JavaScript, and other static files
 │   ├── js/
 │   ├── css/
@@ -123,20 +123,10 @@ The application supports multiple languages using Flask-Babel. To add new transl
 1. Create a new directory inside `translations` for the language code (e.g., `fr` for French).
 2. Use Babel commands to extract and compile translations.
 
-## Contributing
 
-We welcome contributions to enhance the Ayist Group Dashboard. To contribute:
-
-1. Fork the repository.
-2. Create a feature branch: `git checkout -b feature/your-feature`.
-3. Commit your changes: `git commit -m "Add your feature"`.
-4. Push to the branch: `git push origin feature/your-feature`.
-5. Open a pull request.
 
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-## Contact
 
-For any inquiries, please contact the Ayist Group team at support@ayistgroup.com.
