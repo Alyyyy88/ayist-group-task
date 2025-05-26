@@ -107,7 +107,6 @@ app/
 
 | Route                | Description                  |
 |----------------------|------------------------------|
-| `/`                  | Home page                   |
 | `/dashboard`         | Main dashboard              |
 | `/projects`          | Projects dashboard          |
 | `/invoices`          | Invoices dashboard          |
