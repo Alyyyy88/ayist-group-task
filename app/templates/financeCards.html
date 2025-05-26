@@ -1,0 +1,107 @@
+<!-- Income Card -->
+<div class="bg-white rounded-lg shadow-md p-6" id="incomeCard">
+  <div class="flex items-center justify-between mb-4">
+    <h3 class="text-lg font-semibold">{{ _('Monthly Income') }}</h3>
+    <i class="fa-solid fa-arrow-trend-up text-green-500 text-2xl"></i>
+  </div>
+
+  <div
+    class="flex items-center justify-between md:flex-col lg:flex-row flex-row"
+  >
+    <div>
+      <p class="text-3xl font-bold currency-count-up" data-target="56800">$0</p>
+      <p class="text-sm text-gray-500 mt-2">{{ _('Current month') }}</p>
+    </div>
+
+    <div
+      class="flex items-center justify-center gap-2 lg:py-2 lg:px-4 py-2 px-4 md:py-1 md:mt-4 lg:mt-0 md:px-2 rounded bg-green-500"
+    >
+      <p class="text-white percent-count-up" data-target="12.3">0%</p>
+      <i class="fa-solid fa-arrow-up text-white"></i>
+    </div>
+  </div>
+</div>
+
+<!-- Expenses Card -->
+<div class="bg-white rounded-lg shadow-md p-6" id="expensesCard">
+  <div class="flex items-center justify-between mb-4">
+    <h3 class="text-lg font-semibold">{{ _('Monthly Expenses') }}</h3>
+    <i class="fa-solid fa-arrow-trend-down text-red-500 text-2xl"></i>
+  </div>
+
+  <div
+    class="flex items-center justify-between flex-row md:flex-col lg:flex-row"
+  >
+    <div>
+      <p class="text-3xl font-bold currency-count-up" data-target="32300">$0</p>
+      <p class="text-sm text-gray-500 mt-2">{{ _('Current month') }}</p>
+    </div>
+
+    <div
+      class="flex items-center justify-center gap-2 lg:py-2 lg:px-4 py-2 px-4 md:py-1 md:mt-4 lg:mt-0 md:px-2 rounded bg-red-500"
+    >
+      <p class="text-white percent-count-up" data-target="8.7">0%</p>
+      <i class="fa-solid fa-arrow-up text-white"></i>
+    </div>
+  </div>
+</div>
+
+<!-- Payroll Card -->
+<div
+  class="bg-white rounded-lg shadow-md p-6 md:col-span-2 lg:col-span-1"
+  id="payrollCard"
+>
+  <div class="flex items-center justify-between mb-4">
+    <h3 class="text-lg font-semibold">{{ _('Payroll') }}</h3>
+    <i class="fa-solid fa-money-bill-wave text-blue-500 text-2xl"></i>
+  </div>
+
+  <div class="flex items-center justify-between">
+    <div>
+      <p class="text-3xl font-bold currency-count-up" data-target="28700">$0</p>
+      <p class="text-sm text-gray-500 mt-2">{{ _('Current month') }}</p>
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <div class="flex items-center justify-between">
+        <span class="text-sm text-gray-500">{{ _('Employees') }}:</span>
+        <span class="text-sm font-medium count-up" data-target="38">0</span>
+      </div>
+      <div class="flex items-center justify-between">
+        <span class="text-sm text-gray-500">{{ _('Avg') }}:</span>
+        <span class="text-sm font-medium currency-count-up" data-target="755"
+          >$0</span
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Outstanding Invoices -->
+<div
+  class="bg-white rounded-lg shadow-md p-6 {% if session.get('user_role') == 'Finance' %}hover:shadow-lg transition-shadow duration-300 md:col-span-3{% endif %} {% if session.get('user_role') == 'Superadmin' %}hover:shadow-lg transition-shadow duration-300 md:col-span-3 lg:col-span-1 {% endif %}"
+  id="invoicesCard"
+>
+  <div class="flex items-center justify-between mb-4">
+    <h3 class="text-lg font-semibold">{{ _('Outstanding Invoices') }}</h3>
+    <i class="fa-solid fa-file-invoice-dollar text-amber-500 text-2xl"></i>
+  </div>
+
+  <div class="flex items-center justify-between">
+    <div>
+      <p class="text-3xl font-bold currency-count-up" data-target="18400">$0</p>
+      <p class="text-sm text-gray-500 mt-2">{{ _('Total amount') }}</p>
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <div class="flex items-center justify-between">
+        <span class="text-sm text-gray-500">{{ _('Count') }}:</span>
+        <span class="text-sm font-medium count-up" data-target="12">0</span>
+      </div>
+      <div class="flex items-center justify-between">
+        <span class="text-sm text-gray-500">{{ _('Overdue') }}:</span>
+        <span class="text-sm font-medium count-up" data-target="5">0</span>
+      </div>
+    </div>
+  </div>
+</div>

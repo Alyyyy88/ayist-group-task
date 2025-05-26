@@ -1,0 +1,278 @@
+ <div class="mt-8 bg-white rounded-lg shadow-lg p-6 md:col-span-3">
+      <h2 class="text-xl font-semibold mb-4">{{ _('HR Dashboard') }}</h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Employee Activities Section -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold">
+              {{ _('Recent Employee Activities') }}
+            </h3>
+          </div>
+
+          <!-- Activity Filters -->
+          <div class="flex flex-wrap gap-2 mb-4">
+            <button
+              class="px-3 py-1 text-xs font-medium rounded-full bg-indigo-100 text-indigo-800"
+            >
+              {{ _('All') }}
+            </button>
+            <button
+              class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
+            >
+              {{ _('Attendance') }}
+            </button>
+            <button
+              class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
+            >
+              {{ _('Leave') }}
+            </button>
+            <button
+              class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
+            >
+              {{ _('Performance') }}
+            </button>
+            <button
+              class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
+            >
+              {{ _('Documents') }}
+            </button>
+          </div>
+
+          <!-- Activity List -->
+          <div class="space-y-4 max-h-96 overflow-y-auto pr-2">
+            {% if hr_data and hr_data['recent_employee_activities'] %} {% for
+            activity in hr_data['recent_employee_activities'] %}
+            <div
+              class="flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              <div class="flex-shrink-0 mr-3">
+                <div
+                  class="w-10 h-10 rounded-full bg-{{ activity.color }}-100 flex items-center justify-center"
+                >
+                  <i
+                    class="fa-solid {{ activity.icon }} text-{{ activity.color }}-600"
+                  ></i>
+                </div>
+              </div>
+              <div class="flex-grow">
+                <div class="flex justify-between items-start">
+                  <p class="font-medium text-sm">
+                    {{ activity.employee_name }}
+                  </p>
+                  <span class="text-xs text-gray-500">{{ activity.time }}</span>
+                </div>
+                <p class="text-sm text-gray-600">{{ activity.activity }}</p>
+              </div>
+            </div>
+            {% endfor %} {% else %}
+            <div class="text-center py-8 text-gray-500">
+              <i class="fa-solid fa-user-clock text-3xl mb-2"></i>
+              <p>{{ _('No recent activities to display') }}</p>
+            </div>
+            {% endif %}
+          </div>
+
+          <!-- View All Button -->
+          <div class="mt-4 text-center">
+            <a
+              href="{{ url_for('useractivity') }}"
+              class="text-sm font-medium text-indigo-600 hover:text-indigo-800 cursor-pointer"
+            >
+              {{ _('View All Activities') }}
+              <i class="fa-solid fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- New Joiners Section -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold">
+              {{ _('New Joiners This Month') }}
+            </h3>
+            <span
+              class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full"
+            >
+              {% if hr_data and hr_data.get('new_joiners') %}{{
+              hr_data.new_joiners|length }}{% else %}0{% endif %} {{ _('New') }}
+            </span>
+          </div>
+
+          <!-- New Joiners List -->
+          <div class="space-y-4">
+            {% if hr_data and hr_data.get('new_joiners') %} {% for joiner in
+            hr_data.new_joiners %}
+            <div class="bg-gray-50 rounded-lg p-4 flex items-center">
+              <div class="flex-shrink-0 mr-3">
+                <div class="relative">
+                  {% set initials = joiner.name.split() | map('first') | join |
+                  upper %}
+                  <div
+                    class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-lg"
+                  >
+                    {{ initials }}
+                  </div>
+                  <div
+                    class="absolute -bottom-1 -right-1 w-5 h-5 {% if joiner.status == 'active' %}bg-green-500 {% elif joiner.status == 'away' %}bg-yellow-500 {% else %}bg-gray-500{% endif %} rounded-full border-2 border-white"
+                    aria-label="{{ joiner.status }}"
+                  ></div>
+                </div>
+              </div>
+              <div class="flex-grow">
+                <p class="font-medium">{{ joiner.name }}</p>
+                <p class="text-sm text-gray-600">{{ joiner.position }}</p>
+                <p class="text-xs text-gray-500">
+                  {{ _('Joined') }}: {{ joiner.join_date }}
+                </p>
+              </div>
+              <div class="flex-shrink-0 flex space-x-2">
+                <button
+                  class="text-gray-400 hover:text-blue-600 cursor-pointer"
+                  title="{{ _('Send Message') }}"
+                >
+                  <i class="fa-solid fa-envelope"></i>
+                </button>
+                <button
+                  class="text-gray-400 hover:text-indigo-600 cursor-pointer"
+                  title="{{ _('View Profile') }}"
+                >
+                  <i class="fa-solid fa-user"></i>
+                </button>
+              </div>
+            </div>
+            {% endfor %} {% else %}
+            <div class="text-center py-8 text-gray-500">
+              <i class="fa-solid fa-user-plus text-3xl mb-2"></i>
+              <p>{{ _('No new joiners this month') }}</p>
+            </div>
+            {% endif %}
+          </div>
+
+          <!-- HR Onboarding Progress -->
+          {% if hr_data and hr_data.get('new_joiners') %}
+          <div class="mt-6">
+            <div class="flex justify-between items-center mb-2">
+              <h4 class="text-sm font-medium text-gray-700">
+                {{ _('Onboarding Progress') }}
+              </h4>
+            </div>
+
+            <div class="space-y-3">
+              {% for joiner in hr_data.get('new_joiners') %}
+              <div>
+                <div class="flex justify-between text-xs mb-1">
+                  <span>{{ joiner.name }}</span>
+                  <span>{{ joiner.onboarding_progress }}%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-1.5">
+                  <div
+                    class="bg-indigo-600 h-1.5 rounded-full"
+                    style="width: {{ joiner.onboarding_progress }}%"
+                  ></div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+
+        <!-- HR Summary Stats -->
+        <div class="bg-white rounded-lg shadow-md p-6 lg:col-span-2">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold">{{ _('HR Overview') }}</h3>
+            <select
+              class="text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 cursor-pointer"
+            >
+              <option>{{ _('This Month') }}</option>
+              <option>{{ _('Last Month') }}</option>
+              <option>{{ _('This Quarter') }}</option>
+            </select>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {% if hr_data and hr_data.get('hr_stats') %}
+            <!-- Attendance Rate -->
+            <div
+              class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center"
+            >
+              <div
+                class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-2"
+              >
+                <i class="fa-solid fa-user-check text-green-600 text-xl"></i>
+              </div>
+              <p class="text-2xl font-bold">
+                {{ hr_data.get('hr_stats').get('attendance_rate') }}%
+              </p>
+              <p class="text-sm text-gray-500">{{ _('Attendance Rate') }}</p>
+            </div>
+
+            <!-- Leave Requests -->
+            <div
+              class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center"
+            >
+              <div
+                class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-2"
+              >
+                <i
+                  class="fa-solid fa-calendar-minus text-yellow-600 text-xl"
+                ></i>
+              </div>
+              <p class="text-2xl font-bold">
+                {{ hr_data.get('hr_stats').get('leave_requests') }}
+              </p>
+              <p class="text-sm text-gray-500">{{ _('Leave Requests') }}</p>
+            </div>
+
+            <!-- Open Positions -->
+            <div
+              class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center"
+            >
+              <div
+                class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-2"
+              >
+                <i class="fa-solid fa-briefcase text-blue-600 text-xl"></i>
+              </div>
+              <p class="text-2xl font-bold">
+                {{ hr_data.get('hr_stats').get('open_positions') }}
+              </p>
+              <p class="text-sm text-gray-500">{{ _('Open Positions') }}</p>
+            </div>
+
+            <!-- Training Completion -->
+            <div
+              class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center"
+            >
+              <div
+                class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-2"
+              >
+                <i
+                  class="fa-solid fa-graduation-cap text-purple-600 text-xl"
+                ></i>
+              </div>
+              <p class="text-2xl font-bold">
+                {{ hr_data.get('hr_stats').get('training_completion') }}%
+              </p>
+              <p class="text-sm text-gray-500">
+                {{ _('Training Completion') }}
+              </p>
+            </div>
+            {% else %}
+            <!-- Placeholder stats if no data -->
+            <div
+              class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center"
+            >
+              <div
+                class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-2"
+              >
+                <i class="fa-solid fa-user-check text-green-600 text-xl"></i>
+              </div>
+              <p class="text-2xl font-bold">--</p>
+              <p class="text-sm text-gray-500">{{ _('Attendance Rate') }}</p>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>

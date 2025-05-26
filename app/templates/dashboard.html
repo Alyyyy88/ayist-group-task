@@ -1,52 +1,31 @@
 {% extends "layout.html" %} {% block content %}
 <div class="container mx-auto px-4 py-8">
- <div class="flex gap-4 items-center mb-6 ">
+  <div class="flex gap-4 items-center mb-6">
     <h1 class="text-2xl font-bold">{{ _('Dashboard') }}</h1>
     {% if session.get('user_role') in ['Finance', 'Superadmin'] %}
-      <button id="toggleFinancialSnapshot" class="bg-indigo-500 cursor-pointer hover:bg-indigo-600 text-white rounded-full p-2" title="{{ _('Show Financial Snapshot') }}">
-        <i class="fa-solid fa-eye"></i>
-      </button>
+    <button
+      id="toggleFinancialSnapshot"
+      class="bg-indigo-500 cursor-pointer hover:bg-indigo-600 text-white rounded-full p-2"
+      title="{{ _('Show Financial Snapshot') }}"
+    >
+      <i class="fa-solid fa-eye"></i>
+    </button>
     {% endif %}
   </div>
 
   <div class="grid grid-cols-1 m</div>d:grid-cols-2 lg:grid-cols-3 gap-6">
     {# Total Staff - Visible to Admin, HR, Superadmin #} {% if
-    session.get('user_role') in ['Admin', 'Hr', 'Superadmin'] %}
-    <div class="bg-white rounded-lg shadow-md p-6
-                {% if session.get('user_role') == 'Hr' %}hover:shadow-lg transition-shadow duration-300 lg:col-span-2{% endif %}"
-    " id="card1">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold">{{ _('Total Staff') }}</h3>
-        <i class="fa-solid fa-users text-purple-500 text-2xl"></i>
-      </div>
-
-      <div class="flex items-center justify-between">
-        <div>
-          <p class="text-3xl font-bold count-up" data-target="42">0</p>
-          <p class="text-sm text-gray-500 mt-2">{{ _('Active employees') }}</p>
-        </div>
-
-        <div
-          class="flex items-center justify-center gap-2 py-2 px-4 rounded bg-purple-500"
-        >
-          <i class="fa-solid fa-user-plus text-white"></i>
-          <p class="text-white count-up" data-target="3">0</p>
-        </div>
-      </div>
-    </div>
-    {% endif %} {# Active Projects - Visible to Admin, Finance, Superadmin #} {%
-    if session.get('user_role') in ['Admin', 'Finance', 'Superadmin'] %}
-    <div class="bg-white rounded-lg shadow-md p-6" id="card2">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold">{{ _('Active Projects') }}</h3>
-        <i class="fa-solid fa-folder text-yellow-600 text-2xl"></i>
-      </div>
-      <p class="text-3xl font-bold count-up" data-target="7">0</p>
-      <p class="text-sm text-gray-500 mt-2">{{ _('In progress') }}</p>
-    </div>
-    {% endif %} {# Document Count - Visible to Admin, Finance, Superadmin #} {%
-    if session.get('user_role') in ['Admin', 'Finance', 'Superadmin' , 'Hr'] %}
-    <div class="bg-white rounded-lg shadow-md p-6" id="card3">
+    session.get('user_role') in ['Admin', 'Hr', 'Superadmin'] %} {% include
+    'totalstaff.html' %} {%endif %} {# Active Projects - Visible to Admin,
+    Finance, Superadmin #} {% if session.get('user_role') in ['Admin',
+    'Finance', 'Superadmin'] %} {% include 'acitveprojects.html' %} {% endif %}
+    {# Total Companies - Visible to Superadmin #} {% if session.get('user_role')
+    in ['Superadmin'] %} {% include 'totalcompanies.html' %} {% endif %} {% if
+    session.get('user_role') in ['Admin', 'Finance', 'Superadmin' , 'Hr'] %}
+    <div
+      class="bg-white rounded-lg shadow-md p-6 {% if session.get('user_role') == 'Finance' %}hover:shadow-lg transition-shadow duration-300 md:col-span-2 lg:col-span-1{% endif %}"
+      id="card3"
+    >
       <div class="flex items-center justify-between mb-4">
         <h3 class="text-lg font-semibold">{{_('Document Count')}}</h3>
         <i class="fa-solid fa-file-alt text-orange-500 text-2xl"></i>
@@ -73,7 +52,9 @@
         <i class="fa-solid fa-sack-dollar text-green-500 text-2xl"></i>
       </div>
 
-      <div class="flex items-center justify-between md:flex-col lg:flex-row flex-row">
+      <div
+        class="flex items-center justify-between md:flex-col lg:flex-row flex-row"
+      >
         <div>
           <p class="text-3xl font-bold currency-count-up" data-target="24500">
             0
@@ -90,127 +71,13 @@
       </div>
     </div>
     {% endif %} {# Finance Cards - Visible to Finance and Superadmin #} {% if
-    session.get('user_role') in ['Finance', 'Superadmin'] %}
-    <!-- Income Card -->
-    <div class="bg-white rounded-lg shadow-md p-6" id="incomeCard">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold">{{ _('Monthly Income') }}</h3>
-        <i class="fa-solid fa-arrow-trend-up text-green-500 text-2xl"></i>
-      </div>
-
-      <div class="flex items-center justify-between md:flex-col lg:flex-row flex-row ">
-        <div>
-          <p class="text-3xl font-bold currency-count-up" data-target="56800">
-            $0
-          </p>
-          <p class="text-sm text-gray-500 mt-2">{{ _('Current month') }}</p>
-        </div>
-
-        <div
-          class="flex items-center justify-center gap-2 lg:py-2 lg:px-4 py-2 px-4 md:py-1 md:mt-4 lg:mt-0 md:px-2 rounded bg-green-500"
-        >
-          <p class="text-white percent-count-up" data-target="12.3">0%</p>
-          <i class="fa-solid fa-arrow-up text-white"></i>
-        </div>
-      </div>
-    </div>
-
-    <!-- Expenses Card -->
-    <div class="bg-white rounded-lg shadow-md p-6" id="expensesCard">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold">{{ _('Monthly Expenses') }}</h3>
-        <i class="fa-solid fa-arrow-trend-down text-red-500 text-2xl"></i>
-      </div>
-
-      <div class="flex items-center justify-between flex-row md:flex-col lg:flex-row">
-        <div>
-          <p class="text-3xl font-bold currency-count-up" data-target="32300">
-            $0
-          </p>
-          <p class="text-sm text-gray-500 mt-2">{{ _('Current month') }}</p>
-        </div>
-
-        <div
-          class="flex items-center justify-center gap-2 lg:py-2 lg:px-4 py-2 px-4 md:py-1 md:mt-4 lg:mt-0 md:px-2 rounded bg-red-500"
-        >
-          <p class="text-white percent-count-up" data-target="8.7">0%</p>
-          <i class="fa-solid fa-arrow-up text-white"></i>
-        </div>
-      </div>
-    </div>
-
-    <!-- Payroll Card -->
-    <div class="bg-white rounded-lg shadow-md p-6 md:col-span-3 lg:col-span-1" id="payrollCard">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold">{{ _('Payroll') }}</h3>
-        <i class="fa-solid fa-money-bill-wave text-blue-500 text-2xl"></i>
-      </div>
-
-      <div class="flex items-center justify-between">
-        <div>
-          <p class="text-3xl font-bold currency-count-up" data-target="28700">
-            $0
-          </p>
-          <p class="text-sm text-gray-500 mt-2">{{ _('Current month') }}</p>
-        </div>
-
-        <div class="flex flex-col gap-1">
-          <div class="flex items-center justify-between">
-            <span class="text-sm text-gray-500">{{ _('Employees') }}:</span>
-            <span class="text-sm font-medium count-up" data-target="38">0</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="text-sm text-gray-500">{{ _('Avg') }}:</span>
-            <span
-              class="text-sm font-medium currency-count-up"
-              data-target="755"
-              >$0</span
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-
-    
-
-
-    <!-- Outstanding Invoices -->
-    <div class="bg-white rounded-lg shadow-md p-6
-    {% if session.get('user_role') == 'Finance' %}hover:shadow-lg transition-shadow duration-300 md:col-span-3{% endif %}
-    {% if session.get('user_role') == 'Superadmin' %}hover:shadow-lg transition-shadow duration-300 md:col-span-3 lg:col-span-2 {% endif %}
-    " id="invoicesCard">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold">{{ _('Outstanding Invoices') }}</h3>
-        <i class="fa-solid fa-file-invoice-dollar text-amber-500 text-2xl"></i>
-      </div>
-
-      <div class="flex items-center justify-between">
-        <div>
-          <p class="text-3xl font-bold currency-count-up" data-target="18400">
-            $0
-          </p>
-          <p class="text-sm text-gray-500 mt-2">{{ _('Total amount') }}</p>
-        </div>
-
-        <div class="flex flex-col gap-1">
-          <div class="flex items-center justify-between">
-            <span class="text-sm text-gray-500">{{ _('Count') }}:</span>
-            <span class="text-sm font-medium count-up" data-target="12">0</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="text-sm text-gray-500">{{ _('Overdue') }}:</span>
-            <span class="text-sm font-medium count-up" data-target="5">0</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    {% endif %}
-
+    session.get('user_role') in ['Finance', 'Superadmin'] %} {% include
+    'financeCards.html' %} {% endif %}
 
     <!-- Cash Flow Chart -->
-      {% if session.get('user_role') in ['Finance', 'Superadmin' , 'Admin'] %}
+    {% if session.get('user_role') in ['Finance', 'Superadmin' , 'Admin'] %}
     <div
-      class="bg-white rounded-lg shadow-md p-6 col-span-1 md:col-span-3  "
+      class="bg-white rounded-lg shadow-md p-6 col-span-1 md:col-span-3"
       id="cashFlowCard"
     >
       <div class="flex items-center justify-between mb-4">
@@ -247,398 +114,24 @@
         </div>
       </div>
     </div>
-    {% endif %}
-
-
+    {% endif %} {% if session.get('user_role') in ['Superadmin'] %} {% include
+    'sys_wide_stats.html' %} {% endif %}
 
     <!-- Project Summaries - Visible to Admin -->
-{% if session.get('user_role') in ['Admin'] %}
-<div class="mt-4 bg-white rounded-lg shadow-lg p-6 md:col-span-3 ">
-  <h2 class="text-xl font-semibold mb-4">{{ _('Project Summaries') }}</h2>
-  
-  <div class="mb-6 flex flex-wrap justify-between items-center gap-4">
-    <div class="w-full md:w-1/3">
-      <label for="sortProjects" class="block text-sm font-medium text-gray-700 ">{{ _('Sort by') }}</label>
-      <select
-        id="sortProjects"
-        class="mt-1 block w-full pl-3 cursor-pointer pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md shadow-sm"
-        onchange="sortProjects()"
-      >
-        <option value="name">{{ _('Name') }}</option>
-        <option  value="status">{{ _('Status') }}</option>
-        <option  value="progress">{{ _('Completion') }}</option>
-      </select>
-    </div>
-    
-    <div class="w-full md:w-1/3">
-      <div class="relative rounded-md shadow-sm">
-        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <i class="fa-solid fa-search text-gray-400"></i>
-        </div>
-        <input
-          type="text"
-          id="searchProjects"
-          class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-2"
-          placeholder="{{ _('Search projects...') }}"
-          onkeyup="filterProjects()"
-        />
-      </div>
-    </div>
-  </div>
+    {% if session.get('user_role') in ['Admin'] %} {% include
+    'projectsummaries.html' %} {% endif %}
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsContainer">
-    {% for project in get_projects() %}
-    <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300" 
-         data-name="{{ project.name }}" 
-         data-status="{{ project.status }}" 
-         data-progress="{{ project.progress }}">
-      <div class="flex justify-between items-start">
-        <h3 class="text-lg font-semibold mb-2">{{ project.name }}</h3>
-        <span class="text-xs px-2 py-1 rounded-full 
-          {% if project.status == 'Completed' or project.status == 'Ukończony' %}bg-green-100 text-green-800
-          {% elif project.status == 'In Progress' or project.status == 'W trakcie'  %}bg-blue-100 text-blue-800
-          {% elif project.status == 'On Hold' or project.status == 'Wstrzymany' %}bg-yellow-100 text-yellow-800
-          {% else %}bg-gray-100 text-gray-800{% endif %}">
-          {{ project.status }}
-        </span>
-      </div>
-      <p class="text-sm text-gray-500 mb-4">{{ _('Client') }}: <span class="font-medium">{{ project.client }}</span></p>
-      <div class="mt-4">
-        <div class="flex justify-between items-center mb-1">
-          <span class="text-xs font-medium text-gray-700">{{ _('Progress') }}</span>
-          <span class="text-xs font-medium text-gray-700">{{ project.progress }}%</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2.5">
-          <div
-            class="{% if project.progress >= 80 %}bg-green-600{% elif project.progress >= 40 %}bg-blue-600{% else %}bg-yellow-600{% endif %} h-2.5 rounded-full transition-all duration-500"
-            style="width: {{ project.progress }}%"
-          ></div>
-        </div>
-      </div>
-      <div class="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center">
-        <button class="text-xs text-indigo-600 hover:text-indigo-800 font-medium cursor-pointer">{{ _('View Details') }}</button>
-        <div class="flex -space-x-2">
-          <div class="w-6 h-6 rounded-full bg-gray-300 flex items-center justify-center text-xs text-white">
-            <i class="fa-solid fa-user"></i>
-          </div>
-          <div class="w-6 h-6 rounded-full bg-indigo-500 flex items-center justify-center text-xs text-white">
-            <i class="fa-solid fa-plus cursor-pointer"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-  
-
-</div>
-{% endif %}
-
-
-
-
-{% if session.get('user_role') in ['Hr'] %}
-{# HR Section - Employee Activities and New Joiners - Visible to HR  #} 
-<div class="mt-8 bg-white rounded-lg shadow-lg p-6 md:col-span-3">
-  <h2 class="text-xl font-semibold mb-4">{{ _('HR Dashboard') }}</h2>
-  
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-    <!-- Employee Activities Section -->
-    <div class="bg-white rounded-lg shadow-md p-6">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold">{{ _('Recent Employee Activities') }}</h3>
-        
-      </div>
-      
-      <!-- Activity Filters -->
-      <div class="flex flex-wrap gap-2 mb-4">
-        <button class="px-3 py-1 text-xs font-medium rounded-full bg-indigo-100 text-indigo-800">{{ _('All') }}</button>
-        <button class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer">{{ _('Attendance') }}</button>
-        <button class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer">{{ _('Leave') }}</button>
-        <button class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer">{{ _('Performance') }}</button>
-        <button class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer">{{ _('Documents') }}</button>
-      </div>
-      
-      <!-- Activity List -->
-      <div class="space-y-4 max-h-96 overflow-y-auto pr-2">
-        {% if hr_data and hr_data['recent_employee_activities'] %}
-          {% for activity in hr_data['recent_employee_activities'] %}
-          <div class="flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors">
-            <div class="flex-shrink-0 mr-3">
-              <div class="w-10 h-10 rounded-full bg-{{ activity.color }}-100 flex items-center justify-center">
-                <i class="fa-solid {{ activity.icon }} text-{{ activity.color }}-600"></i>
-              </div>
-            </div>
-            <div class="flex-grow">
-              <div class="flex justify-between items-start">
-                <p class="font-medium text-sm">{{ activity.employee_name }}</p>
-                <span class="text-xs text-gray-500">{{ activity.time }}</span>
-              </div>
-              <p class="text-sm text-gray-600">{{ activity.activity }}</p>
-            </div>
-          </div>
-          {% endfor %}
-        {% else %}
-          <div class="text-center py-8 text-gray-500">
-            <i class="fa-solid fa-user-clock text-3xl mb-2"></i>
-            <p>{{ _('No recent activities to display') }}</p>
-          </div>
-        {% endif %}
-      </div>
-      
-      <!-- View All Button -->
-      <div class="mt-4 text-center">
-        <a href="{{ url_for('useractivity') }}" class="text-sm font-medium text-indigo-600 hover:text-indigo-800 cursor-pointer">
-          {{ _('View All Activities') }} <i class="fa-solid fa-arrow-right ml-1"></i>
-        </a>
-      </div>
-    </div>
-    
-    <!-- New Joiners Section -->
-    <div class="bg-white rounded-lg shadow-md p-6">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold">{{ _('New Joiners This Month') }}</h3>
-        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
-          {% if hr_data and hr_data.get('new_joiners') %}{{ hr_data.new_joiners|length }}{% else %}0{% endif %} {{ _('New') }}
-        </span>
-      </div>
-      
-      <!-- New Joiners List -->
-      <div class="space-y-4">
-        {% if hr_data and hr_data.get('new_joiners') %}
-          {% for joiner in hr_data.new_joiners %}
-          <div class="bg-gray-50 rounded-lg p-4 flex items-center">
-            <div class="flex-shrink-0 mr-3">
-              <div class="relative">
-                {% set initials = joiner.name.split() | map('first') | join | upper %}
-                <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-lg">
-                  {{ initials }}
-                </div>
-                <div class="absolute -bottom-1 -right-1 w-5 h-5 
-                            {% if joiner.status == 'active' %}bg-green-500
-                            {% elif joiner.status == 'away' %}bg-yellow-500
-                            {% else %}bg-gray-500{% endif %} 
-                            rounded-full border-2 border-white" aria-label="{{ joiner.status }}" ></div>
-              </div>
-            </div>
-            <div class="flex-grow">
-              <p class="font-medium">{{ joiner.name }}</p>
-              <p class="text-sm text-gray-600">{{ joiner.position }}</p>
-              <p class="text-xs text-gray-500">{{ _('Joined') }}: {{ joiner.join_date }}</p>
-            </div>
-            <div class="flex-shrink-0 flex space-x-2">
-              <button class="text-gray-400 hover:text-blue-600 cursor-pointer" title="{{ _('Send Message') }}">
-                <i class="fa-solid fa-envelope"></i>
-              </button>
-              <button class="text-gray-400 hover:text-indigo-600 cursor-pointer" title="{{ _('View Profile') }}">
-                <i class="fa-solid fa-user"></i>
-              </button>
-            </div>
-          </div>
-          {% endfor %}
-        {% else %}
-          <div class="text-center py-8 text-gray-500">
-            <i class="fa-solid fa-user-plus text-3xl mb-2"></i>
-            <p>{{ _('No new joiners this month') }}</p>
-          </div>
-        {% endif %}
-      </div>
-      
-      <!-- HR Onboarding Progress -->
-      {% if hr_data and hr_data.get('new_joiners') %}
-      <div class="mt-6">
-        <div class="flex justify-between items-center mb-2">
-          <h4 class="text-sm font-medium text-gray-700">{{ _('Onboarding Progress') }}</h4>
-        </div>
-        
-        <div class="space-y-3">
-          {% for joiner in hr_data.get('new_joiners') %}
-          <div>
-            <div class="flex justify-between text-xs mb-1">
-              <span>{{ joiner.name }}</span>
-              <span>{{ joiner.onboarding_progress }}%</span>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-1.5">
-              <div class="bg-indigo-600 h-1.5 rounded-full" style="width: {{ joiner.onboarding_progress }}%"></div>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-      {% endif %}
-    </div>
-    
-    <!-- HR Summary Stats -->
-    <div class="bg-white rounded-lg shadow-md p-6 lg:col-span-2">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold">{{ _('HR Overview') }}</h3>
-        <select class="text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 cursor-pointer">
-          <option>{{ _('This Month') }}</option>
-          <option>{{ _('Last Month') }}</option>
-          <option>{{ _('This Quarter') }}</option>
-        </select>
-      </div>
-      
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {% if hr_data and hr_data.get('hr_stats') %}
-        <!-- Attendance Rate -->
-        <div class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center">
-          <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-2">
-            <i class="fa-solid fa-user-check text-green-600 text-xl"></i>
-          </div>
-          <p class="text-2xl font-bold">{{ hr_data.get('hr_stats').get('attendance_rate') }}%</p>
-          <p class="text-sm text-gray-500">{{ _('Attendance Rate') }}</p>
-        </div>
-        
-        <!-- Leave Requests -->
-        <div class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center">
-          <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-2">
-            <i class="fa-solid fa-calendar-minus text-yellow-600 text-xl"></i>
-          </div>
-          <p class="text-2xl font-bold">{{ hr_data.get('hr_stats').get('leave_requests') }}</p>
-          <p class="text-sm text-gray-500">{{ _('Leave Requests') }}</p>
-        </div>
-        
-        <!-- Open Positions -->
-        <div class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center">
-          <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-2">
-            <i class="fa-solid fa-briefcase text-blue-600 text-xl"></i>
-          </div>
-          <p class="text-2xl font-bold">{{ hr_data.get('hr_stats').get('open_positions') }}</p>
-          <p class="text-sm text-gray-500">{{ _('Open Positions') }}</p>
-        </div>
-        
-        <!-- Training Completion -->
-        <div class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center">
-          <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-2">
-            <i class="fa-solid fa-graduation-cap text-purple-600 text-xl"></i>
-          </div>
-          <p class="text-2xl font-bold">{{ hr_data.get('hr_stats').get('training_completion') }}%</p>
-          <p class="text-sm text-gray-500">{{ _('Training Completion') }}</p>
-        </div>
-        {% else %}
-        <!-- Placeholder stats if no data -->
-        <div class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center">
-          <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-2">
-            <i class="fa-solid fa-user-check text-green-600 text-xl"></i>
-          </div>
-          <p class="text-2xl font-bold">--</p>
-          <p class="text-sm text-gray-500">{{ _('Attendance Rate') }}</p>
-        </div>
-        {% endif %}
-      </div>
-      
-    
-    </div>
-  </div>
-</div>
-{% endif %}
-
-
-
-
-
-
+    <!-- Employee Activities - Visible to HR -->
+    {% if session.get('user_role') in ['Hr'] %} {# HR Section - Employee
+    Activities and New Joiners - Visible to HR #} {% include 'Hr_dashboard.html'
+    %} {% endif %}
+    <!-- Quick Financial Snapshots - Visible to Finance and Superadmin -->
     {# Quick Financial Snapshots - Visible to Finance and Superadmin #} {% if
-    session.get('user_role') in ['Finance', 'Superadmin'] %}
-
-    <!-- Quick Financial Snapshot Panel - Fixed Position -->
-<div class="fixed top-20 right-5 bg-white rounded-lg shadow-lg p-4 w-64 z-50 border border-gray-200 hidden" id="quickFinancialSnapshot">
-  <div class="flex items-center justify-between mb-3">
-    <h3 class="text-sm font-semibold">{{ _('Quick Financial Snapshot') }}</h3>
-     <button id="toggleFinancialSnapshot" class=" cursor-pointer  text-white rounded-full p-2" title="{{ _('Show Financial Snapshot') }}">
-       <i class="fa-solid fa-close cursor-pointer text-gray-500 text-lg" id="closeQuickSnapshot"></i>
-      </button>
-  </div>
-  
-  <!-- 30-day Financial Summary -->
-  <div class="space-y-2 mb-3">
-    <div class="flex justify-between items-center">
-      <span class="text-xs text-gray-600">{{ _('30-Day Income') }}:</span>
-      <span class="text-sm font-medium currency-count-up" data-target="18500">$0</span>
-    </div>
-    <div class="flex justify-between items-center">
-      <span class="text-xs text-gray-600">{{ _('30-Day Expenses') }}:</span>
-      <span class="text-sm font-medium currency-count-up" data-target="10800">$0</span>
-    </div>
-    <div class="flex justify-between items-center">
-      <span class="text-xs text-gray-600">{{ _('30-Day Profit') }}:</span>
-      <span class="text-sm font-medium currency-count-up" data-target="7700">$0</span>
-    </div>
-  </div>
-  
-  <!-- Mini Profit Trend Chart -->
-  <div class="h-24 mb-3">
-    <canvas id="miniProfitChart"></canvas>
-  </div>
-  
-  <!-- Quick Entry Buttons -->
-  <div class="flex space-x-2">
-    <button onclick="openQuickEntryForm('income')" class="flex-1 bg-green-500 hover:bg-green-600 text-white text-xs py-2 px-3 rounded flex items-center justify-center">
-      <i class="fa-solid fa-plus mr-1"></i> {{ _('Income') }}
-    </button>
-    <button onclick="openQuickEntryForm('expense')" class="flex-1 bg-red-500 hover:bg-red-600 text-white text-xs py-2 px-3 rounded flex items-center justify-center">
-      <i class="fa-solid fa-minus mr-1"></i> {{ _('Expense') }}
-    </button>
-  </div>
-</div>
-
-<!-- Quick Entry Form Popup -->
-<div id="quickEntryPopup" class="fixed inset-0  bg-opacity-50 items-center justify-center z-50 hidden" onclick="closeQuickEntryForm(event)">
-  <div class="bg-white rounded-lg shadow-lg p-6 w-80" onclick="event.stopPropagation()">
-    <div class="flex items-center justify-between mb-4">
-      <h3 id="quickEntryTitle" class="text-lg font-semibold">{{ _('Add Income') }}</h3>
-      <button onclick="closeQuickEntryForm(event)" class="text-gray-500 hover:text-gray-700">
-        <i class="fa-solid fa-times"></i>
-      </button>
-    </div>
-    
-    <form id="quickEntryForm">
-      <div class="mb-4">
-        <label for="quickAmount" class="block text-sm font-medium text-gray-700 mb-1">{{ _('Amount') }}</label>
-        <input type="number" id="quickAmount" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
-      </div>
-      
-      <div class="mb-4">
-        <label for="quickCategory" class="block text-sm font-medium text-gray-700 mb-1">{{ _('Category') }}</label>
-        <select id="quickCategory" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-          <option value="">{{ _('Select category') }}</option>
-          <!-- These categories will be populated based on income/expense type -->
-        </select>
-      </div>
-      
-      <div class="mb-4">
-        <label for="quickDate" class="block text-sm font-medium text-gray-700 mb-1">{{ _('Date') }}</label>
-        <input type="date" id="quickDate" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
-      </div>
-      
-      <div class="mb-4">
-        <label for="quickNote" class="block text-sm font-medium text-gray-700 mb-1">{{ _('Note') }}</label>
-        <textarea id="quickNote" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="2"></textarea>
-      </div>
-      
-      <div class="flex justify-end">
-        <button type="button" onclick="closeQuickEntryForm()" class="mr-2 px-4 py-2 text-sm text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300">
-          {{ _('Cancel') }}
-        </button>
-        <button type="submit" id="quickSubmitBtn" class="px-4 py-2 text-sm text-white bg-indigo-600 rounded-md hover:bg-indigo-700">
-          {{ _('Save') }}
-        </button>
-      </div>
-    </form>
-  </div>
-</div>
-
-  {% endif %}
-
-
-
-
-
-
-     {# Company Storage Usage - Visible to Admin and Superadmin #} {%
-    if session.get('user_role') in ['Admin', 'Superadmin'] %}
-    <div class="bg-white rounded-lg shadow-md p-6 lg:col-span-3 " id="card4">
+    session.get('user_role') in ['Finance', 'Superadmin'] %} {% include
+    'financialsnap.html' %} {% endif %} {# Company Storage Usage - Visible to
+    Admin and Superadmin #} {% if session.get('user_role') in ['Admin',
+    'Superadmin'] %}
+    <div class="bg-white rounded-lg shadow-md p-6 lg:col-span-3" id="card4">
       <div class="flex items-center justify-between mb-4">
         <h3 class="text-lg font-semibold">{{ _('Company Storage Usage') }}</h3>
         <i class="fa-solid fa-database text-blue-500 text-2xl"></i>
@@ -657,11 +150,11 @@
         </p>
       </div>
     </div>
-    {% endif %}
-     {# System Version & Footer Info - Visible to all users #}
-    <div class="bg-white rounded-lg shadow-md p-6 md:col-span-2 lg:col-span-3
-    {% if session.get('user_role') in ['Finance'] %} md:col-span-3 {% endif %}
-    " id="card5">
+    {% endif %} {# System Version & Footer Info - Visible to all users #}
+    <div
+      class="bg-white rounded-lg shadow-md p-6 md:col-span-2 lg:col-span-3 {% if session.get('user_role') in ['Finance'] %} md:col-span-3 {% endif %}"
+      id="card5"
+    >
       <div class="flex items-center justify-between mb-4">
         <h3 class="text-lg font-semibold">{{ _('System Info') }}</h3>
         <i class="fa-solid fa-info-circle text-gray-500 text-2xl"></i>
@@ -677,21 +170,13 @@
     </div>
   </div>
 
- 
-  
-
   {% endblock %} {% block scripts %}
   <!--  -->
   <script src="../static/js/dashboard.js"></script>
   <script src="../static/js/chart.js"></script>
   <script src="../static/js/projects.js"></script>
   <script src="../static/js/snapshot.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" ></script>
-
-
-
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
   {% endblock %}
-
 </div>
