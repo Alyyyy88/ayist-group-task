@@ -7,6 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-05-27 03:36+0300\n"
+"PO-Revision-Date: 2025-05-27 00:37+0000\n"
 "Last-Translator: Alyyyy88 <EMAIL@ADDRESS>\n"
 "Language: pl\n"
 "Language-Team: pl <LL@li.org>\n"
@@ -17,271 +19,378 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/app.py:111 app/app.py:132
+#: app/app.py:125 app/app.py:221 app/app.py:336 app/app.py:357
+#: app/templates/projects.html:36
 msgid "In Progress"
 msgstr "W trakcie"
 
-#: app/app.py:118
+#: app/app.py:158 app/app.py:343 app/templates/projects.html:54
 msgid "Pending"
 msgstr "Oczekujący"
 
-#: app/app.py:125
+#: app/app.py:187 app/app.py:350 app/templates/project_detail.html:144
+#: app/templates/projects.html:42
 msgid "Completed"
 msgstr "Ukończony"
 
-#: app/app.py:139
+#: app/app.py:254 app/app.py:364 app/templates/projects.html:48
 msgid "On Hold"
 msgstr "Wstrzymany"
 
-#: app/app.py:150
+#: app/app.py:375
 msgid "Sarah Johnson"
 msgstr "Sarah Johnson"
 
-#: app/app.py:151
+#: app/app.py:376
 msgid "Checked in at 08:45 AM"
 msgstr "Zameldowała się o 08:45"
 
-#: app/app.py:152
+#: app/app.py:377
 msgid "30m ago"
 msgstr "30 min temu"
 
-#: app/app.py:158
+#: app/app.py:383
 msgid "Michael Smith"
 msgstr "Michael Smith"
 
-#: app/app.py:159
+#: app/app.py:384
 msgid "Submitted leave request"
 msgstr "Złożył wniosek urlopowy"
 
-#: app/app.py:160 app/app.py:177
+#: app/app.py:385 app/app.py:402
 msgid "1h ago"
 msgstr "1 godz. temu"
 
-#: app/app.py:165
+#: app/app.py:390
 msgid "Emily Davis"
 msgstr "Emily Davis"
 
-#: app/app.py:166
+#: app/app.py:391
 msgid "Completed training module"
 msgstr "Ukończyła moduł szkoleniowy"
 
-#: app/app.py:167 app/app.py:186
+#: app/app.py:392 app/app.py:411
 msgid "2h ago"
 msgstr "2 godz. temu"
 
-#: app/app.py:175
+#: app/app.py:400
 msgid "John Doe"
 msgstr "John Doe"
 
-#: app/app.py:176
+#: app/app.py:401
 msgid "Checked in at 09:00 AM"
 msgstr "Zameldował się o 09:00"
 
-#: app/app.py:184
+#: app/app.py:409
 msgid "Jane Smith"
 msgstr "Jane Smith"
 
-#: app/app.py:185
+#: app/app.py:410
 msgid "Submitted expense report"
 msgstr "Złożyła raport wydatków"
 
-#: app/app.py:193
+#: app/app.py:418
 msgid "Alice Johnson"
 msgstr "Alice Johnson"
 
-#: app/app.py:194
+#: app/app.py:419
 msgid "Updated project status"
 msgstr "Zaktualizowała status projektu"
 
-#: app/app.py:195
+#: app/app.py:420
 msgid "3h ago"
 msgstr "3 godz. temu"
 
-#: app/app.py:202
+#: app/app.py:427
 msgid "Bob Brown"
 msgstr "Bob Brown"
 
-#: app/app.py:203
+#: app/app.py:428
 msgid "Checked out at 05:00 PM"
 msgstr "Wymeldował się o 17:00"
 
-#: app/app.py:204
+#: app/app.py:429
 msgid "4h ago"
 msgstr "4 godz. temu"
 
-#: app/app.py:211
+#: app/app.py:436
 msgid "Charlie Green"
 msgstr "Charlie Green"
 
-#: app/app.py:212
+#: app/app.py:437
 msgid "Attended team meeting"
 msgstr "Uczestniczył w spotkaniu zespołu"
 
-#: app/app.py:213
+#: app/app.py:438
 msgid "5h ago"
 msgstr "5 godz. temu"
 
-#: app/app.py:220
+#: app/app.py:445
 msgid "David Kim"
 msgstr "David Kim"
 
-#: app/app.py:221
+#: app/app.py:446
 msgid "Checked out at 05:30 AM"
 msgstr "Wymeldował się o 05:30"
 
-#: app/app.py:222
+#: app/app.py:447
 msgid "6h ago"
 msgstr "6 godz. temu"
 
-#: app/app.py:264
+#: app/app.py:489
 msgid "Quarterly Performance Review"
 msgstr "Kwartalna ocena wydajności"
 
-#: app/app.py:266
+#: app/app.py:491
 msgid ""
 "John Doe has shown excellent performance in the last quarter, exceeding "
 "expectations in project delivery and team collaboration."
 msgstr ""
-"John Doe wykazał się doskonałą wydajnością w ostatnim kwartale, przekraczając "
-"oczekiwania w zakresie realizacji projektów i współpracy zespołowej."
+"John Doe wykazał się doskonałą wydajnością w ostatnim kwartale, "
+"przekraczając oczekiwania w zakresie realizacji projektów i współpracy "
+"zespołowej."
 
-#: app/app.py:271
+#: app/app.py:496
 msgid "Mid-Year Evaluation"
 msgstr "Ocena półroczna"
 
-#: app/app.py:273
+#: app/app.py:498
 msgid ""
 "Jane Smith has made significant contributions to the team, particularly "
 "in improving client relationships and project management."
 msgstr ""
-"Jane Smith wniosła znaczący wkład w pracę zespołu, szczególnie "
-"w zakresie poprawy relacji z klientami i zarządzania projektami."
+"Jane Smith wniosła znaczący wkład w pracę zespołu, szczególnie w zakresie"
+" poprawy relacji z klientami i zarządzania projektami."
 
-#: app/app.py:277
+#: app/app.py:502
 msgid "Annual Performance Appraisal"
 msgstr "Roczna ocena wydajności"
 
-#: app/app.py:279
+#: app/app.py:504
 msgid ""
 "Alice Johnson has consistently performed at a high level, demonstrating "
 "leadership and innovation in her role."
 msgstr ""
-"Alice Johnson konsekwentnie osiągała wysokie wyniki, wykazując "
-"się przywództwem i innowacyjnością w swojej roli."
+"Alice Johnson konsekwentnie osiągała wysokie wyniki, wykazując się "
+"przywództwem i innowacyjnością w swojej roli."
 
-#: app/app.py:283
+#: app/app.py:508
 msgid "Project Completion Review"
 msgstr "Przegląd ukończenia projektu"
 
-#: app/app.py:285
+#: app/app.py:510
 msgid ""
 "Bob Brown successfully led the project team to complete the XYZ project "
 "ahead of schedule, showcasing excellent project management skills."
 msgstr ""
-"Bob Brown skutecznie poprowadził zespół projektowy do ukończenia projektu XYZ "
-"przed terminem, wykazując się doskonałymi umiejętnościami zarządzania projektami."
+"Bob Brown skutecznie poprowadził zespół projektowy do ukończenia projektu"
+" XYZ przed terminem, wykazując się doskonałymi umiejętnościami "
+"zarządzania projektami."
 
-#: app/app.py:292
+#: app/app.py:517
 msgid "Employee Handbook"
 msgstr "Podręcznik pracownika"
 
-#: app/app.py:295
+#: app/app.py:520
 msgid ""
 "The employee handbook outlines company policies, procedures, and benefits"
 " for all employees."
 msgstr ""
-"Podręcznik pracownika opisuje polityki firmowe, procedury i świadczenia"
-" dla wszystkich pracowników."
+"Podręcznik pracownika opisuje polityki firmowe, procedury i świadczenia "
+"dla wszystkich pracowników."
 
-#: app/app.py:297
+#: app/app.py:522
 msgid "Code of Conduct"
 msgstr "Kodeks postępowania"
 
-#: app/app.py:300
+#: app/app.py:525
 msgid ""
 "The code of conduct sets the standards for professional behavior and "
 "ethics expected from all employees."
 msgstr ""
-"Kodeks postępowania określa standardy profesjonalnego zachowania i "
-"etyki oczekiwane od wszystkich pracowników."
+"Kodeks postępowania określa standardy profesjonalnego zachowania i etyki "
+"oczekiwane od wszystkich pracowników."
 
-#: app/app.py:303
+#: app/app.py:528
 msgid "Health and Safety Guidelines"
 msgstr "Wytyczne dotyczące zdrowia i bezpieczeństwa"
 
-#: app/app.py:306
+#: app/app.py:531
 msgid ""
 "These guidelines provide essential information on workplace safety and "
 "health protocols."
 msgstr ""
-"Te wytyczne zawierają niezbędne informacje na temat bezpieczeństwa w miejscu pracy "
-"i protokołów zdrowotnych."
+"Te wytyczne zawierają niezbędne informacje na temat bezpieczeństwa w "
+"miejscu pracy i protokołów zdrowotnych."
 
-#: app/app.py:310
+#: app/app.py:535
 msgid "Performance Evaluation Form"
 msgstr "Formularz oceny wydajności"
 
-#: app/app.py:313
+#: app/app.py:538
 msgid ""
 "The performance evaluation form is used to assess employee performance "
 "and set goals for the upcoming period."
 msgstr ""
-"Formularz oceny wydajności służy do oceny pracy pracownika "
-"i wyznaczania celów na nadchodzący okres."
+"Formularz oceny wydajności służy do oceny pracy pracownika i wyznaczania "
+"celów na nadchodzący okres."
 
-#: app/app.py:337 app/templates/dashboard.html:3
+#: app/app.py:562 app/templates/dashboard.html:4
 msgid "Dashboard"
 msgstr "Panel sterowania"
 
-#: app/app.py:344 app/app.py:369
+#: app/app.py:569 app/app.py:594 app/templates/project_detail.html:9
+#: app/templates/projects.html:7
 msgid "Projects"
 msgstr "Projekty"
 
-#: app/app.py:345 app/app.py:362 app/app.py:372
+#: app/app.py:570 app/app.py:587 app/app.py:597
 msgid "Finance"
 msgstr "Finanse"
 
-#: app/app.py:346 app/app.py:363 app/app.py:373
+#: app/app.py:571 app/app.py:588 app/app.py:598
 msgid "Invoices"
 msgstr "Faktury"
 
-#: app/app.py:347 app/app.py:364 app/app.py:374
+#: app/app.py:572 app/app.py:589 app/app.py:599
 msgid "Reporting"
 msgstr "Raportowanie"
 
-#: app/app.py:348 app/app.py:355 app/app.py:370
+#: app/app.py:573 app/app.py:580 app/app.py:595
 msgid "Staff"
 msgstr "Personel"
 
-#: app/app.py:349 app/app.py:356 app/app.py:365 app/app.py:371
-#: app/templates/dashboard.html:352 app/templates/useractivity.html:44
+#: app/app.py:574 app/app.py:581 app/app.py:590 app/app.py:596
+#: app/templates/Hr_dashboard.html:38 app/templates/useractivity.html:44
 msgid "Documents"
 msgstr "Dokumenty"
 
-#: app/app.py:350 app/app.py:377
+#: app/app.py:575 app/app.py:602
 msgid "Company Registration"
 msgstr "Rejestracja spółki"
 
-#: app/app.py:351 app/app.py:375
+#: app/app.py:576 app/app.py:600
 msgid "User Management"
 msgstr "Zarządzanie użytkownikami"
 
-#: app/app.py:352 app/app.py:376 app/templates/subplan.html:12
+#: app/app.py:577 app/app.py:601 app/templates/subplan.html:12
 msgid "Subscription Plan"
 msgstr "Plan subskrypcji"
 
-#: app/app.py:357 app/templates/dashboard.html:138
+#: app/app.py:582 app/templates/financeCards.html:55
 #: app/templates/payroll.html:12 app/templates/useractivity.html:273
 msgid "Payroll"
 msgstr "Lista płac"
 
-#: app/app.py:358
+#: app/app.py:583 app/templates/reporting.html:54
 msgid "User Activity"
 msgstr "Aktywność użytkownika"
 
-#: app/app.py:378 app/templates/topbar.html:72
+#: app/app.py:603 app/templates/topbar.html:72
 msgid "Settings"
 msgstr "Ustawienia"
+
+#: app/templates/Hr_dashboard.html:2
+msgid "HR Dashboard"
+msgstr "Panel HR"
+
+#: app/templates/Hr_dashboard.html:9
+msgid "Recent Employee Activities"
+msgstr "Ostatnie aktywności pracowników"
+
+#: app/templates/Hr_dashboard.html:18 app/templates/projects.html:30
+#: app/templates/useractivity.html:16
+msgid "All"
+msgstr "Wszystkie"
+
+#: app/templates/Hr_dashboard.html:23 app/templates/useractivity.html:23
+msgid "Attendance"
+msgstr "Obecność"
+
+#: app/templates/Hr_dashboard.html:28 app/templates/useractivity.html:30
+msgid "Leave"
+msgstr "Urlop"
+
+#: app/templates/Hr_dashboard.html:33 app/templates/useractivity.html:37
+msgid "Performance"
+msgstr "Wydajność"
+
+#: app/templates/Hr_dashboard.html:71 app/templates/useractivity.html:80
+msgid "No recent activities to display"
+msgstr "Brak ostatnich aktywności do wyświetlenia"
+
+#: app/templates/Hr_dashboard.html:82
+msgid "View All Activities"
+msgstr "Zobacz wszystkie aktywności"
+
+#: app/templates/Hr_dashboard.html:92
+msgid "New Joiners This Month"
+msgstr "Nowi pracownicy w tym miesiącu"
+
+#: app/templates/Hr_dashboard.html:98
+msgid "New"
+msgstr "Nowy"
+
+#: app/templates/Hr_dashboard.html:126
+msgid "Joined"
+msgstr "Dołączył"
+
+#: app/templates/Hr_dashboard.html:132
+msgid "Send Message"
+msgstr "Wyślij wiadomość"
+
+#: app/templates/Hr_dashboard.html:138
+msgid "View Profile"
+msgstr "Zobacz profil"
+
+#: app/templates/Hr_dashboard.html:147
+msgid "No new joiners this month"
+msgstr "Brak nowych pracowników w tym miesiącu"
+
+#: app/templates/Hr_dashboard.html:157
+msgid "Onboarding Progress"
+msgstr "Postęp wdrażania"
+
+#: app/templates/Hr_dashboard.html:184
+msgid "HR Overview"
+msgstr "Przegląd HR"
+
+#: app/templates/Hr_dashboard.html:188
+msgid "This Month"
+msgstr "Ten miesiąc"
+
+#: app/templates/Hr_dashboard.html:189
+msgid "Last Month"
+msgstr "Poprzedni miesiąc"
+
+#: app/templates/Hr_dashboard.html:190
+msgid "This Quarter"
+msgstr "Ten kwartał"
+
+#: app/templates/Hr_dashboard.html:208 app/templates/Hr_dashboard.html:272
+#: app/templates/reporting.html:37 app/templates/useractivity.html:89
+msgid "Attendance Rate"
+msgstr "Wskaźnik obecności"
+
+#: app/templates/Hr_dashboard.html:225
+msgid "Leave Requests"
+msgstr "Wnioski urlopowe"
+
+#: app/templates/Hr_dashboard.html:240
+msgid "Open Positions"
+msgstr "Otwarte stanowiska"
+
+#: app/templates/Hr_dashboard.html:258
+msgid "Training Completion"
+msgstr "Ukończenie szkolenia"
+
+#: app/templates/acitveprojects.html:3
+msgid "Active Projects"
+msgstr "Aktywne projekty"
+
+#: app/templates/acitveprojects.html:7
+msgid "In progress"
+msgstr "W trakcie"
 
 #: app/templates/companyreg.html:11
 msgid "Company Registration Section"
@@ -297,237 +406,65 @@ msgstr ""
 
 #: app/templates/companyreg.html:14 app/templates/document.html:14
 #: app/templates/finance.html:18 app/templates/invoices.html:18
-#: app/templates/payroll.html:18 app/templates/projects.html:12
-#: app/templates/reporting.html:14 app/templates/settings.html:14
+#: app/templates/payroll.html:18 app/templates/settings.html:14
 #: app/templates/staff.html:18 app/templates/subplan.html:18
 #: app/templates/usermanagement.html:14
 msgid "Thank you for your patience!"
 msgstr "Dziękujemy za cierpliwość!"
 
-#: app/templates/dashboard.html:12
-msgid "Total Staff"
-msgstr "Całkowity personel"
+#: app/templates/dashboard.html:9 app/templates/financialsnap.html:12
+msgid "Show Financial Snapshot"
+msgstr "Pokaż podsumowanie finansowe"
 
-#: app/templates/dashboard.html:19
-msgid "Active employees"
-msgstr "Aktywni pracownicy"
-
-#: app/templates/dashboard.html:34
-msgid "Active Projects"
-msgstr "Aktywne projekty"
-
-#: app/templates/dashboard.html:38
-msgid "In progress"
-msgstr "W trakcie"
-
-#: app/templates/dashboard.html:44
+#: app/templates/dashboard.html:30
 msgid "Document Count"
 msgstr "Liczba dokumentów"
 
-#: app/templates/dashboard.html:51
+#: app/templates/dashboard.html:37
 msgid "Total documents"
 msgstr "Dokumenty ogółem"
 
-#: app/templates/dashboard.html:65 app/templates/dashboard.html:239
-#: app/templates/layout.html:45
+#: app/templates/dashboard.html:51 app/templates/dashboard.html:113
+#: app/templates/layout.html:40 app/templates/reporting.html:29
 msgid "Profit"
 msgstr "Zysk"
 
-#: app/templates/dashboard.html:74 app/templates/dashboard.html:99
-#: app/templates/dashboard.html:123 app/templates/dashboard.html:147
+#: app/templates/dashboard.html:62 app/templates/financeCards.html:13
+#: app/templates/financeCards.html:37 app/templates/financeCards.html:62
 msgid "Current month"
 msgstr "Bieżący miesiąc"
 
-#: app/templates/dashboard.html:90
-msgid "Monthly Income"
-msgstr "Miesięczny przychód"
-
-#: app/templates/dashboard.html:114
-msgid "Monthly Expenses"
-msgstr "Miesięczne wydatki"
-
-#: app/templates/dashboard.html:152
-msgid "Employees"
-msgstr "Pracownicy"
-
-#: app/templates/dashboard.html:156
-msgid "Avg"
-msgstr "Średnia"
-
-#: app/templates/dashboard.html:176
-msgid "Outstanding Invoices"
-msgstr "Niezapłacone faktury"
-
-#: app/templates/dashboard.html:185
-msgid "Total amount"
-msgstr "Całkowita kwota"
-
-#: app/templates/dashboard.html:190
-msgid "Count"
-msgstr "Liczba"
-
-#: app/templates/dashboard.html:194
-msgid "Overdue"
-msgstr "Zaległe"
-
-#: app/templates/dashboard.html:211
+#: app/templates/dashboard.html:85 app/templates/reporting.html:10
 msgid "Cash Flow (Last 6 Months)"
 msgstr "Przepływ gotówki (ostatnie 6 miesięcy)"
 
-#: app/templates/dashboard.html:222
+#: app/templates/dashboard.html:96
 msgid "Loading chart..."
 msgstr "Ładowanie wykresu..."
 
-#: app/templates/dashboard.html:231 app/templates/layout.html:43
+#: app/templates/dashboard.html:105 app/templates/financialsnap.html:58
+#: app/templates/layout.html:38 app/templates/reporting.html:21
 msgid "Income"
 msgstr "Przychód"
 
-#: app/templates/dashboard.html:235 app/templates/layout.html:44
+#: app/templates/dashboard.html:109 app/templates/layout.html:39
+#: app/templates/reporting.html:25
 msgid "Expenses"
 msgstr "Wydatki"
 
-#: app/templates/dashboard.html:250
-msgid "Project Summaries"
-msgstr "Podsumowania projektów"
-
-#: app/templates/dashboard.html:254
-msgid "Sort by"
-msgstr "Sortuj według"
-
-#: app/templates/dashboard.html:260
-msgid "Name"
-msgstr "Nazwa"
-
-#: app/templates/dashboard.html:261
-msgid "Status"
-msgstr "Status"
-
-#: app/templates/dashboard.html:262
-msgid "Completion"
-msgstr "Ukończenie"
-
-#: app/templates/dashboard.html:275
-msgid "Search projects..."
-msgstr "Szukaj projektów..."
-
-#: app/templates/dashboard.html:298
-msgid "Client"
-msgstr "Klient"
-
-#: app/templates/dashboard.html:301
-msgid "Progress"
-msgstr "Postęp"
-
-#: app/templates/dashboard.html:312
-msgid "View Details"
-msgstr "Zobacz szczegóły"
-
-#: app/templates/dashboard.html:336
-msgid "HR Dashboard"
-msgstr "Panel HR"
-
-#: app/templates/dashboard.html:342
-msgid "Recent Employee Activities"
-msgstr "Ostatnie aktywności pracowników"
-
-#: app/templates/dashboard.html:348 app/templates/useractivity.html:16
-msgid "All"
-msgstr "Wszystkie"
-
-#: app/templates/dashboard.html:349 app/templates/useractivity.html:23
-msgid "Attendance"
-msgstr "Obecność"
-
-#: app/templates/dashboard.html:350 app/templates/useractivity.html:30
-msgid "Leave"
-msgstr "Urlop"
-
-#: app/templates/dashboard.html:351 app/templates/useractivity.html:37
-msgid "Performance"
-msgstr "Wydajność"
-
-#: app/templates/dashboard.html:377 app/templates/useractivity.html:80
-msgid "No recent activities to display"
-msgstr "Brak ostatnich aktywności do wyświetlenia"
-
-#: app/templates/dashboard.html:385
-msgid "View All Activities"
-msgstr "Zobacz wszystkie aktywności"
-
-#: app/templates/dashboard.html:393
-msgid "New Joiners This Month"
-msgstr "Nowi pracownicy w tym miesiącu"
-
-#: app/templates/dashboard.html:395
-msgid "New"
-msgstr "Nowy"
-
-#: app/templates/dashboard.html:420
-msgid "Joined"
-msgstr "Dołączył"
-
-#: app/templates/dashboard.html:423
-msgid "Send Message"
-msgstr "Wyślij wiadomość"
-
-#: app/templates/dashboard.html:426
-msgid "View Profile"
-msgstr "Zobacz profil"
-
-#: app/templates/dashboard.html:435
-msgid "No new joiners this month"
-msgstr "Brak nowych pracowników w tym miesiącu"
-
-#: app/templates/dashboard.html:444
-msgid "Onboarding Progress"
-msgstr "Postęp wdrażania"
-
-#: app/templates/dashboard.html:467
-msgid "HR Overview"
-msgstr "Przegląd HR"
-
-#: app/templates/dashboard.html:469
-msgid "This Month"
-msgstr "Ten miesiąc"
-
-#: app/templates/dashboard.html:470
-msgid "Last Month"
-msgstr "Poprzedni miesiąc"
-
-#: app/templates/dashboard.html:471
-msgid "This Quarter"
-msgstr "Ten kwartał"
-
-#: app/templates/dashboard.html:483 app/templates/dashboard.html:519
-#: app/templates/useractivity.html:89
-msgid "Attendance Rate"
-msgstr "Wskaźnik obecności"
-
-#: app/templates/dashboard.html:492
-msgid "Leave Requests"
-msgstr "Wnioski urlopowe"
-
-#: app/templates/dashboard.html:501
-msgid "Open Positions"
-msgstr "Otwarte stanowiska"
-
-#: app/templates/dashboard.html:510
-msgid "Training Completion"
-msgstr "Ukończenie szkolenia"
-
-#: app/templates/dashboard.html:543
+#: app/templates/dashboard.html:136
 msgid "Company Storage Usage"
 msgstr "Wykorzystanie pamięci masowej firmy"
 
-#: app/templates/dashboard.html:564
+#: app/templates/dashboard.html:159
 msgid "System Info"
 msgstr "Informacje o systemie"
 
-#: app/templates/dashboard.html:567
+#: app/templates/dashboard.html:162
 msgid "Version"
 msgstr "Wersja"
 
-#: app/templates/dashboard.html:569
+#: app/templates/dashboard.html:164
 msgid "Last updated"
 msgstr "Ostatnia aktualizacja"
 
@@ -555,6 +492,90 @@ msgstr ""
 "Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad ulepszoną obsługą "
 "finansów."
 
+#: app/templates/financeCards.html:4
+msgid "Monthly Income"
+msgstr "Miesięczny przychód"
+
+#: app/templates/financeCards.html:28
+msgid "Monthly Expenses"
+msgstr "Miesięczne wydatki"
+
+#: app/templates/financeCards.html:67
+msgid "Employees"
+msgstr "Pracownicy"
+
+#: app/templates/financeCards.html:71
+msgid "Avg"
+msgstr "Średnia"
+
+#: app/templates/financeCards.html:86
+msgid "Outstanding Invoices"
+msgstr "Niezapłacone faktury"
+
+#: app/templates/financeCards.html:93
+msgid "Total amount"
+msgstr "Całkowita kwota"
+
+#: app/templates/financeCards.html:98
+msgid "Count"
+msgstr "Liczba"
+
+#: app/templates/financeCards.html:102
+msgid "Overdue"
+msgstr "Zaległe"
+
+#: app/templates/financialsnap.html:7
+msgid "Quick Financial Snapshot"
+msgstr "Szybkie podsumowanie finansowe"
+
+#: app/templates/financialsnap.html:24
+msgid "30-Day Income"
+msgstr "Przychód za 30 dni"
+
+#: app/templates/financialsnap.html:32
+msgid "30-Day Expenses"
+msgstr "Wydatki za 30 dni"
+
+#: app/templates/financialsnap.html:40
+msgid "30-Day Profit"
+msgstr "Zysk za 30 dni"
+
+#: app/templates/financialsnap.html:64
+msgid "Expense"
+msgstr "Wydatek"
+
+#: app/templates/financialsnap.html:81
+msgid "Add Income"
+msgstr "Dodaj przychód"
+
+#: app/templates/financialsnap.html:96 app/templates/project_detail.html:407
+msgid "Amount"
+msgstr "Kwota"
+
+#: app/templates/financialsnap.html:110
+msgid "Category"
+msgstr "Kategoria"
+
+#: app/templates/financialsnap.html:116
+msgid "Select category"
+msgstr "Wybierz kategorię"
+
+#: app/templates/financialsnap.html:124 app/templates/project_detail.html:406
+msgid "Date"
+msgstr "Data"
+
+#: app/templates/financialsnap.html:138
+msgid "Note"
+msgstr "Notatka"
+
+#: app/templates/financialsnap.html:153
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: app/templates/financialsnap.html:160
+msgid "Save"
+msgstr "Zapisz"
+
 #: app/templates/invoices.html:12
 msgid "Invoices Section"
 msgstr "Sekcja faktur"
@@ -567,47 +588,47 @@ msgstr ""
 "Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad ulepszoną obsługą "
 "faktur."
 
-#: app/templates/layout.html:37
+#: app/templates/layout.html:32
 msgid "Jan"
 msgstr "Sty"
 
-#: app/templates/layout.html:38
+#: app/templates/layout.html:33
 msgid "Feb"
 msgstr "Lut"
 
-#: app/templates/layout.html:39
+#: app/templates/layout.html:34
 msgid "Mar"
 msgstr "Mar"
 
-#: app/templates/layout.html:40
+#: app/templates/layout.html:35
 msgid "Apr"
 msgstr "Kwi"
 
-#: app/templates/layout.html:41
+#: app/templates/layout.html:36
 msgid "May"
 msgstr "Maj"
 
-#: app/templates/layout.html:42
+#: app/templates/layout.html:37
 msgid "Jun"
 msgstr "Cze"
 
-#: app/templates/layout.html:46
+#: app/templates/layout.html:41
 msgid "Monday"
 msgstr "Poniedziałek"
 
-#: app/templates/layout.html:47
+#: app/templates/layout.html:42
 msgid "Tuesday"
 msgstr "Wtorek"
 
-#: app/templates/layout.html:48
+#: app/templates/layout.html:43
 msgid "Wednesday"
 msgstr "Środa"
 
-#: app/templates/layout.html:49
+#: app/templates/layout.html:44
 msgid "Thursday"
 msgstr "Czwartek"
 
-#: app/templates/layout.html:50
+#: app/templates/layout.html:45
 msgid "Friday"
 msgstr "Piątek"
 
@@ -623,29 +644,223 @@ msgstr ""
 "Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad lepszą obsługą listy "
 "płac."
 
+#: app/templates/project_detail.html:105
+msgid "Edit Project"
+msgstr "Edytuj projekt"
+
+#: app/templates/project_detail.html:116
+msgid "Total Tasks"
+msgstr "Wszystkie zadania"
+
+#: app/templates/project_detail.html:136 app/templates/projects.html:190
+msgid "Due Date"
+msgstr "Termin wykonania"
+
+#: app/templates/project_detail.html:143
+msgid "Due in"
+msgstr "Termin za"
+
+#: app/templates/project_detail.html:143
+msgid "3 weeks"
+msgstr "3 tygodnie"
+
+#: app/templates/project_detail.html:151
+msgid "Budget Spent"
+msgstr "Wykorzystany budżet"
+
+#: app/templates/project_detail.html:165 app/templates/project_detail.html:175
+#: app/templates/projects.html:253
+msgid "of"
+msgstr "z"
+
+#: app/templates/project_detail.html:181
+msgid "Budget not specified"
+msgstr "Budżet nie określony"
+
+#: app/templates/project_detail.html:191
+msgid "Team Members"
+msgstr "Członkowie zespołu"
+
+#: app/templates/project_detail.html:220 app/templates/project_detail.html:224
+msgid "members assigned"
+msgstr "przypisanych członków"
+
+#: app/templates/project_detail.html:221
+msgid "No members assigned"
+msgstr "Brak przypisanych członków"
+
+#: app/templates/project_detail.html:236
+msgid "Project Progress"
+msgstr "Postęp projektu"
+
+#: app/templates/project_detail.html:238
+msgid "Last 7 days"
+msgstr "Ostatnie 7 dni"
+
+#: app/templates/project_detail.html:239
+msgid "Last 30 days"
+msgstr "Ostatnie 30 dni"
+
+#: app/templates/project_detail.html:240
+msgid "All time"
+msgstr "Cały czas"
+
+#: app/templates/project_detail.html:249
+msgid "Project progress chart will be displayed here"
+msgstr "Wykres postępu projektu będzie wyświetlany tutaj"
+
+#: app/templates/project_detail.html:259
+msgid "What's on the road?"
+msgstr "Co jest w planach?"
+
+#: app/templates/project_detail.html:264
+msgid "Su"
+msgstr "Nd"
+
+#: app/templates/project_detail.html:272
+msgid "Mo"
+msgstr "Pn"
+
+#: app/templates/project_detail.html:280
+msgid "Tu"
+msgstr "Wt"
+
+#: app/templates/project_detail.html:288
+msgid "We"
+msgstr "Śr"
+
+#: app/templates/project_detail.html:296
+msgid "Th"
+msgstr "Cz"
+
+#: app/templates/project_detail.html:304
+msgid "Fr"
+msgstr "Pt"
+
+#: app/templates/project_detail.html:312
+msgid "Sa"
+msgstr "So"
+
+#: app/templates/project_detail.html:347
+msgid "Latest Files"
+msgstr "Najnowsze pliki"
+
+#: app/templates/project_detail.html:386
+msgid "Drop files here or click to upload"
+msgstr "Upuść pliki tutaj lub kliknij, aby przesłać"
+
+#: app/templates/project_detail.html:391
+msgid "Upload Files"
+msgstr "Prześlij pliki"
+
+#: app/templates/project_detail.html:399
+msgid "Project Spendings"
+msgstr "Wydatki projektu"
+
+#: app/templates/project_detail.html:405
+msgid "Manager"
+msgstr "Kierownik"
+
+#: app/templates/project_detail.html:408 app/templates/projectsummaries.html:17
+msgid "Status"
+msgstr "Status"
+
+#: app/templates/project_detail.html:447
+msgid "View All Spendings"
+msgstr "Zobacz wszystkie wydatki"
+
 #: app/templates/projects.html:9
-msgid "Projects Section"
-msgstr "Sekcja projektów"
+msgid "Manage and track all your project activities"
+msgstr "Zarządzaj i śledź wszystkie działania projektowe"
 
-#: app/templates/projects.html:11
-msgid ""
-"This feature is coming soon. We're working hard to bring you an improved "
-"projects experience."
-msgstr ""
-"Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad ulepszeniem "
-"doświadczenia w projektach."
+#: app/templates/projects.html:17
+msgid "Create Project"
+msgstr "Utwórz projekt"
 
-#: app/templates/reporting.html:11
-msgid "Reporting Section"
-msgstr "Sekcja raportowania"
+#: app/templates/projects.html:67 app/templates/projectsummaries.html:33
+msgid "Search projects..."
+msgstr "Szukaj projektów..."
 
-#: app/templates/reporting.html:13
-msgid ""
-"This feature is coming soon. We're working hard to bring you an improved "
-"reporting experience."
-msgstr ""
-"Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad ulepszeniem "
-"doświadczenia w raportowaniu."
+#: app/templates/projects.html:165 app/templates/projectsummaries.html:66
+msgid "Progress"
+msgstr "Postęp"
+
+#: app/templates/projects.html:184
+msgid "Tasks"
+msgstr "Zadania"
+
+#: app/templates/projects.html:194
+msgid "Budget"
+msgstr "Budżet"
+
+#: app/templates/projects.html:216
+msgid "No team members"
+msgstr "Brak członków zespołu"
+
+#: app/templates/projects.html:223 app/templates/projectsummaries.html:85
+msgid "View Details"
+msgstr "Zobacz szczegóły"
+
+#: app/templates/projects.html:249
+msgid "Showing"
+msgstr "Wyświetlanie"
+
+#: app/templates/projects.html:251
+msgid "to"
+msgstr "do"
+
+#: app/templates/projects.html:255
+msgid "results"
+msgstr "wyników"
+
+#: app/templates/projects.html:300
+msgid "Status Updated"
+msgstr "Status zaktualizowany"
+
+#: app/templates/projects.html:303
+msgid "Project status has been updated successfully."
+msgstr "Status projektu został pomyślnie zaktualizowany."
+
+#: app/templates/projectsummaries.html:2
+msgid "Project Summaries"
+msgstr "Podsumowania projektów"
+
+#: app/templates/projectsummaries.html:9
+msgid "Sort by"
+msgstr "Sortuj według"
+
+#: app/templates/projectsummaries.html:16
+msgid "Name"
+msgstr "Nazwa"
+
+#: app/templates/projectsummaries.html:18
+msgid "Completion"
+msgstr "Ukończenie"
+
+#: app/templates/projectsummaries.html:60
+msgid "Client"
+msgstr "Klient"
+
+#: app/templates/reporting.html:69
+msgid "Total Users"
+msgstr "Liczba użytkowników"
+
+#: app/templates/reporting.html:76 app/templates/reporting.html:89
+#: app/templates/reporting.html:102 app/templates/reporting.html:115
+msgid "this week"
+msgstr "w tym tygodniu"
+
+#: app/templates/reporting.html:82 app/templates/sys_wide_stats.html:44
+msgid "Active Users"
+msgstr "Aktywni użytkownicy"
+
+#: app/templates/reporting.html:95
+msgid "Average Time"
+msgstr "Średni czas"
+
+#: app/templates/reporting.html:108
+msgid "Bounce Rate"
+msgstr "Współczynnik odrzuceń"
 
 #: app/templates/settings.html:11
 msgid "Settings Section"
@@ -683,9 +898,77 @@ msgstr ""
 "Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad ulepszoną obsługą "
 "subskrypcji."
 
-#: app/templates/topbar.html:5
+#: app/templates/sys_wide_stats.html:4
+msgid "System-wide Stats"
+msgstr "Statystyki całego systemu"
+
+#: app/templates/sys_wide_stats.html:18 app/templates/topbar.html:5
 msgid "Welcome"
 msgstr "Witamy"
+
+#: app/templates/sys_wide_stats.html:19
+msgid "Role"
+msgstr "Rola"
+
+#: app/templates/sys_wide_stats.html:23
+msgid "Online"
+msgstr "Online"
+
+#: app/templates/sys_wide_stats.html:35
+msgid "System Uptime"
+msgstr "Czas pracy systemu"
+
+#: app/templates/sys_wide_stats.html:53
+msgid "Pending Tasks"
+msgstr "Oczekujące zadania"
+
+#: app/templates/sys_wide_stats.html:62
+msgid "System Health"
+msgstr "Stan systemu"
+
+#: app/templates/sys_wide_stats.html:67
+msgid "Resource Utilization"
+msgstr "Wykorzystanie zasobów"
+
+#: app/templates/sys_wide_stats.html:72
+msgid "CPU Usage"
+msgstr "Użycie CPU"
+
+#: app/templates/sys_wide_stats.html:83
+msgid "Memory Usage"
+msgstr "Użycie pamięci"
+
+#: app/templates/sys_wide_stats.html:94
+msgid "Database Load"
+msgstr "Obciążenie bazy danych"
+
+#: app/templates/sys_wide_stats.html:106
+msgid "Recent System Activities"
+msgstr "Ostatnie działania systemowe"
+
+#: app/templates/sys_wide_stats.html:107
+msgid "View All"
+msgstr "Zobacz wszystkie"
+
+#: app/templates/sys_wide_stats.html:118
+msgid "Database Backup Completed"
+msgstr "Kopia zapasowa bazy danych ukończona"
+
+#: app/templates/sys_wide_stats.html:119 app/templates/sys_wide_stats.html:131
+msgid "Today"
+msgstr "Dziś"
+
+#: app/templates/sys_wide_stats.html:130
+msgid "System Update Installed"
+msgstr "Zainstalowano aktualizację systemu"
+
+#: app/templates/sys_wide_stats.html:142
+msgid "Disk Space Warning"
+msgstr "Ostrzeżenie o miejscu na dysku"
+
+#: app/templates/sys_wide_stats.html:143
+msgid "Yesterday"
+msgstr "Wczoraj"
 
 #: app/templates/topbar.html:16
 msgid "Language"
@@ -718,6 +1001,22 @@ msgstr "Ustaw finanse"
 #: app/templates/topbar.html:103
 msgid "Set Superadmin"
 msgstr "Ustaw superadmina"
+
+#: app/templates/totalcompanies.html:3
+msgid "Total Companies"
+msgstr "Liczba firm"
+
+#: app/templates/totalcompanies.html:10
+msgid "Registered companies"
+msgstr "Zarejestrowane firmy"
+
+#: app/templates/totalstaff.html:5
+msgid "Total Staff"
+msgstr "Całkowity personel"
+
+#: app/templates/totalstaff.html:12
+msgid "Active employees"
+msgstr "Aktywni pracownicy"
 
 #: app/templates/useractivity.html:6
 msgid "Employee Activities"
