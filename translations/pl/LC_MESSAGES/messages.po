@@ -7,8 +7,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-05-27 03:36+0300\n"
-"PO-Revision-Date: 2025-05-27 00:37+0000\n"
 "Last-Translator: Alyyyy88 <EMAIL@ADDRESS>\n"
 "Language: pl\n"
 "Language-Team: pl <LL@li.org>\n"
@@ -303,7 +301,8 @@ msgstr "Ostatnie aktywności pracowników"
 msgid "All"
 msgstr "Wszystkie"
 
-#: app/templates/Hr_dashboard.html:23 app/templates/useractivity.html:23
+#: app/templates/Hr_dashboard.html:23 app/templates/layout.html:48
+#: app/templates/useractivity.html:23
 msgid "Attendance"
 msgstr "Obecność"
 
@@ -631,6 +630,18 @@ msgstr "Czwartek"
 #: app/templates/layout.html:45
 msgid "Friday"
 msgstr "Piątek"
+
+#: app/templates/layout.html:46
+msgid "Saturday"
+msgstr "Sobota"
+
+#: app/templates/layout.html:47
+msgid "Sunday"
+msgstr "Niedziela"
+
+#: app/templates/layout.html:49
+msgid "Users"
+msgstr "Użytkownicy"
 
 #: app/templates/mobilesidebar.html:8 app/templates/sidebar.html:10
 msgid "Project Management"
@@ -1117,3 +1128,4 @@ msgid ""
 msgstr ""
 "Ta funkcja pojawi się wkrótce. Ciężko pracujemy nad ulepszeniem "
 "doświadczenia w zarządzaniu użytkownikami."
+

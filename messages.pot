@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-05-27 03:36+0300\n"
+"POT-Creation-Date: 2025-05-27 03:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -283,7 +283,8 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: app/templates/Hr_dashboard.html:23 app/templates/useractivity.html:23
+#: app/templates/Hr_dashboard.html:23 app/templates/layout.html:48
+#: app/templates/useractivity.html:23
 msgid "Attendance"
 msgstr ""
 
@@ -602,6 +603,18 @@ msgstr ""
 
 #: app/templates/layout.html:45
 msgid "Friday"
+msgstr ""
+
+#: app/templates/layout.html:46
+msgid "Saturday"
+msgstr ""
+
+#: app/templates/layout.html:47
+msgid "Sunday"
+msgstr ""
+
+#: app/templates/layout.html:49
+msgid "Users"
 msgstr ""
 
 #: app/templates/mobilesidebar.html:8 app/templates/sidebar.html:10

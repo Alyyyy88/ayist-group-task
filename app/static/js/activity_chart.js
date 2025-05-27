@@ -5,18 +5,16 @@ document.addEventListener('DOMContentLoaded', function() {
   
   const ctx = chartCanvas.getContext('2d');
   
-  // Generate simple dummy data based on weekdays
-  const labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  
-  // Create a simple dataset with realistic values
+  const labels = [
+    __('Monday'), __( 'Tuesday'), __('Wednesday'), __('Thursday'), __('Friday'), __('Saturday'), __('Sunday')
+  ];
+
   const data = [65, 78, 82, 75, 92, 58, 42];
   
-  // Create a simple gradient
   const gradient = ctx.createLinearGradient(0, 0, 0, 300);
   gradient.addColorStop(0, 'rgba(79, 70, 229, 0.6)'); // Indigo
   gradient.addColorStop(1, 'rgba(79, 70, 229, 0.1)');
   
-  // Create the chart
   const userChart = new Chart(ctx, {
     type: 'bar',
     data: {
