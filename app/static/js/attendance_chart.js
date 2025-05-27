@@ -43,6 +43,6 @@ const attendanceChart = new Chart(attendanceCtx, {
       },
     },
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
   },
 });
