@@ -5,12 +5,41 @@
 {% block title %}Reporting{% endblock %}
 
 {% block content %}
-<div class="text-center p-8 rounded-lg mx-auto shadow-md max-w-2xl my-20 bg-white">
-  <h1 class="text-3xl font-bold text-gray-800 mb-4 flex justify-center items-center gap-2">
-    <i class="fa-solid fa-chart-line text-orange-300"></i>
-    {{ _('Reporting Section') }}
-  </h1>
-  <p class="text-gray-600 mb-6">{{ _('This feature is coming soon. We\'re working hard to bring you an improved reporting experience.') }}</p>
-  <p class="text-gray-600">{{ _('Thank you for your patience!') }}</p>
-</div>
-{% endblock %}
+<div
+      class="bg-white rounded-lg shadow-md p-6 col-span-1 md:col-span-3"
+      id="cashFlowCard"
+    >
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold">
+          {{ _('Cash Flow (Last 6 Months)') }}
+        </h3>
+        <i class="fa-solid fa-chart-line text-indigo-500 text-2xl"></i>
+      </div>
+
+      <div class="h-64" id="cashFlowChart">
+        <div class="flex items-center justify-center h-full">
+          <div class="flex flex-col items-center">
+            <div
+              class="w-8 h-8 border-t-4 border-r-4 border-b-4 border-l-4 border-blue-500 rounded-full animate-spin mb-2"
+            ></div>
+            <p class="text-gray-500">{{ _('Loading chart...') }}</p>
+          </div>
+        </div>
+        <canvas id="mychart" class="w-full h-full"></canvas>
+      </div>
+
+      <div class="flex justify-between mt-4">
+        <div class="flex items-center">
+          <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+          <span class="text-sm text-gray-600">{{ _('Income') }}</span>
+        </div>
+        <div class="flex items-center">
+          <div class="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+          <span class="text-sm text-gray-600">{{ _('Expenses') }}</span>
+        </div>
+        <div class="flex items-center">
+          <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+          <span class="text-sm text-gray-600">{{ _('Profit') }}</span>
+        </div>
+      </div>
+    </div>{% endblock %}

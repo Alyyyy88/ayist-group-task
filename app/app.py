@@ -52,7 +52,22 @@ def dashboard():
 
 @app.route('/projects')
 def projects():
-    return render_template('projects.html')
+    projects_list = get_projects_page()
+    
+    return render_template(
+        'projects.html',
+        projects=projects_list,
+    )
+
+@app.route('/projects/<int:project_id>')
+def project_detail(project_id):
+    project = get_project_by_id(int(project_id))
+    if project is None:
+        return redirect(url_for('projects'))  
+    return render_template(
+        'project_detail.html',
+        project=project,
+    )
 
 @app.route('/invoices')
 def invoices():
@@ -98,6 +113,216 @@ def payroll():
 def useractivity():
     hr_data = get_hr_data()
     return render_template('useractivity.html', hr_data=hr_data)
+
+
+def get_projects_page():
+   projects = [
+        {
+            "id": 1,
+            "name": "Website Redesign",
+            "description": "Complete overhaul of corporate website with new design and features",
+            "client": "ABC Corporation",
+            "status": _("In Progress"),
+            "progress": 65,
+            "total_tasks": 48,
+            "completed_tasks": 31,
+            "due_date": "15 Jun, 2025",
+            "budget_spent": "$12,500",
+            "budget_total": "$25,000",
+            "team_members": [
+                {"id": 101, "name": "John Doe", "avatar": "user1.jpg"},
+                {"id": 102, "name": "Jane Smith", "avatar": "user2.jpg"},
+                {"id": 103, "name": "Robert Johnson", "avatar": "user3.jpg"}
+            ],
+            "files": [
+                {"name": "Website Mockup.pdf", "size": "4.2 MB", "uploaded": "Yesterday", "author": "Jane Smith"},
+                {"name": "Requirements Doc.docx", "size": "1.8 MB", "uploaded": "3 days ago", "author": "John Doe"},
+                {"name": "Color Palette.png", "size": "0.8 MB", "uploaded": "1 week ago", "author": "Robert Johnson"}
+            ],
+            "activities": [
+                {"user": "Jane Smith", "action": "Updated homepage design", "time": "Today", "avatar": "user2.jpg"},
+                {"user": "John Doe", "action": "Added contact form functionality", "time": "Yesterday", "avatar": "user1.jpg"},
+                {"user": "Robert Johnson", "action": "Fixed responsive layout issues", "time": "2 days ago", "avatar": "user3.jpg"}
+            ],
+            "spendings": [
+                {"manager": "Jane Smith", "date": "May 20, 2025", "amount": "$3,200", "status": "Approved"},
+                {"manager": "John Doe", "date": "May 15, 2025", "amount": "$4,800", "status": "Complete"},
+                {"manager": "Robert Johnson", "date": "May 10, 2025", "amount": "$2,500", "status": "Pending"}
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Mobile App Development",
+            "description": "Creation of native mobile application for iOS and Android platforms",
+            "client": "TechStart Inc.",
+            "status": _("Pending"),
+            "progress": 30,
+            "total_tasks": 36,
+            "completed_tasks": 10,
+            "due_date": "30 Jul, 2025",
+            "budget_spent": "$8,500",
+            "budget_total": "$35,000",
+            "team_members": [
+                {"id": 104, "name": "Alice Brown", "avatar": "user4.jpg"},
+                {"id": 105, "name": "Michael Chen", "avatar": "user5.jpg"}
+            ],
+            "files": [
+                {"name": "App Wireframes.pdf", "size": "3.1 MB", "uploaded": "Yesterday", "author": "Alice Brown"},
+                {"name": "API Documentation.pdf", "size": "2.5 MB", "uploaded": "2 days ago", "author": "Michael Chen"}
+            ],
+            "activities": [
+                {"user": "Alice Brown", "action": "Created initial wireframes", "time": "Yesterday", "avatar": "user4.jpg"},
+                {"user": "Michael Chen", "action": "Set up development environment", "time": "3 days ago", "avatar": "user5.jpg"}
+            ],
+            "spendings": [
+                {"manager": "Alice Brown", "date": "May 22, 2025", "amount": "$5,000", "status": "Approved"},
+                {"manager": "Michael Chen", "date": "May 18, 2025", "amount": "$3,500", "status": "Pending"}
+            ]
+        },
+        {
+            "id": 3,
+            "name": "ERP Implementation",
+            "description": "Enterprise resource planning system implementation and migration",
+            "client": "Global Logistics Ltd.",
+            "status": _("Completed"),
+            "progress": 100,
+            "total_tasks": 64,
+            "completed_tasks": 64,
+            "due_date": "10 Apr, 2025",
+            "budget_spent": "$58,000",
+            "budget_total": "$60,000",
+            "team_members": [
+                {"id": 106, "name": "Sarah Johnson", "avatar": "user6.jpg"},
+                {"id": 107, "name": "David Kim", "avatar": "user7.jpg"},
+                {"id": 108, "name": "Emily Davis", "avatar": "user8.jpg"},
+                {"id": 109, "name": "James Wilson", "avatar": "user9.jpg"}
+            ],
+            "files": [
+                {"name": "Final Report.pdf", "size": "5.8 MB", "uploaded": "Apr 10, 2025", "author": "Sarah Johnson"},
+                {"name": "System Manual.pdf", "size": "12.3 MB", "uploaded": "Apr 9, 2025", "author": "David Kim"},
+                {"name": "Training Materials.zip", "size": "45.6 MB", "uploaded": "Apr 5, 2025", "author": "Emily Davis"}
+            ],
+            "activities": [
+                {"user": "Sarah Johnson", "action": "Submitted final project report", "time": "Apr 10, 2025", "avatar": "user6.jpg"},
+                {"user": "David Kim", "action": "Completed user training", "time": "Apr 8, 2025", "avatar": "user7.jpg"},
+                {"user": "Emily Davis", "action": "Finalized data migration", "time": "Apr 5, 2025", "avatar": "user8.jpg"}
+            ],
+            "spendings": [
+                {"manager": "Sarah Johnson", "date": "Apr 8, 2025", "amount": "$15,000", "status": "Complete"},
+                {"manager": "David Kim", "date": "Apr 2, 2025", "amount": "$23,000", "status": "Complete"},
+                {"manager": "Emily Davis", "date": "Mar 25, 2025", "amount": "$20,000", "status": "Complete"}
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Network Infrastructure",
+            "description": "Upgrade and expansion of corporate network infrastructure",
+            "client": "City Hospital",
+            "status": _("In Progress"),
+            "progress": 45,
+            "total_tasks": 42,
+            "completed_tasks": 19,
+            "due_date": "20 Jun, 2025",
+            "budget_spent": "$32,000",
+            "budget_total": "$75,000",
+            "team_members": [
+                {"id": 110, "name": "Thomas Brown", "avatar": "user10.jpg"},
+                {"id": 111, "name": "Laura Martinez", "avatar": "user11.jpg"},
+                {"id": 112, "name": "Kevin Lee", "avatar": "user12.jpg"}
+            ],
+            "files": [
+                {"name": "Network Diagram.pdf", "size": "3.4 MB", "uploaded": "Last week", "author": "Thomas Brown"},
+                {"name": "Equipment List.xlsx", "size": "1.2 MB", "uploaded": "2 weeks ago", "author": "Laura Martinez"},
+                {"name": "Implementation Plan.docx", "size": "2.8 MB", "uploaded": "3 weeks ago", "author": "Kevin Lee"}
+            ],
+            "activities": [
+                {"user": "Thomas Brown", "action": "Installed core switches", "time": "Yesterday", "avatar": "user10.jpg"},
+                {"user": "Laura Martinez", "action": "Configured VLAN routing", "time": "3 days ago", "avatar": "user11.jpg"},
+                {"user": "Kevin Lee", "action": "Completed cable installation in Wing A", "time": "1 week ago", "avatar": "user12.jpg"}
+            ],
+            "spendings": [
+                {"manager": "Thomas Brown", "date": "May 15, 2025", "amount": "$18,000", "status": "Approved"},
+                {"manager": "Laura Martinez", "date": "May 5, 2025", "amount": "$14,000", "status": "Complete"},
+                {"manager": "Kevin Lee", "date": "Apr 28, 2025", "amount": "$0", "status": "Pending"}
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Data Migration",
+            "description": "Legacy system data migration to new cloud-based platform",
+            "client": "Financial Services Co.",
+            "status": _("On Hold"),
+            "progress": 20,
+            "total_tasks": 28,
+            "completed_tasks": 5,
+            "due_date": "15 Aug, 2025",
+            "budget_spent": "$7,800",
+            "budget_total": "$45,000",
+            "team_members": [
+                {"id": 113, "name": "Mark Taylor", "avatar": "user13.jpg"},
+                {"id": 114, "name": "Sophia Rodriguez", "avatar": "user14.jpg"}
+            ],
+            "files": [
+                {"name": "Data Mapping Doc.xlsx", "size": "3.7 MB", "uploaded": "2 weeks ago", "author": "Mark Taylor"},
+                {"name": "Migration Plan.pdf", "size": "2.1 MB", "uploaded": "3 weeks ago", "author": "Sophia Rodriguez"}
+            ],
+            "activities": [
+                {"user": "Mark Taylor", "action": "Project put on hold pending security review", "time": "Yesterday", "avatar": "user13.jpg"},
+                {"user": "Sophia Rodriguez", "action": "Completed initial data analysis", "time": "2 weeks ago", "avatar": "user14.jpg"}
+            ],
+            "spendings": [
+                {"manager": "Mark Taylor", "date": "May 10, 2025", "amount": "$4,500", "status": "Complete"},
+                {"manager": "Sophia Rodriguez", "date": "May 5, 2025", "amount": "$3,300", "status": "Complete"}
+            ]
+        },
+        {
+            "id": 6,
+            "name": "SnowUI",
+            "description": "User interface redesign for winter collection",
+            "client": "Frost Industries",
+            "status": "In Progress",
+            "progress": 51,
+            "total_tasks": 48,
+            "completed_tasks": 15,
+            "due_date": "29 Jan, 2025",
+            "budget_spent": "$15,000",
+            "budget_total": "$30,000",
+            "team_members": [
+                {"id": 101, "name": "Karina Clark", "avatar": "user15.jpg"},
+                {"id": 102, "name": "Marcus Blake", "avatar": "user16.jpg"},
+                {"id": 103, "name": "Terry Barry", "avatar": "user17.jpg"}
+            ],
+            "files": [
+                {"name": "Project tech requirements.pdf", "size": "5.8 MB", "uploaded": "Just now", "author": "Karina Clark"},
+                {"name": "Dashboard-design.jpg", "size": "2.3 MB", "uploaded": "59 minutes ago", "author": "Marcus Blake"},
+                {"name": "Completed Project Stylings.pdf", "size": "2.9 MB", "uploaded": "12 hours ago", "author": "Terry Barry"},
+                {"name": "Create Project Wireframes.xls", "size": "1.2 MB", "uploaded": "Today, 11:59 AM", "author": "Roth Bloom"}
+            ],
+            "activities": [
+                {"user": "Karina Clark", "action": "You have a bug that needs to be fixed.", "time": "Just now", "avatar": "user15.jpg"},
+                {"user": "Marcus Blake", "action": "Released a new version", "time": "59 minutes ago", "avatar": "user16.jpg"},
+                {"user": "Roth Bloom", "action": "Submitted a bug", "time": "12 hours ago", "avatar": "user18.jpg"},
+                {"user": "Natali Craig", "action": "Modified A data in Page X", "time": "Today, 11:59 AM", "avatar": "user19.jpg"},
+                {"user": "Drew Cano", "action": "Deleted a page in Project X", "time": "Feb 2, 2025", "avatar": "user20.jpg"}
+            ],
+            "spendings": [
+                {"manager": "ByeWind", "date": "Jun 24, 2025", "amount": "$942.00", "status": "In Progress"},
+                {"manager": "Natali Craig", "date": "Mar 10, 2025", "amount": "$881.00", "status": "Complete"},
+                {"manager": "Drew Cano", "date": "Nov 10, 2025", "amount": "$409.00", "status": "Pending"},
+                {"manager": "Orlando Diggs", "date": "Dec 20, 2025", "amount": "$953.00", "status": "Approved"},
+                {"manager": "Andi Lane", "date": "Jul 25, 2025", "amount": "$907.00", "status": "Rejected"}
+            ]
+        }
+    ]
+   return projects
+
+def get_project_by_id(project_id):
+    projects = get_projects_page()
+    for project in projects:
+        if project["id"] == project_id:
+            return project
+    return None
+
 
 
 
