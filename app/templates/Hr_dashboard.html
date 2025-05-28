@@ -1,278 +1,369 @@
- <div class="mt-8 bg-white rounded-lg shadow-lg p-6 md:col-span-3">
-      <h2 class="text-xl font-semibold mb-4">{{ _('HR Dashboard') }}</h2>
+<div
+  class="mt-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-gray-900/30 p-6 md:col-span-3 transition-all duration-300"
+>
+  <h2
+    class="text-xl font-semibold mb-4 text-gray-800 dark:text-white transition-colors duration-300"
+  >
+    {{ _('HR Dashboard') }}
+  </h2>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <!-- Employee Activities Section -->
-        <div class="bg-white rounded-lg shadow-md p-6">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold">
-              {{ _('Recent Employee Activities') }}
-            </h3>
-          </div>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Employee Activities Section -->
+    <div
+      class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/20 p-6 transition-all duration-300"
+    >
+      <div class="flex items-center justify-between mb-4">
+        <h3
+          class="text-lg font-semibold text-gray-800 dark:text-white transition-colors duration-300"
+        >
+          {{ _('Recent Employee Activities') }}
+        </h3>
+      </div>
 
-          <!-- Activity Filters -->
-          <div class="flex flex-wrap gap-2 mb-4">
-            <button
-              class="px-3 py-1 text-xs font-medium rounded-full bg-indigo-100 text-indigo-800"
-            >
-              {{ _('All') }}
-            </button>
-            <button
-              class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
-            >
-              {{ _('Attendance') }}
-            </button>
-            <button
-              class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
-            >
-              {{ _('Leave') }}
-            </button>
-            <button
-              class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
-            >
-              {{ _('Performance') }}
-            </button>
-            <button
-              class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
-            >
-              {{ _('Documents') }}
-            </button>
-          </div>
+      <!-- Activity Filters -->
+      <div class="flex flex-wrap gap-2 mb-4">
+        <button
+          class="px-3 py-1 text-xs font-medium rounded-full bg-indigo-100 dark:bg-indigo-900/60 text-indigo-800 dark:text-indigo-200 transition-colors duration-300"
+        >
+          {{ _('All') }}
+        </button>
+        <button
+          class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 cursor-pointer transition-colors duration-300"
+        >
+          {{ _('Attendance') }}
+        </button>
+        <button
+          class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 cursor-pointer transition-colors duration-300"
+        >
+          {{ _('Leave') }}
+        </button>
+        <button
+          class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 cursor-pointer transition-colors duration-300"
+        >
+          {{ _('Performance') }}
+        </button>
+        <button
+          class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 cursor-pointer transition-colors duration-300"
+        >
+          {{ _('Documents') }}
+        </button>
+      </div>
 
-          <!-- Activity List -->
-          <div class="space-y-4 max-h-96 overflow-y-auto pr-2">
-            {% if hr_data and hr_data['recent_employee_activities'] %} {% for
-            activity in hr_data['recent_employee_activities'] %}
+      <!-- Activity List -->
+      <div class="space-y-4 max-h-96 overflow-y-auto pr-2">
+        {% if hr_data and hr_data['recent_employee_activities'] %} {% for
+        activity in hr_data['recent_employee_activities'] %}
+        <div
+          class="flex items-start p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300"
+        >
+          <div class="flex-shrink-0 mr-3">
             <div
-              class="flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors"
+              class="w-10 h-10 rounded-full bg-{{ activity.color }}-100 dark:bg-{{ activity.color }}-900/50 flex items-center justify-center transition-colors duration-300"
             >
-              <div class="flex-shrink-0 mr-3">
-                <div
-                  class="w-10 h-10 rounded-full bg-{{ activity.color }}-100 flex items-center justify-center"
-                >
-                  <i
-                    class="fa-solid {{ activity.icon }} text-{{ activity.color }}-600"
-                  ></i>
-                </div>
-              </div>
-              <div class="flex-grow">
-                <div class="flex justify-between items-start">
-                  <p class="font-medium text-sm">
-                    {{ activity.employee_name }}
-                  </p>
-                  <span class="text-xs text-gray-500">{{ activity.time }}</span>
-                </div>
-                <p class="text-sm text-gray-600">{{ activity.activity }}</p>
-              </div>
+              <i
+                class="fa-solid {{ activity.icon }} text-{{ activity.color }}-600 dark:text-{{ activity.color }}-400 transition-colors duration-300"
+              ></i>
             </div>
-            {% endfor %} {% else %}
-            <div class="text-center py-8 text-gray-500">
-              <i class="fa-solid fa-user-clock text-3xl mb-2"></i>
-              <p>{{ _('No recent activities to display') }}</p>
-            </div>
-            {% endif %}
           </div>
-
-          <!-- View All Button -->
-          <div class="mt-4 text-center">
-            <a
-              href="{{ url_for('useractivity') }}"
-              class="text-sm font-medium text-indigo-600 hover:text-indigo-800 cursor-pointer"
+          <div class="flex-grow">
+            <div class="flex justify-between items-start">
+              <p
+                class="font-medium text-sm text-gray-800 dark:text-gray-200 transition-colors duration-300"
+              >
+                {{ activity.employee_name }}
+              </p>
+              <span
+                class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300"
+                >{{ activity.time }}</span
+              >
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300"
             >
-              {{ _('View All Activities') }}
-              <i class="fa-solid fa-arrow-right ml-1"></i>
-            </a>
+              {{ activity.activity }}
+            </p>
           </div>
         </div>
-
-        <!-- New Joiners Section -->
-        <div class="bg-white rounded-lg shadow-md p-6">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold">
-              {{ _('New Joiners This Month') }}
-            </h3>
-            <span
-              class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full"
-            >
-              {% if hr_data and hr_data.get('new_joiners') %}{{
-              hr_data.new_joiners|length }}{% else %}0{% endif %} {{ _('New') }}
-            </span>
-          </div>
-
-          <!-- New Joiners List -->
-          <div class="space-y-4">
-            {% if hr_data and hr_data.get('new_joiners') %} {% for joiner in
-            hr_data.new_joiners %}
-            <div class="bg-gray-50 rounded-lg p-4 flex items-center">
-              <div class="flex-shrink-0 mr-3">
-                <div class="relative">
-                  {% set initials = joiner.name.split() | map('first') | join |
-                  upper %}
-                  <div
-                    class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-lg"
-                  >
-                    {{ initials }}
-                  </div>
-                  <div
-                    class="absolute -bottom-1 -right-1 w-5 h-5 {% if joiner.status == 'active' %}bg-green-500 {% elif joiner.status == 'away' %}bg-yellow-500 {% else %}bg-gray-500{% endif %} rounded-full border-2 border-white"
-                    aria-label="{{ joiner.status }}"
-                  ></div>
-                </div>
-              </div>
-              <div class="flex-grow">
-                <p class="font-medium">{{ joiner.name }}</p>
-                <p class="text-sm text-gray-600">{{ joiner.position }}</p>
-                <p class="text-xs text-gray-500">
-                  {{ _('Joined') }}: {{ joiner.join_date }}
-                </p>
-              </div>
-              <div class="flex-shrink-0 flex space-x-2">
-                <button
-                  class="text-gray-400 hover:text-blue-600 cursor-pointer"
-                  title="{{ _('Send Message') }}"
-                >
-                  <i class="fa-solid fa-envelope"></i>
-                </button>
-                <button
-                  class="text-gray-400 hover:text-indigo-600 cursor-pointer"
-                  title="{{ _('View Profile') }}"
-                >
-                  <i class="fa-solid fa-user"></i>
-                </button>
-              </div>
-            </div>
-            {% endfor %} {% else %}
-            <div class="text-center py-8 text-gray-500">
-              <i class="fa-solid fa-user-plus text-3xl mb-2"></i>
-              <p>{{ _('No new joiners this month') }}</p>
-            </div>
-            {% endif %}
-          </div>
-
-          <!-- HR Onboarding Progress -->
-          {% if hr_data and hr_data.get('new_joiners') %}
-          <div class="mt-6">
-            <div class="flex justify-between items-center mb-2">
-              <h4 class="text-sm font-medium text-gray-700">
-                {{ _('Onboarding Progress') }}
-              </h4>
-            </div>
-
-            <div class="space-y-3">
-              {% for joiner in hr_data.get('new_joiners') %}
-              <div>
-                <div class="flex justify-between text-xs mb-1">
-                  <span>{{ joiner.name }}</span>
-                  <span>{{ joiner.onboarding_progress }}%</span>
-                </div>
-                <div class="w-full bg-gray-200 rounded-full h-1.5">
-                  <div
-                    class="bg-indigo-600 h-1.5 rounded-full"
-                    style="width: {{ joiner.onboarding_progress }}%"
-                  ></div>
-                </div>
-              </div>
-              {% endfor %}
-            </div>
-          </div>
-          {% endif %}
+        {% endfor %} {% else %}
+        <div
+          class="text-center py-8 text-gray-500 dark:text-gray-400 transition-colors duration-300"
+        >
+          <i class="fa-solid fa-user-clock text-3xl mb-2"></i>
+          <p>{{ _('No recent activities to display') }}</p>
         </div>
+        {% endif %}
+      </div>
 
-        <!-- HR Summary Stats -->
-        <div class="bg-white rounded-lg shadow-md p-6 lg:col-span-2">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold">{{ _('HR Overview') }}</h3>
-            <select
-              class="text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 cursor-pointer"
-            >
-              <option>{{ _('This Month') }}</option>
-              <option>{{ _('Last Month') }}</option>
-              <option>{{ _('This Quarter') }}</option>
-            </select>
-          </div>
-
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {% if hr_data and hr_data.get('hr_stats') %}
-            <!-- Attendance Rate -->
-            <div
-              class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center"
-            >
-              <div
-                class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-2"
-              >
-                <i class="fa-solid fa-user-check text-green-600 text-xl"></i>
-              </div>
-              <p class="text-2xl font-bold">
-                {{ hr_data.get('hr_stats').get('attendance_rate') }}%
-              </p>
-              <p class="text-sm text-gray-500">{{ _('Attendance Rate') }}</p>
-            </div>
-
-            <!-- Leave Requests -->
-            <div
-              class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center"
-            >
-              <div
-                class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-2"
-              >
-                <i
-                  class="fa-solid fa-calendar-minus text-yellow-600 text-xl"
-                ></i>
-              </div>
-              <p class="text-2xl font-bold">
-                {{ hr_data.get('hr_stats').get('leave_requests') }}
-              </p>
-              <p class="text-sm text-gray-500">{{ _('Leave Requests') }}</p>
-            </div>
-
-            <!-- Open Positions -->
-            <div
-              class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center"
-            >
-              <div
-                class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-2"
-              >
-                <i class="fa-solid fa-briefcase text-blue-600 text-xl"></i>
-              </div>
-              <p class="text-2xl font-bold">
-                {{ hr_data.get('hr_stats').get('open_positions') }}
-              </p>
-              <p class="text-sm text-gray-500">{{ _('Open Positions') }}</p>
-            </div>
-
-            <!-- Training Completion -->
-            <div
-              class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center"
-            >
-              <div
-                class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-2"
-              >
-                <i
-                  class="fa-solid fa-graduation-cap text-purple-600 text-xl"
-                ></i>
-              </div>
-              <p class="text-2xl font-bold">
-                {{ hr_data.get('hr_stats').get('training_completion') }}%
-              </p>
-              <p class="text-sm text-gray-500">
-                {{ _('Training Completion') }}
-              </p>
-            </div>
-            {% else %}
-            <!-- Placeholder stats if no data -->
-            <div
-              class="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center"
-            >
-              <div
-                class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-2"
-              >
-                <i class="fa-solid fa-user-check text-green-600 text-xl"></i>
-              </div>
-              <p class="text-2xl font-bold">--</p>
-              <p class="text-sm text-gray-500">{{ _('Attendance Rate') }}</p>
-            </div>
-            {% endif %}
-          </div>
-        </div>
+      <!-- View All Button -->
+      <div class="mt-4 text-center">
+        <a
+          href="{{ url_for('useractivity') }}"
+          class="text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 cursor-pointer transition-colors duration-300"
+        >
+          {{ _('View All Activities') }}
+          <i class="fa-solid fa-arrow-right ml-1"></i>
+        </a>
       </div>
     </div>
+
+    <!-- New Joiners Section -->
+    <div
+      class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/20 p-6 transition-all duration-300"
+    >
+      <div class="flex items-center justify-between mb-4">
+        <h3
+          class="text-lg font-semibold text-gray-800 dark:text-white transition-colors duration-300"
+        >
+          {{ _('New Joiners This Month') }}
+        </h3>
+        <span
+          class="bg-green-100 dark:bg-green-900/60 text-green-800 dark:text-green-200 text-xs font-medium px-2.5 py-0.5 rounded-full transition-colors duration-300"
+        >
+          {% if hr_data and hr_data.get('new_joiners') %}{{
+          hr_data.new_joiners|length }}{% else %}0{% endif %} {{ _('New') }}
+        </span>
+      </div>
+
+      <!-- New Joiners List -->
+      <div class="space-y-4">
+        {% if hr_data and hr_data.get('new_joiners') %} {% for joiner in
+        hr_data.new_joiners %}
+        <div
+          class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 flex items-center transition-colors duration-300"
+        >
+          <div class="flex-shrink-0 mr-3">
+            <div class="relative">
+              {% set initials = joiner.name.split() | map('first') | join |
+              upper %}
+              <div
+                class="w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-800/70 flex items-center justify-center text-indigo-600 dark:text-indigo-300 font-bold text-lg transition-colors duration-300"
+              >
+                {{ initials }}
+              </div>
+              <div
+                class="absolute -bottom-1 -right-1 w-5 h-5 {% if joiner.status == 'active' %}bg-green-500 dark:bg-green-400 {% elif joiner.status == 'away' %}bg-yellow-500 dark:bg-yellow-400 {% else %}bg-gray-500 dark:bg-gray-400{% endif %} rounded-full border-2 border-white dark:border-gray-800 transition-colors duration-300"
+                aria-label="{{ joiner.status }}"
+              ></div>
+            </div>
+          </div>
+          <div class="flex-grow">
+            <p
+              class="font-medium text-gray-800 dark:text-white transition-colors duration-300"
+            >
+              {{ joiner.name }}
+            </p>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300"
+            >
+              {{ joiner.position }}
+            </p>
+            <p
+              class="text-xs text-gray-500 dark:text-gray-500 transition-colors duration-300"
+            >
+              {{ _('Joined') }}: {{ joiner.join_date }}
+            </p>
+          </div>
+          <div class="flex-shrink-0 flex space-x-2">
+            <button
+              class="text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors duration-300"
+              title="{{ _('Send Message') }}"
+            >
+              <i class="fa-solid fa-envelope"></i>
+            </button>
+            <button
+              class="text-gray-400 dark:text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 cursor-pointer transition-colors duration-300"
+              title="{{ _('View Profile') }}"
+            >
+              <i class="fa-solid fa-user"></i>
+            </button>
+          </div>
+        </div>
+        {% endfor %} {% else %}
+        <div
+          class="text-center py-8 text-gray-500 dark:text-gray-400 transition-colors duration-300"
+        >
+          <i class="fa-solid fa-user-plus text-3xl mb-2"></i>
+          <p>{{ _('No new joiners this month') }}</p>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- HR Onboarding Progress -->
+      {% if hr_data and hr_data.get('new_joiners') %}
+      <div class="mt-6">
+        <div class="flex justify-between items-center mb-2">
+          <h4
+            class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300"
+          >
+            {{ _('Onboarding Progress') }}
+          </h4>
+        </div>
+
+        <div class="space-y-3">
+          {% for joiner in hr_data.get('new_joiners') %}
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span
+                class="text-gray-700 dark:text-gray-300 transition-colors duration-300"
+                >{{ joiner.name }}</span
+              >
+              <span
+                class="text-gray-700 dark:text-gray-300 transition-colors duration-300"
+                >{{ joiner.onboarding_progress }}%</span
+              >
+            </div>
+            <div
+              class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-1.5 transition-colors duration-300"
+            >
+              <div
+                class="bg-indigo-600 dark:bg-indigo-500 h-1.5 rounded-full transition-colors duration-300"
+                style="width: {{ joiner.onboarding_progress }}%"
+              ></div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- HR Summary Stats with Gradient Backgrounds -->
+    <div
+      class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/20 p-6 lg:col-span-2 transition-all duration-300"
+    >
+      <div class="flex items-center justify-between mb-4">
+        <h3
+          class="text-lg font-semibold text-gray-800 dark:text-white transition-colors duration-300"
+        >
+          {{ _('HR Overview') }}
+        </h3>
+        <select
+          class="text-sm border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-indigo-500 dark:focus:border-indigo-400 cursor-pointer transition-colors duration-300"
+        >
+          <option>{{ _('This Month') }}</option>
+          <option>{{ _('Last Month') }}</option>
+          <option>{{ _('This Quarter') }}</option>
+        </select>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {% if hr_data and hr_data.get('hr_stats') %}
+        <!-- Attendance Rate - Gradient Card -->
+        <div
+          class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-green-900/20 dark:to-blue-900/20 rounded-lg p-4 flex flex-col items-center justify-center transition-colors duration-300 shadow-sm dark:shadow-gray-900/10"
+        >
+          <div
+            class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-800/50 flex items-center justify-center mb-2 transition-colors duration-300"
+          >
+            <i
+              class="fa-solid fa-user-check text-green-600 dark:text-green-300 text-xl transition-colors duration-300"
+            ></i>
+          </div>
+          <p
+            class="text-2xl font-bold text-gray-800 dark:text-white transition-colors duration-300"
+          >
+            {{ hr_data.get('hr_stats').get('attendance_rate') }}%
+          </p>
+          <p
+            class="text-sm text-gray-500 dark:text-gray-300 transition-colors duration-300"
+          >
+            {{ _('Attendance Rate') }}
+          </p>
+        </div>
+
+        <!-- Leave Requests - Gradient Card -->
+        <div
+          class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg p-4 flex flex-col items-center justify-center transition-colors duration-300 shadow-sm dark:shadow-gray-900/10"
+        >
+          <div
+            class="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-800/50 flex items-center justify-center mb-2 transition-colors duration-300"
+          >
+            <i
+              class="fa-solid fa-calendar-minus text-yellow-600 dark:text-yellow-300 text-xl transition-colors duration-300"
+            ></i>
+          </div>
+          <p
+            class="text-2xl font-bold text-gray-800 dark:text-white transition-colors duration-300"
+          >
+            {{ hr_data.get('hr_stats').get('leave_requests') }}
+          </p>
+          <p
+            class="text-sm text-gray-500 dark:text-gray-300 transition-colors duration-300"
+          >
+            {{ _('Leave Requests') }}
+          </p>
+        </div>
+
+        <!-- Open Positions - Gradient Card -->
+        <div
+          class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg p-4 flex flex-col items-center justify-center transition-colors duration-300 shadow-sm dark:shadow-gray-900/10"
+        >
+          <div
+            class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-800/50 flex items-center justify-center mb-2 transition-colors duration-300"
+          >
+            <i
+              class="fa-solid fa-briefcase text-blue-600 dark:text-blue-300 text-xl transition-colors duration-300"
+            ></i>
+          </div>
+          <p
+            class="text-2xl font-bold text-gray-800 dark:text-white transition-colors duration-300"
+          >
+            {{ hr_data.get('hr_stats').get('open_positions') }}
+          </p>
+          <p
+            class="text-sm text-gray-500 dark:text-gray-300 transition-colors duration-300"
+          >
+            {{ _('Open Positions') }}
+          </p>
+        </div>
+
+        <!-- Training Completion - Gradient Card -->
+        <div
+          class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg p-4 flex flex-col items-center justify-center transition-colors duration-300 shadow-sm dark:shadow-gray-900/10"
+        >
+          <div
+            class="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-800/50 flex items-center justify-center mb-2 transition-colors duration-300"
+          >
+            <i
+              class="fa-solid fa-graduation-cap text-purple-600 dark:text-purple-300 text-xl transition-colors duration-300"
+            ></i>
+          </div>
+          <p
+            class="text-2xl font-bold text-gray-800 dark:text-white transition-colors duration-300"
+          >
+            {{ hr_data.get('hr_stats').get('training_completion') }}%
+          </p>
+          <p
+            class="text-sm text-gray-500 dark:text-gray-300 transition-colors duration-300"
+          >
+            {{ _('Training Completion') }}
+          </p>
+        </div>
+        {% else %}
+        <!-- Placeholder stats if no data -->
+        <div
+          class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-green-900/20 dark:to-blue-900/20 rounded-lg p-4 flex flex-col items-center justify-center transition-colors duration-300 shadow-sm dark:shadow-gray-900/10"
+        >
+          <div
+            class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-800/50 flex items-center justify-center mb-2 transition-colors duration-300"
+          >
+            <i
+              class="fa-solid fa-user-check text-green-600 dark:text-green-300 text-xl transition-colors duration-300"
+            ></i>
+          </div>
+          <p
+            class="text-2xl font-bold text-gray-800 dark:text-white transition-colors duration-300"
+          >
+            --
+          </p>
+          <p
+            class="text-sm text-gray-500 dark:text-gray-300 transition-colors duration-300"
+          >
+            {{ _('Attendance Rate') }}
+          </p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

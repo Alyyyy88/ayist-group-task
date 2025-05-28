@@ -112,9 +112,9 @@ def companyreg():
 def finance():
     return render_template('finance.html')
 
-@app.route('/settings')
-def settings(): 
-    return render_template('settings.html')
+@app.route('/adminpanel')
+def adminpanel(): 
+    return render_template('adminpanel.html')
 
 @app.route('/payroll')
 def payroll():
@@ -124,6 +124,10 @@ def payroll():
 def useractivity():
     hr_data = get_hr_data()
     return render_template('useractivity.html', hr_data=hr_data)
+
+@app.route('/superadminpanel')
+def superadminpanel():
+    return render_template('superadminpanel.html')
 
 
 def get_projects_page():
@@ -586,7 +590,8 @@ def utility_processor():
                 {'url': '/companyreg', 'icon': 'fa-solid fa-address-card text-red-400', 'label': _('Company Registration')},
                 {'url': '/usermanagement', 'icon': 'fa-solid fa-user text-black', 'label': _('User Management')},
                 {'url': '/subplan', 'icon': 'fa-solid fa-business-time text-orange-300', 'label': _('Subscription Plan')},
-                {'url': '/dark_mode_test', 'icon': 'fa-solid fa-moon text-gray-500', 'label': _('Dark_test')},
+                {'url': '/adminpanel', 'icon': 'fa-solid fa-user-gear text-gray-500', 'label': _('Admin Panel')}
+
             ],
             'Hr': [
                 {'url': '/staff', 'icon': 'fa-solid fa-users text-purple-500', 'label': _('Staff')},
@@ -611,8 +616,8 @@ def utility_processor():
                 {'url': '/reporting', 'icon': 'fa-solid fa-chart-line text-orange-300', 'label': _('Reporting')},
                 {'url': '/usermanagement', 'icon': 'fa-solid fa-user text-black', 'label': _('User Management')},
                 {'url': '/subplan', 'icon': 'fa-solid fa-business-time text-orange-300', 'label': _('Subscription Plan')},
-                {'url': '/companyreg', 'icon': 'fa-solid fa-address-card text-red-400', 'label': _('Company Registration')},
-                {'url': '/settings', 'icon': 'fa-solid fa-gears text-gray-500', 'label': _('Settings')}
+                {'url': '/companyreg', 'icon': 'fa-solid fa-address-card text-red-400', 'label': _('Company Registration')},  
+                {'url': '/superadminpanel', 'icon': 'fa-solid fa-shield-halved text-red-500', 'label': _('Super Admin Panel')},
 
             ]
         }

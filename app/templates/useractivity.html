@@ -1,43 +1,49 @@
 {% extends 'layout.html' %} {% block title %}User Activity{% endblock %} {%
 block content %}
 <!-- Employee Activities Section -->
-<div class="bg-white rounded-lg shadow-md p-6 mt-8">
+<div
+  class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/30 p-6 mt-8 transition-all duration-300"
+>
   <div class="flex items-center justify-between mb-4">
-    <h3 class="text-lg font-semibold">{{ _('Employee Activities') }}</h3>
+    <h3
+      class="text-lg font-semibold text-gray-800 dark:text-white transition-colors duration-300"
+    >
+      {{ _('Employee Activities') }}
+    </h3>
   </div>
 
   <!-- Activity Filters -->
   <div class="flex flex-wrap gap-2 mb-4 activity-filter">
     <button
-      class="px-3 py-1 text-xs font-medium rounded-full bg-indigo-100 text-indigo-800 active cursor-pointer"
+      class="px-3 py-1 text-xs font-medium rounded-full bg-indigo-100 dark:bg-indigo-900/60 text-indigo-800 dark:text-indigo-200 active cursor-pointer transition-colors duration-300"
       data-filter="all"
       data-tab="all-content"
     >
       {{ _('All') }}
     </button>
     <button
-      class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
+      class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 cursor-pointer transition-colors duration-300"
       data-filter="attendance"
       data-tab="attendance-content"
     >
       {{ _('Attendance') }}
     </button>
     <button
-      class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
+      class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 cursor-pointer transition-colors duration-300"
       data-filter="leave"
       data-tab="leave-content"
     >
       {{ _('Leave') }}
     </button>
     <button
-      class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
+      class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 cursor-pointer transition-colors duration-300"
       data-filter="performance"
       data-tab="performance-content"
     >
       {{ _('Performance') }}
     </button>
     <button
-      class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 cursor-pointer"
+      class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 cursor-pointer transition-colors duration-300"
       data-filter="documents"
       data-tab="documents-content"
     >
@@ -51,31 +57,43 @@ block content %}
     <div id="all-content" class="tab-pane active">
       <!-- Activity List -->
       <div class="space-y-4 max-h-96 overflow-y-auto pr-2">
-        {% if hr_data and hr_data['employee_activities'] %} 
-        {% for activity in hr_data['employee_activities'] %}
+        {% if hr_data and hr_data['employee_activities'] %} {% for activity in
+        hr_data['employee_activities'] %}
         <div
-          class="flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors activity-item {{ activity.type|lower }}"
+          class="flex items-start p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300 activity-item {{ activity.type|lower }}"
         >
           <div class="flex-shrink-0 mr-3">
             <div
-              class="w-10 h-10 rounded-full bg-{{ activity.color }}-100 flex items-center justify-center"
+              class="w-10 h-10 rounded-full bg-{{ activity.color }}-100 dark:bg-{{ activity.color }}-900/50 flex items-center justify-center transition-colors duration-300"
             >
               <i
-                class="fa-solid {{ activity.icon }} text-{{ activity.color }}-600"
+                class="fa-solid {{ activity.icon }} text-{{ activity.color }}-600 dark:text-{{ activity.color }}-400 transition-colors duration-300"
               ></i>
             </div>
           </div>
           <div class="flex-grow">
             <div class="flex justify-between items-start">
-              <p class="font-medium text-sm">{{ activity.employee_name }}</p>
-              <span class="text-xs text-gray-500">{{ activity.time }}</span>
+              <p
+                class="font-medium text-sm text-gray-800 dark:text-gray-200 transition-colors duration-300"
+              >
+                {{ activity.employee_name }}
+              </p>
+              <span
+                class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300"
+                >{{ activity.time }}</span
+              >
             </div>
-            <p class="text-sm text-gray-600">{{ activity.activity }}</p>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300"
+            >
+              {{ activity.activity }}
+            </p>
           </div>
         </div>
-        {% endfor %} 
-        {% else %}
-        <div class="text-center py-8 text-gray-500">
+        {% endfor %} {% else %}
+        <div
+          class="text-center py-8 text-gray-500 dark:text-gray-400 transition-colors duration-300"
+        >
           <i class="fa-solid fa-user-clock text-3xl mb-2"></i>
           <p>{{ _('No recent activities to display') }}</p>
         </div>
@@ -86,8 +104,14 @@ block content %}
     <!-- Attendance tab content -->
     <div id="attendance-content" class="tab-pane hidden">
       <div class="mb-4">
-        <h4 class="text-md font-medium mb-2">{{ _('Attendance Rate') }}</h4>
-        <div class="bg-gray-50 p-2 rounded-lg">
+        <h4
+          class="text-md font-medium mb-2 text-gray-800 dark:text-white transition-colors duration-300"
+        >
+          {{ _('Attendance Rate') }}
+        </h4>
+        <div
+          class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 p-2 rounded-lg shadow-sm dark:shadow-gray-900/20 transition-colors duration-300"
+        >
           <canvas id="attendanceChart" height="100"></canvas>
         </div>
       </div>
@@ -96,209 +120,391 @@ block content %}
     <!-- Leave tab content -->
     <div id="leave-content" class="tab-pane hidden">
       <div class="space-y-4 max-h-96 overflow-y-auto pr-2">
-        {% if hr_data and hr_data['employee_activities'] %} 
-        {% for activity in hr_data['employee_activities'] %}
-        {% if activity.type|lower == 'check-out' %}
-        <div class="flex items-start p-3 rounded-lg hover:bg-gray-50 transition-colors">
+        {% if hr_data and hr_data['employee_activities'] %} {% for activity in
+        hr_data['employee_activities'] %} {% if activity.type|lower ==
+        'check-out' %}
+        <div
+          class="flex items-start p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300"
+        >
           <div class="flex-shrink-0 mr-3">
-            <div class="w-10 h-10 rounded-full bg-{{ activity.color }}-100 flex items-center justify-center">
-              <i class="fa-solid {{ activity.icon }} text-{{ activity.color }}-600"></i>
+            <div
+              class="w-10 h-10 rounded-full bg-{{ activity.color }}-100 dark:bg-{{ activity.color }}-900/50 flex items-center justify-center transition-colors duration-300"
+            >
+              <i
+                class="fa-solid {{ activity.icon }} text-{{ activity.color }}-600 dark:text-{{ activity.color }}-400 transition-colors duration-300"
+              ></i>
             </div>
           </div>
           <div class="flex-grow">
             <div class="flex justify-between items-start">
-              <p class="font-medium text-sm">{{ activity.employee_name }}</p>
-              <span class="text-xs text-gray-500">{{ activity.time }}</span>
+              <p
+                class="font-medium text-sm text-gray-800 dark:text-gray-200 transition-colors duration-300"
+              >
+                {{ activity.employee_name }}
+              </p>
+              <span
+                class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300"
+                >{{ activity.time }}</span
+              >
             </div>
-            <p class="text-sm text-gray-600">{{ activity.activity }}</p>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300"
+            >
+              {{ activity.activity }}
+            </p>
           </div>
         </div>
-        {% endif %}
-        {% endfor %}
-        {% else %}
-        <div class="text-center py-8 text-gray-500">
+        {% endif %} {% endfor %} {% else %}
+        <div
+          class="text-center py-8 text-gray-500 dark:text-gray-400 transition-colors duration-300"
+        >
           <i class="fa-solid fa-user-clock text-3xl mb-2"></i>
           <p>{{ _('No leave activities to display') }}</p>
         </div>
         {% endif %}
       </div>
-      
     </div>
 
     <!-- Performance tab content -->
     <div id="performance-content" class="tab-pane hidden">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-      <!-- Performance Overview -->
-      <div class="bg-gray-50 p-4 rounded-lg">
-        <h4 class="text-md font-medium mb-3">{{ _('Performance Overview') }}</h4>
-        <div class="flex justify-between items-center mb-2">
-        <span class="text-sm text-gray-600">{{ _('Overall Rating') }}</span>
-        <div class="flex items-center">
-          <div class="flex">
-          {% for i in range(1, 5) %}
-            <i class="fas fa-star text-yellow-400 text-sm"></i>
-          {% endfor %}
-          <i class="fas fa-star-half-alt text-yellow-400 text-sm"></i>
-          </div>
-          <span class="ml-2 font-medium">4.5/5</span>
-        </div>
-        </div>
-        <div class="space-y-2">
-        <div>
-          <div class="flex justify-between text-xs mb-1">
-          <span>{{ _('Productivity') }}</span>
-          <span>85%</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-2">
-          <div class="bg-green-500 h-2 rounded-full" style="width: 85%"></div>
-          </div>
-        </div>
-        <div>
-          <div class="flex justify-between text-xs mb-1">
-          <span>{{ _('Quality') }}</span>
-          <span>92%</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-2">
-          <div class="bg-blue-500 h-2 rounded-full" style="width: 92%"></div>
-          </div>
-        </div>
-        <div>
-          <div class="flex justify-between text-xs mb-1">
-          <span>{{ _('Teamwork') }}</span>
-          <span>88%</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-2">
-          <div class="bg-purple-500 h-2 rounded-full" style="width: 88%"></div>
-          </div>
-        </div>
-        </div>
-      </div>
-      
-      <!-- Performance Trends -->
-      <div class="bg-gray-50 p-4 rounded-lg">
-        <h4 class="text-md font-medium mb-2">{{ _('Performance Trends') }}</h4>
-        <canvas id="performanceChart" height="140"></canvas>
-      </div>
-      </div>
-      
-      <!-- Recent Evaluations -->
-      <div class="mt-4">
-      <h4 class="text-md font-medium mb-3">{{ _('Recent Evaluations') }}</h4>
-      <div class="space-y-3 max-h-64 overflow-y-auto pr-2">
-        {% if hr_data and hr_data.get('performance_evaluations') %}
-        {% for eval in hr_data.get('performance_evaluations', []) %}
-          <div class="bg-white border border-gray-100 rounded-lg p-3 hover:shadow-sm transition-shadow">
-          <div class="flex justify-between items-start">
-            <p class="font-medium text-sm">{{ eval.title }}</p>
-            <span class="text-xs text-gray-500">{{ eval.date }}</span>
-          </div>
-          <p class="text-sm text-gray-600 mt-1">{{ eval.comment }}</p>
-          <div class="mt-2 flex items-center">
-            <span class="text-xs font-medium mr-2">{{ _('Rating:') }}</span>
-            <div class="flex">
-            {% for i in range(1, eval.rating + 1) %}
-              <i class="fas fa-star text-yellow-400 text-xs"></i>
-            {% endfor %}
-            {% for i in range(eval.rating, 5) %}
-              <i class="far fa-star text-yellow-400 text-xs"></i>
-            {% endfor %}
+        <!-- Performance Overview -->
+        <div
+          class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-indigo-900/20 dark:to-purple-900/20 p-4 rounded-lg shadow-sm dark:shadow-gray-900/20 transition-colors duration-300"
+        >
+          <h4
+            class="text-md font-medium mb-3 text-gray-800 dark:text-white transition-colors duration-300"
+          >
+            {{ _('Performance Overview') }}
+          </h4>
+          <div class="flex justify-between items-center mb-2">
+            <span
+              class="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300"
+              >{{ _('Overall Rating') }}</span
+            >
+            <div class="flex items-center">
+              <div class="flex">
+                {% for i in range(1, 5) %}
+                <i
+                  class="fas fa-star text-yellow-400 dark:text-yellow-300 text-sm transition-colors duration-300"
+                ></i>
+                {% endfor %}
+                <i
+                  class="fas fa-star-half-alt text-yellow-400 dark:text-yellow-300 text-sm transition-colors duration-300"
+                ></i>
+              </div>
+              <span
+                class="ml-2 font-medium text-gray-800 dark:text-white transition-colors duration-300"
+                >4.5/5</span
+              >
             </div>
           </div>
+          <div class="space-y-2">
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span
+                  class="text-gray-700 dark:text-gray-300 transition-colors duration-300"
+                  >{{ _('Productivity') }}</span
+                >
+                <span
+                  class="text-gray-700 dark:text-gray-300 transition-colors duration-300"
+                  >85%</span
+                >
+              </div>
+              <div
+                class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2 transition-colors duration-300"
+              >
+                <div
+                  class="bg-green-500 dark:bg-green-400 h-2 rounded-full transition-colors duration-300"
+                  style="width: 85%"
+                ></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span
+                  class="text-gray-700 dark:text-gray-300 transition-colors duration-300"
+                  >{{ _('Quality') }}</span
+                >
+                <span
+                  class="text-gray-700 dark:text-gray-300 transition-colors duration-300"
+                  >92%</span
+                >
+              </div>
+              <div
+                class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2 transition-colors duration-300"
+              >
+                <div
+                  class="bg-blue-500 dark:bg-blue-400 h-2 rounded-full transition-colors duration-300"
+                  style="width: 92%"
+                ></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span
+                  class="text-gray-700 dark:text-gray-300 transition-colors duration-300"
+                  >{{ _('Teamwork') }}</span
+                >
+                <span
+                  class="text-gray-700 dark:text-gray-300 transition-colors duration-300"
+                  >88%</span
+                >
+              </div>
+              <div
+                class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2 transition-colors duration-300"
+              >
+                <div
+                  class="bg-purple-500 dark:bg-purple-400 h-2 rounded-full transition-colors duration-300"
+                  style="width: 88%"
+                ></div>
+              </div>
+            </div>
           </div>
-        {% endfor %}
-        {% else %}
-        <div class="text-center py-6 text-gray-500 bg-gray-50 rounded-lg">
-          <i class="fa-solid fa-chart-line text-3xl mb-2"></i>
-          <p>{{ _('No performance evaluations available') }}</p>
         </div>
-        {% endif %}
+
+        <!-- Performance Trends -->
+        <div
+          class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-blue-900/20 dark:to-cyan-900/20 p-4 rounded-lg shadow-sm dark:shadow-gray-900/20 transition-colors duration-300"
+        >
+          <h4
+            class="text-md font-medium mb-2 text-gray-800 dark:text-white transition-colors duration-300"
+          >
+            {{ _('Performance Trends') }}
+          </h4>
+          <canvas id="performanceChart" height="140"></canvas>
+        </div>
       </div>
+
+      <!-- Recent Evaluations -->
+      <div class="mt-4">
+        <h4
+          class="text-md font-medium mb-3 text-gray-800 dark:text-white transition-colors duration-300"
+        >
+          {{ _('Recent Evaluations') }}
+        </h4>
+        <div class="space-y-3 max-h-64 overflow-y-auto pr-2">
+          {% if hr_data and hr_data.get('performance_evaluations') %} {% for
+          eval in hr_data.get('performance_evaluations', []) %}
+          <div
+            class="bg-white dark:bg-gray-700 border border-gray-100 dark:border-gray-600 rounded-lg p-3 hover:shadow-sm dark:hover:shadow-gray-900/20 transition-all duration-300"
+          >
+            <div class="flex justify-between items-start">
+              <p
+                class="font-medium text-sm text-gray-800 dark:text-gray-200 transition-colors duration-300"
+              >
+                {{ eval.title }}
+              </p>
+              <span
+                class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300"
+                >{{ eval.date }}</span
+              >
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 mt-1 transition-colors duration-300"
+            >
+              {{ eval.comment }}
+            </p>
+            <div class="mt-2 flex items-center">
+              <span
+                class="text-xs font-medium mr-2 text-gray-700 dark:text-gray-300 transition-colors duration-300"
+                >{{ _('Rating:') }}</span
+              >
+              <div class="flex">
+                {% for i in range(1, eval.rating + 1) %}
+                <i
+                  class="fas fa-star text-yellow-400 dark:text-yellow-300 text-xs transition-colors duration-300"
+                ></i>
+                {% endfor %} {% for i in range(eval.rating, 5) %}
+                <i
+                  class="far fa-star text-yellow-400 dark:text-yellow-300 text-xs transition-colors duration-300"
+                ></i>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          {% endfor %} {% else %}
+          <div
+            class="text-center py-6 text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors duration-300"
+          >
+            <i class="fa-solid fa-chart-line text-3xl mb-2"></i>
+            <p>{{ _('No performance evaluations available') }}</p>
+          </div>
+          {% endif %}
+        </div>
       </div>
     </div>
 
     <!-- Documents tab content -->
     <div id="documents-content" class="tab-pane hidden">
       <div class="mb-4"></div>
-      <h4 class="text-md font-medium mb-2">{{ _('Recent Documents') }}</h4>
+      <h4
+        class="text-md font-medium mb-2 text-gray-800 dark:text-white transition-colors duration-300"
+      >
+        {{ _('Recent Documents') }}
+      </h4>
       <div class="space-y-3 max-h-96 overflow-y-auto pr-2">
-        {% if hr_data and hr_data.get('documents') %}
-        {% for doc in hr_data.get('documents', []) %}
-          <div class="bg-white border border-gray-100 rounded-lg p-3 hover:shadow-sm transition-shadow">
+        {% if hr_data and hr_data.get('documents') %} {% for doc in
+        hr_data.get('documents', []) %}
+        <div
+          class="bg-white dark:bg-gray-700 border border-gray-100 dark:border-gray-600 rounded-lg p-3 hover:shadow-sm dark:hover:shadow-gray-900/20 transition-all duration-300"
+        >
           <div class="flex items-start">
             <div class="flex-shrink-0 mr-3">
-            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-              <i class="fa-solid fa-file-lines text-blue-600"></i>
-            </div>
+              <div
+                class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center transition-colors duration-300"
+              >
+                <i
+                  class="fa-solid fa-file-lines text-blue-600 dark:text-blue-400 transition-colors duration-300"
+                ></i>
+              </div>
             </div>
             <div class="flex-grow">
-            <div class="flex justify-between items-start">
-              <p class="font-medium text-sm">{{ doc.title }}</p>
-              <span class="text-xs text-gray-500">{{ doc.updated_date }}</span>
-            </div>
-            <p class="text-sm text-gray-600 mt-1">{{ doc.description }}</p>
-            <div class="mt-2">
-              <span class="inline-block px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded-full">{{ doc.type }}</span>
-              <a href="{{ url_for('document') }}" class="inline-block ml-2 text-xs text-indigo-600 hover:text-indigo-800">{{ _('View Document') }}</a>
-            </div>
+              <div class="flex justify-between items-start">
+                <p
+                  class="font-medium text-sm text-gray-800 dark:text-gray-200 transition-colors duration-300"
+                >
+                  {{ doc.title }}
+                </p>
+                <span
+                  class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300"
+                  >{{ doc.uptated_date }}</span
+                >
+              </div>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 mt-1 transition-colors duration-300"
+              >
+                {{ doc.description }}
+              </p>
+              <div class="mt-2">
+                <span
+                  class="inline-block px-2 py-1 text-xs bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-full transition-colors duration-300"
+                  >{{ doc.type }}</span
+                >
+                <a
+                  href="{{ url_for('document') }}"
+                  class="inline-block ml-2 text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-300"
+                  >{{ _('View Document') }}</a
+                >
+              </div>
             </div>
           </div>
-          </div>
-        {% endfor %}
-        {% else %}
-        <div class="text-center py-8 text-gray-500 bg-gray-50 rounded-lg">
+        </div>
+        {% endfor %} {% else %}
+        <div
+          class="text-center py-8 text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors duration-300"
+        >
           <i class="fa-solid fa-file-circle-exclamation text-3xl mb-2"></i>
           <p>{{ _('No documents available') }}</p>
         </div>
         {% endif %}
       </div>
 
-          <!-- Document Categories -->
+      <!-- Document Categories -->
       <div class="mt-6">
-      <h4 class="text-md font-medium mb-3">{{ _('Document Categories') }}</h4>
-      <div class="grid grid-cols-2 gap-3">
-        <div class="bg-gray-50 p-3 rounded-lg flex items-center hover:bg-gray-100 transition-colors cursor-pointer">
-        <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
-          <i class="fa-solid fa-file-contract text-green-600 text-sm"></i>
-        </div>
-        <div>
-          <p class="font-medium text-sm">{{ _('Contracts') }}</p>
-          <p class="text-xs text-gray-500">{{ _('Employment agreements') }}</p>
-        </div>
-        </div>
-        <div class="bg-gray-50 p-3 rounded-lg flex items-center hover:bg-gray-100 transition-colors cursor-pointer">
-        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
-          <i class="fa-solid fa-file-invoice text-purple-600 text-sm"></i>
-        </div>
-        <div>
-          <p class="font-medium text-sm">{{ _('Payroll') }}</p>
-          <p class="text-xs text-gray-500">{{ _('Salary statements') }}</p>
-        </div>
-        </div>
-        <div class="bg-gray-50 p-3 rounded-lg flex items-center hover:bg-gray-100 transition-colors cursor-pointer">
-        <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-3">
-          <i class="fa-solid fa-certificate text-red-600 text-sm"></i>
-        </div>
-        <div>
-          <p class="font-medium text-sm">{{ _('Certificates') }}</p>
-          <p class="text-xs text-gray-500">{{ _('Training & awards') }}</p>
-        </div>
-        </div>
-        <div class="bg-gray-50 p-3 rounded-lg flex items-center hover:bg-gray-100 transition-colors cursor-pointer">
-        <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
-          <i class="fa-solid fa-file-circle-check text-yellow-600 text-sm"></i>
-        </div>
-        <div>
-          <p class="font-medium text-sm">{{ _('Policies') }}</p>
-          <p class="text-xs text-gray-500">{{ _('Company guidelines') }}</p>
-        </div>
+        <h4
+          class="text-md font-medium mb-3 text-gray-800 dark:text-white transition-colors duration-300"
+        >
+          {{ _('Document Categories') }}
+        </h4>
+        <div class="grid grid-cols-2 gap-3">
+          <div
+            class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-green-900/20 dark:to-teal-900/20 p-3 rounded-lg flex items-center hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 cursor-pointer shadow-sm dark:shadow-gray-900/20"
+          >
+            <div
+              class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-800/50 flex items-center justify-center mr-3 transition-colors duration-300"
+            >
+              <i
+                class="fa-solid fa-file-contract text-green-600 dark:text-green-300 text-sm transition-colors duration-300"
+              ></i>
+            </div>
+            <div>
+              <p
+                class="font-medium text-sm text-gray-800 dark:text-white transition-colors duration-300"
+              >
+                {{ _('Contracts') }}
+              </p>
+              <p
+                class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300"
+              >
+                {{ _('Employment agreements') }}
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-purple-900/20 dark:to-indigo-900/20 p-3 rounded-lg flex items-center hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 cursor-pointer shadow-sm dark:shadow-gray-900/20"
+          >
+            <div
+              class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-800/50 flex items-center justify-center mr-3 transition-colors duration-300"
+            >
+              <i
+                class="fa-solid fa-file-invoice text-purple-600 dark:text-purple-300 text-sm transition-colors duration-300"
+              ></i>
+            </div>
+            <div>
+              <p
+                class="font-medium text-sm text-gray-800 dark:text-white transition-colors duration-300"
+              >
+                {{ _('Payroll') }}
+              </p>
+              <p
+                class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300"
+              >
+                {{ _('Salary statements') }}
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-red-900/20 dark:to-orange-900/20 p-3 rounded-lg flex items-center hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 cursor-pointer shadow-sm dark:shadow-gray-900/20"
+          >
+            <div
+              class="w-8 h-8 rounded-full bg-red-100 dark:bg-red-800/50 flex items-center justify-center mr-3 transition-colors duration-300"
+            >
+              <i
+                class="fa-solid fa-certificate text-red-600 dark:text-red-300 text-sm transition-colors duration-300"
+              ></i>
+            </div>
+            <div>
+              <p
+                class="font-medium text-sm text-gray-800 dark:text-white transition-colors duration-300"
+              >
+                {{ _('Certificates') }}
+              </p>
+              <p
+                class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300"
+              >
+                {{ _('Training & awards') }}
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-yellow-900/20 dark:to-amber-900/20 p-3 rounded-lg flex items-center hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 cursor-pointer shadow-sm dark:shadow-gray-900/20"
+          >
+            <div
+              class="w-8 h-8 rounded-full bg-yellow-100 dark:bg-yellow-800/50 flex items-center justify-center mr-3 transition-colors duration-300"
+            >
+              <i
+                class="fa-solid fa-file-circle-check text-yellow-600 dark:text-yellow-300 text-sm transition-colors duration-300"
+              ></i>
+            </div>
+            <div>
+              <p
+                class="font-medium text-sm text-gray-800 dark:text-white transition-colors duration-300"
+              >
+                {{ _('Policies') }}
+              </p>
+              <p
+                class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300"
+              >
+                {{ _('Company guidelines') }}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      </div>
-      </div>
-      
-  
     </div>
   </div>
 </div>
 
+<!--  -->
 {% endblock %}

@@ -64,9 +64,17 @@
         <a href="#" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-blue-700 transition-colors duration-300">
           <i class="fa-solid fa-user mr-2"></i> {{ _('Your Profile') }}
         </a>
+        {% if session.get('user_role') == 'Admin' %}
+        <a
+          href="{{ url_for('adminpanel') }}"
+          class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-blue-700 transition-colors duration-300"
+        >
+          <i class="fa-solid fa-cog mr-2"></i> {{ _('Settings') }}
+        </a>
+        {% endif %}
         {% if session.get('user_role') == 'Superadmin' %}
         <a
-          href="{{ url_for('settings') }}"
+          href="{{ url_for('superadminpanel') }}"
           class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-blue-700 transition-colors duration-300"
         >
           <i class="fa-solid fa-cog mr-2"></i> {{ _('Settings') }}

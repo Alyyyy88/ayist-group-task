@@ -1,20 +1,909 @@
-<!-- Expenses Section -->
-
-{% extends 'layout.html' %} {% block title %}Invoices{% endblock %} {% block
+{% extends 'layout.html' %} {% block title %}Finance{% endblock %} {% block
 content %}
-<div
-  class="text-center p-8 rounded-lg mx-auto shadow-md max-w-2xl my-20 bg-white"
->
-  <h1
-    class="text-3xl font-bold text-gray-800 mb-4 flex justify-center items-center gap-2"
+<!-- Invoices & Financial Summary Section -->
+<div class="mb-8 grid grid-cols-1 gap-6">
+  <!-- Section Header -->
+  <div class="flex flex-wrap items-center justify-between mb-6">
+    <div>
+      <h2
+        class="text-2xl font-bold text-gray-800 dark:text-white transition-colors duration-300"
+      >
+        {{ _('Financial Overview') }}
+      </h2>
+      <p
+        class="text-gray-500 dark:text-gray-400 transition-colors duration-300"
+      >
+        {{ _('Track your invoices and financial metrics') }}
+      </p>
+    </div>
+    <div class="flex items-center space-x-3 mt-4 sm:mt-0">
+      <div class="relative">
+        <select
+          class="appearance-none bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 py-2 pl-4 pr-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 transition-colors duration-300"
+        >
+          <option>{{ _('This Month') }}</option>
+          <option>{{ _('Last Month') }}</option>
+          <option>{{ _('Last Quarter') }}</option>
+          <option>{{ _('This Year') }}</option>
+          <option>{{ _('Custom Range') }}</option>
+        </select>
+        <div
+          class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 dark:text-gray-400"
+        >
+          <i class="fa-solid fa-chevron-down text-xs"></i>
+        </div>
+      </div>
+      <button
+        class="bg-gradient-to-r from-indigo-600 to-indigo-700 dark:from-indigo-500 dark:to-indigo-600 hover:from-indigo-700 hover:to-indigo-800 dark:hover:from-indigo-600 dark:hover:to-indigo-700 text-white font-medium py-2 px-4 rounded-lg shadow-sm dark:shadow-gray-900/30 flex items-center gap-2 transition-all duration-300"
+      >
+        <i class="fa-solid fa-download"></i>
+        {{ _('Export') }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Financial Summary Cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+    <!-- Total Revenue Card -->
+    <div
+      class="bg-gradient-to-br from-white to-emerald-50 dark:from-gray-800 dark:to-emerald-900/30 rounded-xl shadow-md dark:shadow-gray-900/30 p-5 border border-gray-100/80 dark:border-emerald-800/20 transition-all duration-300 hover:shadow-lg dark:hover:shadow-emerald-900/20 transform hover:-translate-y-1 hover:scale-[1.01]"
+    >
+      <div class="flex items-center justify-between">
+        <div>
+          <p
+            class="text-sm font-medium text-gray-500 dark:text-gray-300 transition-colors duration-300"
+          >
+            {{ _('Total Revenue') }}
+          </p>
+          <h3
+            class="text-2xl font-bold text-gray-800 dark:text-white mt-1 transition-colors duration-300"
+          >
+            $128,432
+          </h3>
+          <div class="mt-1 flex items-center">
+            <span
+              class="flex items-center text-xs font-medium text-green-500 dark:text-green-400 transition-colors duration-300"
+            >
+              <i class="fa-solid fa-arrow-up mr-1"></i> +18.2
+            </span>
+            <span
+              class="text-xs text-gray-400 dark:text-gray-500 ml-1.5 transition-colors duration-300"
+              >{{ _('vs last month') }}</span
+            >
+          </div>
+        </div>
+        <div
+          class="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 dark:from-emerald-600 dark:to-emerald-800 flex items-center justify-center shadow-md dark:shadow-emerald-900/40 transition-all duration-300"
+        >
+          <i
+            class="fa-solid fa-dollar-sign text-white text-xl transition-colors duration-300"
+          ></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Outstanding Invoices Card -->
+    <div
+      class="bg-gradient-to-br from-white to-amber-50 dark:from-gray-800 dark:to-amber-900/30 rounded-xl shadow-md dark:shadow-gray-900/30 p-5 border border-gray-100/80 dark:border-amber-800/20 transition-all duration-300 hover:shadow-lg dark:hover:shadow-amber-900/20 transform hover:-translate-y-1 hover:scale-[1.01]"
+    >
+      <div class="flex items-center justify-between">
+        <div>
+          <p
+            class="text-sm font-medium text-gray-500 dark:text-gray-300 transition-colors duration-300"
+          >
+            {{ _('Outstanding') }}
+          </p>
+          <h3
+            class="text-2xl font-bold text-gray-800 dark:text-white mt-1 transition-colors duration-300"
+          >
+            $42,890
+          </h3>
+          <div class="mt-1 flex items-center">
+            <span
+              class="flex items-center text-xs font-medium text-amber-500 dark:text-amber-400 transition-colors duration-300"
+            >
+              <i class="fa-solid fa-clock mr-1"></i> 14
+            </span>
+            <span
+              class="text-xs text-gray-400 dark:text-gray-500 ml-1.5 transition-colors duration-300"
+              >{{ _('invoices pending') }}</span
+            >
+          </div>
+        </div>
+        <div
+          class="w-14 h-14 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 dark:from-amber-600 dark:to-amber-800 flex items-center justify-center shadow-md dark:shadow-amber-900/40 transition-all duration-300"
+        >
+          <i
+            class="fa-solid fa-file-invoice-dollar text-white text-xl transition-colors duration-300"
+          ></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overdue Invoices Card -->
+    <div
+      class="bg-gradient-to-br from-white to-rose-50 dark:from-gray-800 dark:to-rose-900/30 rounded-xl shadow-md dark:shadow-gray-900/30 p-5 border border-gray-100/80 dark:border-rose-800/20 transition-all duration-300 hover:shadow-lg dark:hover:shadow-rose-900/20 transform hover:-translate-y-1 hover:scale-[1.01]"
+    >
+      <div class="flex items-center justify-between">
+        <div>
+          <p
+            class="text-sm font-medium text-gray-500 dark:text-gray-300 transition-colors duration-300"
+          >
+            {{ _('Overdue') }}
+          </p>
+          <h3
+            class="text-2xl font-bold text-gray-800 dark:text-white mt-1 transition-colors duration-300"
+          >
+            $8,245
+          </h3>
+          <div class="mt-1 flex items-center">
+            <span
+              class="flex items-center text-xs font-medium text-rose-500 dark:text-rose-400 transition-colors duration-300"
+            >
+              <i class="fa-solid fa-exclamation-circle mr-1"></i> 5
+            </span>
+            <span
+              class="text-xs text-gray-400 dark:text-gray-500 ml-1.5 transition-colors duration-300"
+              >{{ _('invoices overdue') }}</span
+            >
+          </div>
+        </div>
+        <div
+          class="w-14 h-14 rounded-full bg-gradient-to-br from-rose-500 to-rose-600 dark:from-rose-600 dark:to-rose-800 flex items-center justify-center shadow-md dark:shadow-rose-900/40 transition-all duration-300"
+        >
+          <i
+            class="fa-solid fa-calendar-times text-white text-xl transition-colors duration-300"
+          ></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paid Invoices Card -->
+    <div
+      class="bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-blue-900/30 rounded-xl shadow-md dark:shadow-gray-900/30 p-5 border border-gray-100/80 dark:border-blue-800/20 transition-all duration-300 hover:shadow-lg dark:hover:shadow-blue-900/20 transform hover:-translate-y-1 hover:scale-[1.01]"
+    >
+      <div class="flex items-center justify-between">
+        <div>
+          <p
+            class="text-sm font-medium text-gray-500 dark:text-gray-300 transition-colors duration-300"
+          >
+            {{ _('Paid') }}
+          </p>
+          <h3
+            class="text-2xl font-bold text-gray-800 dark:text-white mt-1 transition-colors duration-300"
+          >
+            $77,297
+          </h3>
+          <div class="mt-1 flex items-center">
+            <span
+              class="flex items-center text-xs font-medium text-blue-500 dark:text-blue-400 transition-colors duration-300"
+            >
+              <i class="fa-solid fa-check-circle mr-1"></i> 32
+            </span>
+            <span
+              class="text-xs text-gray-400 dark:text-gray-500 ml-1.5 transition-colors duration-300"
+              >{{ _('invoices paid') }}</span
+            >
+          </div>
+        </div>
+        <div
+          class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 dark:from-blue-600 dark:to-blue-800 flex items-center justify-center shadow-md dark:shadow-blue-900/40 transition-all duration-300"
+        >
+          <i
+            class="fa-solid fa-check-double text-white text-xl transition-colors duration-300"
+          ></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Invoices Table -->
+  <div
+    class="bg-white dark:bg-gray-800 rounded-xl shadow-md dark:shadow-gray-900/30 overflow-hidden transition-all duration-300"
   >
-    <i class="fa-solid fa-file-invoice text-blue-500"></i>
-    {{ _('Invoices Section') }}
-  </h1>
-  <p class="text-gray-600 mb-6">
-    {{ _('This feature is coming soon. We\'re working hard to bring you an
-    improved invoices experience.') }}
-  </p>
-  <p class="text-gray-600">{{ _('Thank you for your patience!') }}</p>
+    <div
+      class="flex items-center justify-between p-6 border-b border-gray-100 dark:border-gray-700 transition-colors duration-300"
+    >
+      <h3
+        class="text-lg font-semibold text-gray-800 dark:text-white transition-colors duration-300"
+      >
+        {{ _('Recent Invoices') }}
+      </h3>
+      <div class="relative">
+        <div
+          class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+        >
+          <i
+            class="fa-solid fa-search text-gray-400 dark:text-gray-500 transition-colors duration-300"
+          ></i>
+        </div>
+        <input
+          type="text"
+          placeholder="{{ _('Search invoices...') }}"
+          class="pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-indigo-500 dark:focus:border-indigo-400 text-sm transition-colors duration-300"
+        />
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="overflow-x-auto">
+      <table
+        class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 transition-colors duration-300"
+      >
+        <thead
+          class="bg-gray-50 dark:bg-gray-700/50 transition-colors duration-300"
+        >
+          <tr>
+            <th
+              scope="col"
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors duration-300"
+            >
+              {{ _('Invoice') }}
+            </th>
+            <th
+              scope="col"
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors duration-300"
+            >
+              {{ _('Client') }}
+            </th>
+            <th
+              scope="col"
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors duration-300"
+            >
+              {{ _('Date') }}
+            </th>
+            <th
+              scope="col"
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors duration-300"
+            >
+              {{ _('Amount') }}
+            </th>
+            <th
+              scope="col"
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors duration-300"
+            >
+              {{ _('Status') }}
+            </th>
+            <th
+              scope="col"
+              class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors duration-300"
+            >
+              {{ _('Actions') }}
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700 transition-colors duration-300"
+        >
+          <!-- Invoice Row 1 -->
+          <tr
+            class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-300"
+          >
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div
+                class="text-sm font-medium text-indigo-600 dark:text-indigo-400 transition-colors duration-300"
+              >
+                #INV-2025-1042
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="flex items-center">
+                <div
+                  class="flex-shrink-0 h-8 w-8 rounded-md bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold transition-colors duration-300"
+                >
+                  AT
+                </div>
+                <div class="ml-3">
+                  <div
+                    class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300"
+                  >
+                    Atlas Technologies
+                  </div>
+                  <div
+                    class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300"
+                  >
+                    billing@atlastech.com
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div
+                class="text-sm text-gray-800 dark:text-white transition-colors duration-300"
+              >
+                May 18, 2025
+              </div>
+              <div
+                class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300"
+              >
+                Due in 7 days
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div
+                class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300"
+              >
+                $12,450.00
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <span
+                class="px-2.5 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-200 transition-colors duration-300"
+              >
+                {{ _('Pending') }}
+              </span>
+            </td>
+            <td
+              class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+            >
+              <div class="flex items-center justify-end space-x-3">
+                <button
+                  class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-300"
+                >
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+                <button
+                  class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300"
+                >
+                  <i class="fa-solid fa-print"></i>
+                </button>
+                <button
+                  class="text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors duration-300"
+                >
+                  <i class="fa-solid fa-dollar-sign"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Invoice Row 2 -->
+          <tr
+            class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-300"
+          >
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div
+                class="text-sm font-medium text-indigo-600 dark:text-indigo-400 transition-colors duration-300"
+              >
+                #INV-2025-1041
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="flex items-center">
+                <div
+                  class="flex-shrink-0 h-8 w-8 rounded-md bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 font-bold transition-colors duration-300"
+                >
+                  HL
+                </div>
+                <div class="ml-3">
+                  <div
+                    class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300"
+                  >
+                    Horizon Labs
+                  </div>
+                  <div
+                    class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300"
+                  >
+                    finance@horizon.co
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div
+                class="text-sm text-gray-800 dark:text-white transition-colors duration-300"
+              >
+                May 15, 2025
+              </div>
+              <div
+                class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300"
+              >
+                Due in 4 days
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div
+                class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300"
+              >
+                $8,740.00
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <span
+                class="px-2.5 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-200 transition-colors duration-300"
+              >
+                {{ _('Partially Paid') }}
+              </span>
+            </td>
+            <td
+              class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+            >
+              <div class="flex items-center justify-end space-x-3">
+                <button
+                  class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-300"
+                >
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+                <button
+                  class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300"
+                >
+                  <i class="fa-solid fa-print"></i>
+                </button>
+                <button
+                  class="text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors duration-300"
+                >
+                  <i class="fa-solid fa-dollar-sign"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Invoice Row 3 -->
+          <tr
+            class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-300"
+          >
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div
+                class="text-sm font-medium text-indigo-600 dark:text-indigo-400 transition-colors duration-300"
+              >
+                #INV-2025-1040
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="flex items-center">
+                <div
+                  class="flex-shrink-0 h-8 w-8 rounded-md bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 font-bold transition-colors duration-300"
+                >
+                  QC
+                </div>
+                <div class="ml-3">
+                  <div
+                    class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300"
+                  >
+                    Quantum Cybernetics
+                  </div>
+                  <div
+                    class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300"
+                  >
+                    accounts@quantum-cyber.net
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div
+                class="text-sm text-gray-800 dark:text-white transition-colors duration-300"
+              >
+                May 10, 2025
+              </div>
+              <div
+                class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300"
+              >
+                Due: May 24, 2025
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div
+                class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300"
+              >
+                $17,320.00
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <span
+                class="px-2.5 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 dark:bg-green-900/60 text-green-800 dark:text-green-200 transition-colors duration-300"
+              >
+                {{ _('Paid') }}
+              </span>
+            </td>
+            <td
+              class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+            >
+              <div class="flex items-center justify-end space-x-3">
+                <button
+                  class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-300"
+                >
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+                <button
+                  class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300"
+                >
+                  <i class="fa-solid fa-print"></i>
+                </button>
+                <button
+                  class="text-gray-400 dark:text-gray-500 cursor-not-allowed transition-colors duration-300"
+                >
+                  <i class="fa-solid fa-dollar-sign"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Invoice Row 4 -->
+          <tr
+            class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-300"
+          >
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div
+                class="text-sm font-medium text-indigo-600 dark:text-indigo-400 transition-colors duration-300"
+              >
+                #INV-2025-1039
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="flex items-center">
+                <div
+                  class="flex-shrink-0 h-8 w-8 rounded-md bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 font-bold transition-colors duration-300"
+                >
+                  NA
+                </div>
+                <div class="ml-3">
+                  <div
+                    class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300"
+                  >
+                    NovaTech Associates
+                  </div>
+                  <div
+                    class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300"
+                  >
+                    payments@novatech.com
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div
+                class="text-sm text-gray-800 dark:text-white transition-colors duration-300"
+              >
+                May 02, 2025
+              </div>
+              <div
+                class="text-xs text-red-500 dark:text-red-400 font-medium transition-colors duration-300"
+              >
+                Overdue by 5 days
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div
+                class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300"
+              >
+                $5,890.00
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <span
+                class="px-2.5 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 dark:bg-red-900/60 text-red-800 dark:text-red-200 transition-colors duration-300"
+              >
+                {{ _('Overdue') }}
+              </span>
+            </td>
+            <td
+              class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+            >
+              <div class="flex items-center justify-end space-x-3">
+                <button
+                  class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-300"
+                >
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+                <button
+                  class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300"
+                >
+                  <i class="fa-solid fa-print"></i>
+                </button>
+                <button
+                  class="text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors duration-300"
+                >
+                  <i class="fa-solid fa-dollar-sign"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Invoice Row 5 -->
+          <tr
+            class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-300"
+          >
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div
+                class="text-sm font-medium text-indigo-600 dark:text-indigo-400 transition-colors duration-300"
+              >
+                #INV-2025-1038
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="flex items-center">
+                <div
+                  class="flex-shrink-0 h-8 w-8 rounded-md bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 dark:text-amber-400 font-bold transition-colors duration-300"
+                >
+                  SD
+                </div>
+                <div class="ml-3">
+                  <div
+                    class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300"
+                  >
+                    StellarDyne Industries
+                  </div>
+                  <div
+                    class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300"
+                  >
+                    accounting@stellardyne.org
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div
+                class="text-sm text-gray-800 dark:text-white transition-colors duration-300"
+              >
+                April 28, 2025
+              </div>
+              <div
+                class="text-xs text-red-500 dark:text-red-400 font-medium transition-colors duration-300"
+              >
+                Overdue by 9 days
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div
+                class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300"
+              >
+                $2,355.00
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <span
+                class="px-2.5 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 dark:bg-red-900/60 text-red-800 dark:text-red-200 transition-colors duration-300"
+              >
+                {{ _('Overdue') }}
+              </span>
+            </td>
+            <td
+              class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+            >
+              <div class="flex items-center justify-end space-x-3">
+                <button
+                  class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-300"
+                >
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+                <button
+                  class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300"
+                >
+                  <i class="fa-solid fa-print"></i>
+                </button>
+                <button
+                  class="text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors duration-300"
+                >
+                  <i class="fa-solid fa-dollar-sign"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div
+      class="px-6 py-4 bg-gray-50 dark:bg-gray-700/20 border-t border-gray-100 dark:border-gray-700 flex items-center justify-between transition-colors duration-300"
+    >
+      <div
+        class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300"
+      >
+        {{ _('Showing 5 of 32 invoices') }}
+      </div>
+      <div class="flex items-center space-x-2">
+        <button
+          class="inline-flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors duration-300"
+        >
+          <i class="fa-solid fa-chevron-left mr-1 text-xs"></i>
+          {{ _('Previous') }}
+        </button>
+        <button
+          class="inline-flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors duration-300"
+        >
+          {{ _('Next') }}
+          <i class="fa-solid fa-chevron-right ml-1 text-xs"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment & Invoice Summary -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
+    <!-- Payment Methods -->
+    <div
+      class="lg:col-span-1 bg-white dark:bg-gray-800 rounded-xl shadow-md dark:shadow-gray-900/30 overflow-hidden transition-all duration-300"
+    >
+      <div
+        class="flex items-center justify-between p-6 border-b border-gray-100 dark:border-gray-700 transition-colors duration-300"
+      >
+        <h3
+          class="text-lg font-semibold text-gray-800 dark:text-white transition-colors duration-300"
+        >
+          {{ _('Payment Methods') }}
+        </h3>
+        <div
+          class="bg-indigo-100 dark:bg-indigo-900/60 text-indigo-800 dark:text-indigo-200 p-2 rounded-md transition-colors duration-300"
+        >
+          <i class="fa-solid fa-credit-card"></i>
+        </div>
+      </div>
+
+      <div class="p-6 space-y-4">
+        <!-- Payment Method 1 -->
+        <div
+          class="bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 rounded-lg p-4 shadow-md dark:shadow-blue-900/20 relative overflow-hidden"
+        >
+          <div
+            class="absolute top-0 right-0 w-32 h-32 rounded-full bg-white/10 -mt-8 -mr-8"
+          ></div>
+          <div
+            class="absolute bottom-0 left-0 w-24 h-24 rounded-full bg-white/10 -mb-6 -ml-6"
+          ></div>
+
+          <div class="flex items-center justify-between mb-6 relative z-10">
+            <div class="text-white text-sm font-medium">
+              {{ _('Corporate Credit Card') }}
+            </div>
+            <i class="fa-brands fa-cc-visa text-white text-2xl"></i>
+          </div>
+
+          <div
+            class="text-white/90 mb-6 text-lg tracking-wider font-medium relative z-10"
+          >
+            •••• •••• •••• 4242
+          </div>
+
+          <div
+            class="flex items-center justify-between text-white/80 text-sm relative z-10"
+          >
+            <div>{{ _('John Doe') }}</div>
+            <div>{{ _('Expires') }}: 05/28</div>
+          </div>
+        </div>
+
+        <!-- Payment Method 2 -->
+        <div
+          class="bg-gradient-to-r from-slate-700 to-slate-800 dark:from-slate-800 dark:to-slate-900 rounded-lg p-4 shadow-md relative overflow-hidden"
+        >
+          <div
+            class="absolute top-0 right-0 w-32 h-32 rounded-full bg-white/5 -mt-8 -mr-8"
+          ></div>
+          <div
+            class="absolute bottom-0 left-0 w-24 h-24 rounded-full bg-white/5 -mb-6 -ml-6"
+          ></div>
+
+          <div class="flex items-center justify-between mb-6 relative z-10">
+            <div class="text-white text-sm font-medium">
+              {{ _('Business Debit Card') }}
+            </div>
+            <i class="fa-brands fa-cc-mastercard text-white text-2xl"></i>
+          </div>
+
+          <div
+            class="text-white/90 mb-6 text-lg tracking-wider font-medium relative z-10"
+          >
+            •••• •••• •••• 8890
+          </div>
+
+          <div
+            class="flex items-center justify-between text-white/80 text-sm relative z-10"
+          >
+            <div>{{ _('John Doe') }}</div>
+            <div>{{ _('Expires') }}: 09/27</div>
+          </div>
+        </div>
+
+        <!-- Add Method Button -->
+        <button
+          class="w-full flex items-center justify-center p-3 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-500 dark:hover:border-indigo-500 transition-colors duration-300"
+        >
+          <i class="fa-solid fa-plus mr-2"></i>
+          {{ _('Add Payment Method') }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Monthly Summary Chart -->
+    <div
+      class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-xl shadow-md dark:shadow-gray-900/30 overflow-hidden transition-all duration-300"
+    >
+      <div
+        class="flex items-center justify-between p-6 border-b border-gray-100 dark:border-gray-700 transition-colors duration-300"
+      >
+        <h3
+          class="text-lg font-semibold text-gray-800 dark:text-white transition-colors duration-300"
+        >
+          {{ _('Monthly Summary') }}
+        </h3>
+        <div class="flex items-center space-x-2">
+          <button
+            class="px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/60 text-indigo-800 dark:text-indigo-200 text-sm font-medium transition-colors duration-300 selected-tab"
+          >
+            {{ _('Revenue') }}
+          </button>
+          <button
+            class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-indigo-100 hover:text-indigo-800 dark:hover:bg-indigo-900/60 dark:hover:text-indigo-200 text-sm font-medium transition-colors duration-300"
+          >
+            {{ _('Invoices') }}
+          </button>
+        </div>
+      </div>
+
+      <div class="p-6">
+        <!-- Chart with gradient fill -->
+        <div
+          class="bg-gradient-to-b from-gray-50 to-white dark:from-gray-700/30 dark:to-gray-800 rounded-lg p-4 h-80 flex items-center justify-center transition-colors duration-300"
+        >
+          <canvas id="revenue-chart" class="w-full h-full"></canvas>
+        </div>
+
+        <!-- Stats below chart -->
+        <div class="grid grid-cols-3 gap-4 mt-6">
+          <div
+            class="bg-gradient-to-br from-white to-indigo-50 dark:from-gray-800 dark:to-indigo-900/10 rounded-lg p-4 border border-indigo-100/30 dark:border-indigo-800/20 transition-colors duration-300"
+          >
+            <p
+              class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300"
+            >
+              {{ _('Average Invoice') }}
+            </p>
+            <p
+              class="text-xl font-bold text-gray-800 dark:text-white mt-1 transition-colors duration-300"
+            >
+              $4,120
+            </p>
+          </div>
+
+          <div
+            class="bg-gradient-to-br from-white to-green-50 dark:from-gray-800 dark:to-green-900/10 rounded-lg p-4 border border-green-100/30 dark:border-green-800/20 transition-colors duration-300"
+          >
+            <p
+              class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300"
+            >
+              {{ _('Collection Rate') }}
+            </p>
+            <p
+              class="text-xl font-bold text-gray-800 dark:text-white mt-1 transition-colors duration-300"
+            >
+              78.5%
+            </p>
+          </div>
+
+          <div
+            class="bg-gradient-to-br from-white to-amber-50 dark:from-gray-800 dark:to-amber-900/10 rounded-lg p-4 border border-amber-100/30 dark:border-amber-800/20 transition-colors duration-300"
+          >
+            <p
+              class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300"
+            >
+              {{ _('Payment Time') }}
+            </p>
+            <p
+              class="text-xl font-bold text-gray-800 dark:text-white mt-1 transition-colors duration-300"
+            >
+              12.4% {{ _('days') }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+  // Add smooth transition on hover for all card elements
+  document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".grid > div");
+    cards.forEach((card) => {
+      card.addEventListener("mouseenter", function () {
+        this.style.transition = "all 0.3s ease";
+      });
+      card.addEventListener("mouseleave", function () {
+        this.style.transition = "all 0.3s ease";
+      });
+    });
+  });
+</script>
+
 {% endblock %}

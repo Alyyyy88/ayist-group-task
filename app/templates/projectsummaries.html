@@ -1,16 +1,16 @@
-<div class="mt-4 bg-white rounded-lg shadow-lg p-6 md:col-span-3">
-      <h2 class="text-xl font-semibold mb-4">{{ _('Project Summaries') }}</h2>
+<div class="mt-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-gray-900/30 p-6 md:col-span-3 transition-all duration-300">
+      <h2 class="text-xl font-semibold mb-4 text-gray-800 dark:text-white transition-colors duration-300">{{ _('Project Summaries') }}</h2>
 
       <div class="mb-6 flex flex-wrap justify-between items-center gap-4">
         <div class="w-full md:w-1/3">
           <label
             for="sortProjects"
-            class="block text-sm font-medium text-gray-700"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300"
             >{{ _('Sort by') }}</label
           >
           <select
             id="sortProjects"
-            class="mt-1 block w-full pl-3 cursor-pointer pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md shadow-sm"
+            class="mt-1 block w-full pl-3 cursor-pointer pr-10 py-2 text-base border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-indigo-500 dark:focus:border-indigo-400 sm:text-sm rounded-md shadow-sm dark:shadow-gray-900/10 transition-colors duration-300"
             onchange="sortProjects()"
           >
             <option value="name">{{ _('Name') }}</option>
@@ -24,12 +24,12 @@
             <div
               class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
             >
-              <i class="fa-solid fa-search text-gray-400"></i>
+              <i class="fa-solid fa-search text-gray-400 dark:text-gray-500 transition-colors duration-300"></i>
             </div>
             <input
               type="text"
               id="searchProjects"
-              class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-2"
+              class="focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-indigo-500 dark:focus:border-indigo-400 block w-full pl-10 sm:text-sm border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-md py-2 transition-colors duration-300"
               placeholder="{{ _('Search projects...') }}"
               onkeyup="filterProjects()"
             />
@@ -43,61 +43,72 @@
       >
         {% for project in get_projects() %}
         <div
-          class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
+          class="bg-white dark:bg-gray-700 rounded-lg shadow-md dark:shadow-gray-900/20 p-6 hover:shadow-lg dark:hover:shadow-gray-900/40 transition-all duration-300"
           data-name="{{ project.name }}"
           data-status="{{ project.status }}"
           data-progress="{{ project.progress }}"
         >
           <div class="flex justify-between items-start">
-            <h3 class="text-lg font-semibold mb-2">{{ project.name }}</h3>
+            <h3 class="text-lg font-semibold mb-2 text-gray-800 dark:text-white transition-colors duration-300">{{ project.name }}</h3>
             <span
-              class="text-xs px-2 py-1 rounded-full {% if project.status == 'Completed' or project.status == 'Ukończony' %}bg-green-100 text-green-800 {% elif project.status == 'In Progress' or project.status == 'W trakcie' %}bg-blue-100 text-blue-800 {% elif project.status == 'On Hold' or project.status == 'Wstrzymany' %}bg-yellow-100 text-yellow-800 {% else %}bg-gray-100 text-gray-800{% endif %}"
+              class="text-xs px-2 py-1 rounded-full 
+              {% if project.status == 'Completed' or project.status == 'Ukończony' %}
+                bg-green-100 dark:bg-green-800/50 text-green-800 dark:text-green-200 
+              {% elif project.status == 'In Progress' or project.status == 'W trakcie' %}
+                bg-blue-100 dark:bg-blue-800/50 text-blue-800 dark:text-blue-200 
+              {% elif project.status == 'On Hold' or project.status == 'Wstrzymany' %}
+                bg-yellow-100 dark:bg-yellow-800/50 text-yellow-800 dark:text-yellow-200 
+              {% else %}
+                bg-gray-100 dark:bg-gray-600 text-gray-800 dark:text-gray-200
+              {% endif %} transition-colors duration-300"
             >
               {{ project.status }}
             </span>
           </div>
-          <p class="text-sm text-gray-500 mb-4">
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 transition-colors duration-300">
             {{ _('Client') }}:
-            <span class="font-medium">{{ project.client }}</span>
+            <span class="font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">{{ project.client }}</span>
           </p>
           <div class="mt-4">
             <div class="flex justify-between items-center mb-1">
-              <span class="text-xs font-medium text-gray-700"
+              <span class="text-xs font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300"
                 >{{ _('Progress') }}</span
               >
-              <span class="text-xs font-medium text-gray-700"
+              <span class="text-xs font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300"
                 >{{ project.progress }}%</span
               >
             </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5 transition-colors duration-300">
               <div
-                class="{% if project.progress >= 80 %}bg-green-600{% elif project.progress >= 40 %}bg-blue-600{% else %}bg-yellow-600{% endif %} h-2.5 rounded-full transition-all duration-500"
+                class="{% if project.progress >= 80 %}bg-green-600 dark:bg-green-500{% elif project.progress >= 40 %}bg-blue-600 dark:bg-blue-500{% else %}bg-yellow-600 dark:bg-yellow-500{% endif %} h-2.5 rounded-full transition-all duration-500"
                 style="width: {{ project.progress }}%"
               ></div>
             </div>
           </div>
           <div
-            class="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center"
+            class="mt-4 pt-4 border-t border-gray-100 dark:border-gray-600 flex justify-between items-center transition-colors duration-300"
           >
             <button
-              class="text-xs text-indigo-600 hover:text-indigo-800 font-medium cursor-pointer"
+              class="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium cursor-pointer transition-colors duration-300"
             >
               {{ _('View Details') }}
             </button>
             <div class="flex -space-x-2">
               <div
-                class="w-6 h-6 rounded-full bg-gray-300 flex items-center justify-center text-xs text-white"
+                class="w-6 h-6 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center text-xs text-white transition-colors duration-300"
               >
                 <i class="fa-solid fa-user"></i>
               </div>
               <div
-                class="w-6 h-6 rounded-full bg-indigo-500 flex items-center justify-center text-xs text-white"
+                class="w-6 h-6 rounded-full bg-indigo-500 dark:bg-indigo-600 flex items-center justify-center text-xs text-white cursor-pointer transition-colors duration-300"
               >
-                <i class="fa-solid fa-plus cursor-pointer"></i>
+                <i class="fa-solid fa-plus"></i>
               </div>
             </div>
           </div>
         </div>
         {% endfor %}
       </div>
+
+      
     </div>

@@ -1,0 +1,783 @@
+{% extends "layout.html" %} {% block title %}Superadmin Panel{% endblock %} {% block content %}
+<div class="container mx-auto px-4 py-8">
+  <!-- Breadcrumb Navigation -->
+  <div class="flex items-center mb-6 text-sm">
+    <a href="{{ url_for('dashboard') }}" class="text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">
+      {{ _('Dashboard') }}
+    </a>
+    <span class="mx-2 text-gray-400 dark:text-gray-500 transition-colors duration-300">
+      <i class="fa-solid fa-chevron-right"></i>
+    </span>
+    <span class="text-gray-900 dark:text-gray-200 transition-colors duration-300">
+      {{ _('Superadmin') }}
+    </span>
+  </div>
+
+  <!-- Header Section -->
+  <div class="flex flex-wrap items-center justify-between mb-6">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-800 dark:text-white transition-colors duration-300">
+        {{ _('Superadmin Control Panel') }}
+      </h1>
+      <p class="text-gray-500 dark:text-gray-400 transition-colors duration-300">
+        {{ _('Manage companies, monitor system metrics, and control platform operations') }}
+      </p>
+    </div>
+    <div class="flex mt-4 sm:mt-0">
+      <button
+        class="bg-gradient-to-r from-indigo-600 to-indigo-700 dark:from-indigo-500 dark:to-indigo-600 hover:from-indigo-700 hover:to-indigo-800 dark:hover:from-indigo-600 dark:hover:to-indigo-700 text-white font-medium py-2 px-4 rounded-md shadow-sm dark:shadow-gray-900/30 flex items-center gap-2 transition-all duration-300"
+      >
+        <i class="fa-solid fa-download"></i>
+        {{ _('Export Data') }}
+      </button>
+    </div>
+  </div>
+
+  <!-- System Overview Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+  <!-- Total Companies Card -->
+  <div class="bg-gradient-to-br from-white to-indigo-50 dark:from-gray-800 dark:to-indigo-900/30 rounded-xl shadow-md dark:shadow-gray-900/30 p-5 border border-gray-100/80 dark:border-indigo-800/20 transition-all duration-300 hover:shadow-lg dark:hover:shadow-indigo-900/20 transform hover:-translate-y-1 hover:scale-[1.01]">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-sm font-medium text-gray-500 dark:text-gray-300 transition-colors duration-300">{{ _('Total Companies') }}</p>
+        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mt-1 transition-colors duration-300">156</h3>
+        <div class="mt-1 flex items-center">
+          <span class="flex items-center text-xs font-medium text-green-500 dark:text-green-400 transition-colors duration-300">
+            <i class="fa-solid fa-arrow-up mr-1"></i> +12%
+          </span>
+          <span class="text-xs text-gray-400 dark:text-gray-500 ml-1.5 transition-colors duration-300">{{ _('this month') }}</span>
+        </div>
+      </div>
+      <div class="w-14 h-14 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-600 dark:from-indigo-600 dark:to-indigo-800 flex items-center justify-center shadow-md dark:shadow-indigo-900/40 transition-all duration-300">
+        <i class="fa-solid fa-building text-white text-xl transition-colors duration-300"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Total Users Card -->
+  <div class="bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-blue-900/30 rounded-xl shadow-md dark:shadow-gray-900/30 p-5 border border-gray-100/80 dark:border-blue-800/20 transition-all duration-300 hover:shadow-lg dark:hover:shadow-blue-900/20 transform hover:-translate-y-1 hover:scale-[1.01]">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-sm font-medium text-gray-500 dark:text-gray-300 transition-colors duration-300">{{ _('Total Users') }}</p>
+        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mt-1 transition-colors duration-300">3,254</h3>
+        <div class="mt-1 flex items-center">
+          <span class="flex items-center text-xs font-medium text-green-500 dark:text-green-400 transition-colors duration-300">
+            <i class="fa-solid fa-arrow-up mr-1"></i> +8%
+          </span>
+          <span class="text-xs text-gray-400 dark:text-gray-500 ml-1.5 transition-colors duration-300">{{ _('this month') }}</span>
+        </div>
+      </div>
+      <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 dark:from-blue-600 dark:to-blue-800 flex items-center justify-center shadow-md dark:shadow-blue-900/40 transition-all duration-300">
+        <i class="fa-solid fa-users text-white text-xl transition-colors duration-300"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Storage Usage Card -->
+  <div class="bg-gradient-to-br from-white to-purple-50 dark:from-gray-800 dark:to-purple-900/30 rounded-xl shadow-md dark:shadow-gray-900/30 p-5 border border-gray-100/80 dark:border-purple-800/20 transition-all duration-300 hover:shadow-lg dark:hover:shadow-purple-900/20 transform hover:-translate-y-1 hover:scale-[1.01]">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-sm font-medium text-gray-500 dark:text-gray-300 transition-colors duration-300">{{ _('Storage Used') }}</p>
+        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mt-1 transition-colors duration-300">8.7 TB</h3>
+        <div class="flex items-center gap-2 mt-2">
+          <div class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden transition-colors duration-300">
+            <div class="h-2 bg-gradient-to-r from-purple-500 to-purple-600 dark:from-purple-500 dark:to-purple-400 rounded-full transition-colors duration-300" style="width: 72%"></div>
+          </div>
+          <span class="text-xs font-medium text-purple-600 dark:text-purple-300 whitespace-nowrap transition-colors duration-300">72%</span>
+        </div>
+      </div>
+      <div class="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 dark:from-purple-600 dark:to-purple-800 flex items-center justify-center shadow-md dark:shadow-purple-900/40 transition-all duration-300">
+        <i class="fa-solid fa-database text-white text-xl transition-colors duration-300"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- System Status Card -->
+  <div class="bg-gradient-to-br from-white to-green-50 dark:from-gray-800 dark:to-green-900/30 rounded-xl shadow-md dark:shadow-gray-900/30 p-5 border border-gray-100/80 dark:border-green-800/20 transition-all duration-300 hover:shadow-lg dark:hover:shadow-green-900/20 transform hover:-translate-y-1 hover:scale-[1.01]">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-sm font-medium text-gray-500 dark:text-gray-300 transition-colors duration-300">{{ _('System Status') }}</p>
+        <h3 class="flex items-center text-lg font-bold text-gray-800 dark:text-white mt-1 transition-colors duration-300">
+          <span class="inline-flex w-3 h-3 bg-gradient-to-r from-green-400 to-green-500 dark:from-green-500 dark:to-green-400 rounded-full mr-2 animate-pulse"></span>
+          {{ _('Operational') }}
+        </h3>
+        <div class="flex items-center mt-1">
+          <p class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">
+            {{ _('Last check') }}: <span class="font-medium text-gray-600 dark:text-gray-300">15</span> {{ _('min ago') }}
+          </p>
+        </div>
+      </div>
+      <div class="w-14 h-14 rounded-full bg-gradient-to-br from-green-500 to-green-600 dark:from-green-600 dark:to-green-800 flex items-center justify-center shadow-md dark:shadow-green-900/40 transition-all duration-300">
+        <i class="fa-solid fa-server text-white text-xl transition-colors duration-300"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- Main Content -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Companies List -->
+    <div class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-xl shadow-md dark:shadow-gray-900/30 overflow-hidden transition-all duration-300">
+      <div class="flex items-center justify-between p-6 border-b border-gray-100 dark:border-gray-700 transition-colors duration-300">
+        <h2 class="text-lg font-semibold text-gray-800 dark:text-white transition-colors duration-300">
+          {{ _('Registered Companies') }}
+        </h2>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <i class="fa-solid fa-search text-gray-400 dark:text-gray-500 transition-colors duration-300"></i>
+          </div>
+          <input
+            type="text"
+            placeholder="{{ _('Search companies...') }}"
+            class="pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-indigo-500 dark:focus:border-indigo-400 text-sm transition-colors duration-300"
+          />
+        </div>
+      </div>
+
+      <!-- Companies Table -->
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 transition-colors duration-300">
+          <thead class="bg-gray-50 dark:bg-gray-700/50 transition-colors duration-300">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors duration-300">
+                {{ _('Company') }}
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors duration-300">
+                {{ _('Users') }}
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors duration-300">
+                {{ _('Plan') }}
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors duration-300">
+                {{ _('Status') }}
+              </th>
+              <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors duration-300">
+                {{ _('Actions') }}
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700 transition-colors duration-300">
+            <!-- Company Row 1 -->
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-300">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10 rounded-md bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 font-bold transition-colors duration-300">
+                    AC
+                  </div>
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300">Acme Corporation</div>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">acme@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-800 dark:text-white transition-colors duration-300">125</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm font-medium">
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-indigo-100 dark:bg-indigo-900/60 text-indigo-800 dark:text-indigo-200 transition-colors duration-300">
+                    Enterprise
+                  </span>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 dark:bg-green-900/60 text-green-800 dark:text-green-200 transition-colors duration-300">
+                  Active
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <div class="flex items-center justify-end space-x-2">
+                  <button class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-300">
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                  <button class="text-yellow-600 dark:text-yellow-400 hover:text-yellow-800 dark:hover:text-yellow-300 transition-colors duration-300">
+                    <i class="fa-solid fa-edit"></i>
+                  </button>
+                  <button class="suspend-btn text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 transition-colors duration-300" data-company="acme">
+                    <i class="fa-solid fa-ban"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Company Row 2 -->
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-300">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10 rounded-md bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold transition-colors duration-300">
+                    GL
+                  </div>
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300">Global Tech Inc.</div>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">contact@globaltech.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-800 dark:text-white transition-colors duration-300">87</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm font-medium">
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-200 transition-colors duration-300">
+                    Premium
+                  </span>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 dark:bg-green-900/60 text-green-800 dark:text-green-200 transition-colors duration-300">
+                  Active
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <div class="flex items-center justify-end space-x-2">
+                  <button class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-300">
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                  <button class="text-yellow-600 dark:text-yellow-400 hover:text-yellow-800 dark:hover:text-yellow-300 transition-colors duration-300">
+                    <i class="fa-solid fa-edit"></i>
+                  </button>
+                  <button class="suspend-btn text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 transition-colors duration-300" data-company="globaltech">
+                    <i class="fa-solid fa-ban"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Company Row 3 -->
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-300">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10 rounded-md bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 font-bold transition-colors duration-300">
+                    NS
+                  </div>
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300">NextStep Solutions</div>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">info@nextstep.io</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-800 dark:text-white transition-colors duration-300">62</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm font-medium">
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-200 transition-colors duration-300">
+                    Premium
+                  </span>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 dark:bg-red-900/60 text-red-800 dark:text-red-200 transition-colors duration-300">
+                  Suspended
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <div class="flex items-center justify-end space-x-2">
+                  <button class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-300">
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                  <button class="text-yellow-600 dark:text-yellow-400 hover:text-yellow-800 dark:hover:text-yellow-300 transition-colors duration-300">
+                    <i class="fa-solid fa-edit"></i>
+                  </button>
+                  <button class="reactivate-btn text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors duration-300" data-company="nextstep">
+                    <i class="fa-solid fa-check-circle"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Company Row 4 -->
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-300">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10 rounded-md bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 font-bold transition-colors duration-300">
+                    FT
+                  </div>
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300">Frontier Tech Labs</div>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">hello@frontiertechlabs.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-800 dark:text-white transition-colors duration-300">42</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm font-medium">
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 dark:bg-green-900/60 text-green-800 dark:text-green-200 transition-colors duration-300">
+                    Standard
+                  </span>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 dark:bg-green-900/60 text-green-800 dark:text-green-200 transition-colors duration-300">
+                  Active
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <div class="flex items-center justify-end space-x-2">
+                  <button class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-300">
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                  <button class="text-yellow-600 dark:text-yellow-400 hover:text-yellow-800 dark:hover:text-yellow-300 transition-colors duration-300">
+                    <i class="fa-solid fa-edit"></i>
+                  </button>
+                  <button class="suspend-btn text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 transition-colors duration-300" data-company="frontier">
+                    <i class="fa-solid fa-ban"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Company Row 5 -->
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-300">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10 rounded-md bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center text-yellow-600 dark:text-yellow-400 font-bold transition-colors duration-300">
+                    SL
+                  </div>
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300">Sunshine Logistics</div>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">support@sunshine-logistics.net</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-800 dark:text-white transition-colors duration-300">31</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm font-medium">
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 dark:bg-green-900/60 text-green-800 dark:text-green-200 transition-colors duration-300">
+                    Standard
+                  </span>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 dark:bg-yellow-900/60 text-yellow-800 dark:text-yellow-200 transition-colors duration-300">
+                  Pending
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <div class="flex items-center justify-end space-x-2">
+                  <button class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-300">
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                  <button class="text-yellow-600 dark:text-yellow-400 hover:text-yellow-800 dark:hover:text-yellow-300 transition-colors duration-300">
+                    <i class="fa-solid fa-edit"></i>
+                  </button>
+                  <button class="approve-btn text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors duration-300" data-company="sunshine">
+                    <i class="fa-solid fa-check-circle"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="px-6 py-4 bg-gray-50 dark:bg-gray-700/20 border-t border-gray-100 dark:border-gray-700 transition-colors duration-300">
+        <div class="flex items-center justify-between">
+          <div class="flex-1 flex justify-between sm:hidden">
+            <button class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors duration-300">
+              {{ _('Previous') }}
+            </button>
+            <button class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors duration-300">
+              {{ _('Next') }}
+            </button>
+          </div>
+          <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+            <div>
+              <p class="text-sm text-gray-700 dark:text-gray-300 transition-colors duration-300">
+                {{ _('Showing') }}
+                <span class="font-medium">1</span>
+                {{ _('to') }}
+                <span class="font-medium">5</span>
+                {{ _('of') }}
+                <span class="font-medium">156</span>
+                {{ _('results') }}
+              </p>
+            </div>
+            <div>
+              <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                <button class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors duration-300">
+                  <span class="sr-only">{{ _('Previous') }}</span>
+                  <i class="fa-solid fa-chevron-left h-5 w-5"></i>
+                </button>
+                <button aria-current="page" class="z-10 bg-indigo-50 dark:bg-indigo-900/30 border-indigo-500 dark:border-indigo-500 text-indigo-600 dark:text-indigo-200 relative inline-flex items-center px-4 py-2 border text-sm font-medium transition-colors duration-300">
+                  1
+                </button>
+                <button class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors duration-300">
+                  2
+                </button>
+                <button class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors duration-300">
+                  3
+                </button>
+                <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm font-medium text-gray-700 dark:text-gray-200 transition-colors duration-300">
+                  ...
+                </span>
+                <button class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors duration-300">
+                  32
+                </button>
+                <button class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors duration-300">
+                  <span class="sr-only">{{ _('Next') }}</span>
+                  <i class="fa-solid fa-chevron-right h-5 w-5"></i>
+                </button>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column - System Health & Analytics -->
+    <div class="space-y-6">
+      <!-- System Health Card -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md dark:shadow-gray-900/30 overflow-hidden transition-all duration-300">
+        <div class="flex items-center justify-between p-6 border-b border-gray-100 dark:border-gray-700 transition-colors duration-300">
+          <h2 class="text-lg font-semibold text-gray-800 dark:text-white transition-colors duration-300">
+            {{ _('System Health') }}
+          </h2>
+          <div class="bg-indigo-100 dark:bg-indigo-900/60 text-indigo-800 dark:text-indigo-200 p-2 rounded-md transition-colors duration-300">
+            <i class="fa-solid fa-heartbeat"></i>
+          </div>
+        </div>
+
+        <div class="p-6">
+          <!-- CPU Usage -->
+          <div class="mb-4">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">{{ _('CPU Usage') }}</span>
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">42%</span>
+            </div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 transition-colors duration-300">
+              <div class="bg-blue-600 dark:bg-blue-500 h-2 rounded-full transition-colors duration-300" style="width: 42%"></div>
+            </div>
+          </div>
+
+          <!-- Memory Usage -->
+          <div class="mb-4">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">{{ _('Memory Usage') }}</span>
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">68%</span>
+            </div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 transition-colors duration-300">
+              <div class="bg-purple-600 dark:bg-purple-500 h-2 rounded-full transition-colors duration-300" style="width: 68%"></div>
+            </div>
+          </div>
+
+          <!-- Disk I/O -->
+          <div class="mb-4">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">{{ _('Disk I/O') }}</span>
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">35%</span>
+            </div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 transition-colors duration-300">
+              <div class="bg-green-600 dark:bg-green-500 h-2 rounded-full transition-colors duration-300" style="width: 35%"></div>
+            </div>
+          </div>
+
+          <!-- Network Traffic -->
+          <div class="mb-6">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">{{ _('Network Traffic') }}</span>
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">85%</span>
+            </div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 transition-colors duration-300">
+              <div class="bg-yellow-600 dark:bg-yellow-500 h-2 rounded-full transition-colors duration-300" style="width: 85%"></div>
+            </div>
+          </div>
+
+          <!-- System Uptime -->
+          <div class="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-4 flex items-center justify-between border border-indigo-100 dark:border-indigo-800/30 transition-colors duration-300">
+            <div>
+              <p class="text-sm font-medium text-indigo-800 dark:text-indigo-200 transition-colors duration-300">{{ _('System Uptime') }}</p>
+              <p class="text-2xl font-bold text-indigo-900 dark:text-indigo-100 transition-colors duration-300">99.98%</p>
+            </div>
+            <div class="text-indigo-500 dark:text-indigo-300 transition-colors duration-300">
+              <i class="fa-solid fa-clock text-3xl"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activity Card -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md dark:shadow-gray-900/30 overflow-hidden transition-all duration-300">
+        <div class="flex items-center justify-between p-6 border-b border-gray-100 dark:border-gray-700 transition-colors duration-300">
+          <h2 class="text-lg font-semibold text-gray-800 dark:text-white transition-colors duration-300">
+            {{ _('Recent Activity') }}
+          </h2>
+          <div class="bg-green-100 dark:bg-green-900/60 text-green-800 dark:text-green-200 p-2 rounded-md transition-colors duration-300">
+            <i class="fa-solid fa-history"></i>
+          </div>
+        </div>
+
+        <div class="p-6">
+          <div class="space-y-4">
+            <!-- Activity Item -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0 h-8 w-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-300 transition-colors duration-300">
+                <i class="fa-solid fa-user-plus text-sm"></i>
+              </div>
+              <div class="ml-3 flex-1">
+                <p class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300">{{ _('New Company Registered') }}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
+                  {{ _('Quantum Solutions joined the platform') }}
+                </p>
+                <p class="text-xs text-gray-400 dark:text-gray-500 mt-1 transition-colors duration-300">{{ _('5 minutes ago') }}</p>
+              </div>
+            </div>
+
+            <!-- Activity Item -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0 h-8 w-8 rounded-full bg-red-100 dark:bg-red-900/50 flex items-center justify-center text-red-600 dark:text-red-300 transition-colors duration-300">
+                <i class="fa-solid fa-exclamation-triangle text-sm"></i>
+              </div>
+              <div class="ml-3 flex-1">
+                <p class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300">{{ _('System Alert') }}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
+                  {{ _('Database server reaching high load') }}
+                </p>
+                <p class="text-xs text-gray-400 dark:text-gray-500 mt-1 transition-colors duration-300">{{ _('25 minutes ago') }}</p>
+              </div>
+            </div>
+
+            <!-- Activity Item -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0 h-8 w-8 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-purple-600 dark:text-purple-300 transition-colors duration-300">
+                <i class="fa-solid fa-credit-card text-sm"></i>
+              </div>
+              <div class="ml-3 flex-1">
+                <p class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300">{{ _('Plan Upgrade') }}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
+                  {{ _('Global Tech Inc. upgraded to Enterprise') }}
+                </p>
+                <p class="text-xs text-gray-400 dark:text-gray-500 mt-1 transition-colors duration-300">{{ _('1 hour ago') }}</p>
+              </div>
+            </div>
+
+            <!-- Activity Item -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0 h-8 w-8 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-300 transition-colors duration-300">
+                <i class="fa-solid fa-check-circle text-sm"></i>
+              </div>
+              <div class="ml-3 flex-1">
+                <p class="text-sm font-medium text-gray-800 dark:text-white transition-colors duration-300">{{ _('Company Activated') }}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
+                  {{ _('TechSmart Solutions has been activated') }}
+                </p>
+                <p class="text-xs text-gray-400 dark:text-gray-500 mt-1 transition-colors duration-300">{{ _('3 hours ago') }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 text-center">
+            <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 text-sm font-medium transition-colors duration-300">
+              {{ _('View All Activity') }}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions Card -->
+      <div class="bg-gradient-to-r from-indigo-500 to-purple-600 dark:from-indigo-600/90 dark:to-purple-700/90 rounded-xl shadow-md p-6 text-white transition-all duration-300">
+        <h3 class="font-semibold text-lg mb-4">{{ _('Quick Actions') }}</h3>
+        <div class="space-y-3">
+          <a href="#" class="block bg-white/10 hover:bg-white/20 rounded-lg p-3 transition-colors duration-300">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center mr-3">
+                <i class="fa-solid fa-sync"></i>
+              </div>
+              <span>{{ _('System Maintenance') }}</span>
+            </div>
+          </a>
+          <a href="#" class="block bg-white/10 hover:bg-white/20 rounded-lg p-3 transition-colors duration-300">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center mr-3">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <span>{{ _('Send System Notification') }}</span>
+            </div>
+          </a>
+          <a href="#" class="block bg-white/10 hover:bg-white/20 rounded-lg p-3 transition-colors duration-300">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center mr-3">
+                <i class="fa-solid fa-database"></i>
+              </div>
+              <span>{{ _('Backup Database') }}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Confirmation Modal -->
+<div id="confirmationModal" class="fixed inset-0 bg-black/30 bg-opacity-50 dark:bg-opacity-70 items-center justify-center z-50 hidden backdrop-blur-sm transition-all duration-300">
+  <div class="bg-white dark:bg-gray-800 rounded-xl shadow-xl dark:shadow-gray-900/60 p-6 max-w-md mx-auto border border-gray-100 dark:border-gray-700 transition-all duration-300">
+    <div class="text-center mb-6">
+      <div id="modalIcon" class="mx-auto w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 mb-4 transition-colors duration-300">
+        <i id="modalIconSymbol" class="fa-solid fa-ban text-xl"></i>
+      </div>
+      <h3 id="modalTitle" class="text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300">{{ _('Suspend Company?') }}</h3>
+      <p id="modalDescription" class="text-gray-500 dark:text-gray-400 mt-2 transition-colors duration-300">
+        {{ _('Are you sure you want to suspend this company? All users will lose access to the platform.') }}
+      </p>
+    </div>
+    <div class="flex space-x-3">
+      <button id="cancelButton" class="flex-1 py-2 px-4 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium rounded-lg transition-colors duration-300">
+        {{ _('Cancel') }}
+      </button>
+      <button id="confirmButton" class="flex-1 py-2 px-4 bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 text-white font-medium rounded-lg transition-colors duration-300">
+        {{ _('Yes, Suspend') }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Success Notification -->
+<div id="successNotification" class="fixed bottom-5 right-5 bg-white dark:bg-gray-800 shadow-lg dark:shadow-gray-900/40 rounded-lg p-4 hidden items-start w-80 border-l-4 border-green-500 transition-all duration-300">
+  <div class="flex-shrink-0 mr-3">
+    <i class="fa-solid fa-circle-check text-green-500 dark:text-green-400 text-xl transition-colors duration-300"></i>
+  </div>
+  <div class="flex-1">
+    <h4 id="notificationTitle" class="font-medium text-gray-800 dark:text-white text-sm transition-colors duration-300">
+      {{ _('Success!') }}
+    </h4>
+    <p id="notificationMessage" class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
+      {{ _('Company status has been updated successfully.') }}
+    </p>
+  </div>
+  <button id="closeNotification" class="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-300">
+    <i class="fa-solid fa-times"></i>
+  </button>
+</div>
+
+<!-- Scripts for interactive elements -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Modal functionality
+    const confirmationModal = document.getElementById('confirmationModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalIcon = document.getElementById('modalIcon');
+    const modalIconSymbol = document.getElementById('modalIconSymbol');
+    const confirmButton = document.getElementById('confirmButton');
+    const cancelButton = document.getElementById('cancelButton');
+    const successNotification = document.getElementById('successNotification');
+    const notificationTitle = document.getElementById('notificationTitle');
+    const notificationMessage = document.getElementById('notificationMessage');
+    const closeNotification = document.getElementById('closeNotification');
+    
+    let currentCompany = '';
+    let currentAction = '';
+    
+    // Suspend buttons
+    document.querySelectorAll('.suspend-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        currentCompany = this.getAttribute('data-company');
+        currentAction = 'suspend';
+        
+        modalTitle.textContent = "{{ _('Suspend Company?') }}";
+        modalDescription.textContent = "{{ _('Are you sure you want to suspend this company? All users will lose access to the platform.') }}";
+        modalIcon.className = 'mx-auto w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 mb-4 transition-colors duration-300';
+        modalIconSymbol.className = 'fa-solid fa-ban text-xl';
+        confirmButton.textContent = "{{ _('Yes, Suspend') }}";
+        confirmButton.className = 'flex-1 py-2 px-4 bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 text-white font-medium rounded-lg transition-colors duration-300';
+        
+        confirmationModal.classList.remove('hidden');
+        confirmationModal.classList.add('flex');
+      });
+    });
+    
+    // Reactivate buttons
+    document.querySelectorAll('.reactivate-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        currentCompany = this.getAttribute('data-company');
+        currentAction = 'reactivate';
+        
+        modalTitle.textContent = "{{ _('Reactivate Company?') }}";
+        modalDescription.textContent = "{{ _('Are you sure you want to reactivate this company? All users will regain access to the platform.') }}";
+        modalIcon.className = 'mx-auto w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 mb-4 transition-colors duration-300';
+        modalIconSymbol.className = 'fa-solid fa-check-circle text-xl';
+        confirmButton.textContent = "{{ _('Yes, Reactivate') }}";
+        confirmButton.className = 'flex-1 py-2 px-4 bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-medium rounded-lg transition-colors duration-300';
+        
+        confirmationModal.classList.remove('hidden');
+        confirmationModal.classList.add('flex');
+      });
+    });
+    
+    // Approve buttons
+    document.querySelectorAll('.approve-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        currentCompany = this.getAttribute('data-company');
+        currentAction = 'approve';
+        
+        modalTitle.textContent = "{{ _('Approve Company?') }}";
+        modalDescription.textContent = "{{ _('Are you sure you want to approve this company? They will gain full access to the platform.') }}";
+        modalIcon.className = 'mx-auto w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 mb-4 transition-colors duration-300';
+        modalIconSymbol.className = 'fa-solid fa-check-circle text-xl';
+        confirmButton.textContent = "{{ _('Yes, Approve') }}";
+        confirmButton.className = 'flex-1 py-2 px-4 bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-medium rounded-lg transition-colors duration-300';
+        
+        confirmationModal.classList.remove('hidden');
+        confirmationModal.classList.add('flex');
+      });
+    });
+    
+    // Cancel button
+    cancelButton.addEventListener('click', function() {
+      confirmationModal.classList.add('hidden');
+      confirmationModal.classList.remove('flex');
+    });
+    
+    // Close modal when clicking outside
+    confirmationModal.addEventListener('click', function(event) {
+      if (event.target === confirmationModal) {
+        confirmationModal.classList.add('hidden');
+        confirmationModal.classList.remove('flex');
+      }
+    });
+    
+    // Confirm button
+    confirmButton.addEventListener('click', function() {
+      // Simulate API call
+      setTimeout(() => {
+        confirmationModal.classList.add('hidden');
+        confirmationModal.classList.remove('flex');
+        
+        // Show success notification
+        if (currentAction === 'suspend') {
+          notificationTitle.textContent = "{{ _('Company Suspended') }}";
+          notificationMessage.textContent = "{{ _('The company has been suspended successfully.') }}";
+        } else if (currentAction === 'reactivate') {
+          notificationTitle.textContent = "{{ _('Company Reactivated') }}";
+          notificationMessage.textContent = "{{ _('The company has been reactivated successfully.') }}";
+        } else if (currentAction === 'approve') {
+          notificationTitle.textContent = "{{ _('Company Approved') }}";
+          notificationMessage.textContent = "{{ _('The company has been approved successfully.') }}";
+        }
+        
+        successNotification.classList.remove('hidden');
+        successNotification.classList.add('flex');
+        
+        // Auto-hide notification after 5 seconds
+        setTimeout(() => {
+          successNotification.classList.add('hidden');
+          successNotification.classList.remove('flex');
+        }, 5000);
+      }, 1000);
+    });
+    
+    // Close notification
+    closeNotification.addEventListener('click', function() {
+      successNotification.classList.add('hidden');
+      successNotification.classList.remove('flex');
+    });
+  });
+</script>
+{% endblock %}
