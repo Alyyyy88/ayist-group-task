@@ -2,22 +2,31 @@
 module.exports = {
   content: [
     "./app/templates/**/*.html",
-    "./app/static/**/*.js",
+    "./app/static/js/*.js",
     "./app/static/**/*.css",
   ],
   theme: {
     extend: {
-      // colors: {
-      //   primary: "#0046b5",
-      //   "primary-hover": "#003580",
-      //   bg: "#f8f9fe",
-      //   border: "#e5e7eb",
-      //   text: "#4b5563",
-      //   "text-dark": "#1a1a1a",
-      //   "active-bg": "#e7efff",
-      //   "active-text": "#0046b5",
-      // },
+      colors: {
+        // primarybackground: "var(--primary-background)",
+        // cardbackground: "var(--card-background)",
+        // elevatedcarddialog: "var(--elevated-card-dialog)",
+        // secondarybackground: "var(--secondary-background)",
+        // primarytext: "var(--primary-text)",
+        // secondarytext: "var(--secondary-text)",
+        // subtletext: "var(--subtle-text)",
+        // verysubtletext: "var(--very-subtle-text)",
+        // primaryborder: "var(--primary-border)",
+        // subtleborder: "var(--subtle-border)",
+        // primarybutton: "var(--primary-button)",
+        // primarybuttonhover: "var(--primary-button-hover)",
+        // secondarybutton: "var(--secondary-button)",
+        // secondarybuttonhover: "var(--secondary-button-hover)",
+        // regularshadow: "var(--regular-shadow)",
+        // hovershadow: "var(--hover-shadow)",
+      },
     },
   },
   plugins: [],
+  darkMode: "class",
 };

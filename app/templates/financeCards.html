@@ -1,20 +1,22 @@
+<!-- Finance Cards with Dark Mode Support -->
+
 <!-- Income Card -->
-<div class="bg-white rounded-lg shadow-md p-6" id="incomeCard">
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/30 p-6 transition-all duration-300" id="incomeCard">
   <div class="flex items-center justify-between mb-4">
-    <h3 class="text-lg font-semibold">{{ _('Monthly Income') }}</h3>
-    <i class="fa-solid fa-arrow-trend-up text-green-500 text-2xl"></i>
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300">{{ _('Monthly Income') }}</h3>
+    <i class="fa-solid fa-arrow-trend-up text-green-500 dark:text-green-400 text-2xl transition-colors duration-300"></i>
   </div>
 
   <div
     class="flex items-center justify-between md:flex-col lg:flex-row flex-row"
   >
     <div>
-      <p class="text-3xl font-bold currency-count-up" data-target="56800">$0</p>
-      <p class="text-sm text-gray-500 mt-2">{{ _('Current month') }}</p>
+      <p class="text-3xl font-bold currency-count-up text-gray-800 dark:text-white transition-colors duration-300" data-target="56800">$0</p>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 transition-colors duration-300">{{ _('Current month') }}</p>
     </div>
 
     <div
-      class="flex items-center justify-center gap-2 lg:py-2 lg:px-4 py-2 px-4 md:py-1 md:mt-4 lg:mt-0 md:px-2 rounded bg-green-500"
+      class="flex items-center justify-center gap-2 lg:py-2 lg:px-4 py-2 px-4 md:py-1 md:mt-4 lg:mt-0 md:px-2 rounded bg-green-500 dark:bg-green-600 transition-colors duration-300"
     >
       <p class="text-white percent-count-up" data-target="12.3">0%</p>
       <i class="fa-solid fa-arrow-up text-white"></i>
@@ -23,22 +25,22 @@
 </div>
 
 <!-- Expenses Card -->
-<div class="bg-white rounded-lg shadow-md p-6" id="expensesCard">
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/30 p-6 transition-all duration-300" id="expensesCard">
   <div class="flex items-center justify-between mb-4">
-    <h3 class="text-lg font-semibold">{{ _('Monthly Expenses') }}</h3>
-    <i class="fa-solid fa-arrow-trend-down text-red-500 text-2xl"></i>
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300">{{ _('Monthly Expenses') }}</h3>
+    <i class="fa-solid fa-arrow-trend-down text-red-500 dark:text-red-400 text-2xl transition-colors duration-300"></i>
   </div>
 
   <div
     class="flex items-center justify-between flex-row md:flex-col lg:flex-row"
   >
     <div>
-      <p class="text-3xl font-bold currency-count-up" data-target="32300">$0</p>
-      <p class="text-sm text-gray-500 mt-2">{{ _('Current month') }}</p>
+      <p class="text-3xl font-bold currency-count-up text-gray-800 dark:text-white transition-colors duration-300" data-target="32300">$0</p>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 transition-colors duration-300">{{ _('Current month') }}</p>
     </div>
 
     <div
-      class="flex items-center justify-center gap-2 lg:py-2 lg:px-4 py-2 px-4 md:py-1 md:mt-4 lg:mt-0 md:px-2 rounded bg-red-500"
+      class="flex items-center justify-center gap-2 lg:py-2 lg:px-4 py-2 px-4 md:py-1 md:mt-4 lg:mt-0 md:px-2 rounded bg-red-500 dark:bg-red-600 transition-colors duration-300"
     >
       <p class="text-white percent-count-up" data-target="8.7">0%</p>
       <i class="fa-solid fa-arrow-up text-white"></i>
@@ -48,28 +50,28 @@
 
 <!-- Payroll Card -->
 <div
-  class="bg-white rounded-lg shadow-md p-6 md:col-span-2 lg:col-span-1"
+  class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/30 p-6 md:col-span-2 lg:col-span-1 transition-all duration-300"
   id="payrollCard"
 >
   <div class="flex items-center justify-between mb-4">
-    <h3 class="text-lg font-semibold">{{ _('Payroll') }}</h3>
-    <i class="fa-solid fa-money-bill-wave text-blue-500 text-2xl"></i>
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300">{{ _('Payroll') }}</h3>
+    <i class="fa-solid fa-money-bill-wave text-blue-500 dark:text-blue-400 text-2xl transition-colors duration-300"></i>
   </div>
 
   <div class="flex items-center justify-between">
     <div>
-      <p class="text-3xl font-bold currency-count-up" data-target="28700">$0</p>
-      <p class="text-sm text-gray-500 mt-2">{{ _('Current month') }}</p>
+      <p class="text-3xl font-bold currency-count-up text-gray-800 dark:text-white transition-colors duration-300" data-target="28700">$0</p>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 transition-colors duration-300">{{ _('Current month') }}</p>
     </div>
 
     <div class="flex flex-col gap-1">
       <div class="flex items-center justify-between">
-        <span class="text-sm text-gray-500">{{ _('Employees') }}:</span>
-        <span class="text-sm font-medium count-up" data-target="38">0</span>
+        <span class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">{{ _('Employees') }}:</span>
+        <span class="text-sm font-medium count-up text-gray-700 dark:text-gray-300 transition-colors duration-300" data-target="38">0</span>
       </div>
       <div class="flex items-center justify-between">
-        <span class="text-sm text-gray-500">{{ _('Avg') }}:</span>
-        <span class="text-sm font-medium currency-count-up" data-target="755"
+        <span class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">{{ _('Avg') }}:</span>
+        <span class="text-sm font-medium currency-count-up text-gray-700 dark:text-gray-300 transition-colors duration-300" data-target="755"
           >$0</span
         >
       </div>
@@ -79,29 +81,30 @@
 
 <!-- Outstanding Invoices -->
 <div
-  class="bg-white rounded-lg shadow-md p-6 {% if session.get('user_role') == 'Finance' %}hover:shadow-lg transition-shadow duration-300 md:col-span-3{% endif %} {% if session.get('user_role') == 'Superadmin' %}hover:shadow-lg transition-shadow duration-300 md:col-span-3 lg:col-span-1 {% endif %}"
+  class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/30 p-6 {% if session.get('user_role') == 'Finance' %}hover:shadow-lg dark:hover:shadow-gray-900/40 transition-shadow duration-300 md:col-span-3{% endif %} {% if session.get('user_role') == 'Superadmin' %}hover:shadow-lg dark:hover:shadow-gray-900/40 transition-shadow duration-300 md:col-span-3 lg:col-span-1 {% endif %} transition-all duration-300"
   id="invoicesCard"
 >
   <div class="flex items-center justify-between mb-4">
-    <h3 class="text-lg font-semibold">{{ _('Outstanding Invoices') }}</h3>
-    <i class="fa-solid fa-file-invoice-dollar text-amber-500 text-2xl"></i>
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300">{{ _('Outstanding Invoices') }}</h3>
+    <i class="fa-solid fa-file-invoice-dollar text-amber-500 dark:text-amber-400 text-2xl transition-colors duration-300"></i>
   </div>
 
   <div class="flex items-center justify-between">
     <div>
-      <p class="text-3xl font-bold currency-count-up" data-target="18400">$0</p>
-      <p class="text-sm text-gray-500 mt-2">{{ _('Total amount') }}</p>
+      <p class="text-3xl font-bold currency-count-up text-gray-800 dark:text-white transition-colors duration-300" data-target="18400">$0</p>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 transition-colors duration-300">{{ _('Total amount') }}</p>
     </div>
 
     <div class="flex flex-col gap-1">
       <div class="flex items-center justify-between">
-        <span class="text-sm text-gray-500">{{ _('Count') }}:</span>
-        <span class="text-sm font-medium count-up" data-target="12">0</span>
+        <span class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">{{ _('Count') }}:</span>
+        <span class="text-sm font-medium count-up text-gray-700 dark:text-gray-300 transition-colors duration-300" data-target="12">0</span>
       </div>
       <div class="flex items-center justify-between">
-        <span class="text-sm text-gray-500">{{ _('Overdue') }}:</span>
-        <span class="text-sm font-medium count-up" data-target="5">0</span>
+        <span class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">{{ _('Overdue') }}:</span>
+        <span class="text-sm font-medium count-up text-gray-700 dark:text-gray-300 transition-colors duration-300" data-target="5">0</span>
       </div>
     </div>
   </div>
 </div>
+

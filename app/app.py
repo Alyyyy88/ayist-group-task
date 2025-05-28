@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for , jsonify
 from dotenv import load_dotenv
 import os
 from flask_babel import Babel, gettext as _
@@ -40,6 +40,17 @@ def set_role(role):
 
 def get_user_role():
     return session.get('user_role' , 'Admin')
+
+
+@app.route('/set_theme/<theme>')
+def set_theme(theme):
+    if theme in ['light', 'dark']:
+        session['theme'] = theme
+    
+    if request.headers.get('Accept') == 'application/json':
+        return jsonify({'status': 'success', 'theme': theme})
+    
+    return redirect(request.referrer or url_for('index'))
 
 
 # ROUTES FOR PAGES
@@ -553,8 +564,8 @@ def get_hr_data():
 def utility_processor():
     def is_active(path, current):
         if path == '/dashboard' and (current == '/dashboard' or current == '/'):
-            return "bg-indigo-100 text-blue-800 font-bold"
-        return "bg-indigo-100 text-blue-800  font-bold" if path == current else ""
+            return "bg-indigo-100 text-blue-800 dark:bg-blue-800  font-bold"
+        return "bg-indigo-100 text-blue-800 dark:bg-blue-800  font-bold" if path == current else ""
      # Define navigation items by role
     def get_nav_items():
         # Common items for all users
@@ -575,6 +586,7 @@ def utility_processor():
                 {'url': '/companyreg', 'icon': 'fa-solid fa-address-card text-red-400', 'label': _('Company Registration')},
                 {'url': '/usermanagement', 'icon': 'fa-solid fa-user text-black', 'label': _('User Management')},
                 {'url': '/subplan', 'icon': 'fa-solid fa-business-time text-orange-300', 'label': _('Subscription Plan')},
+                {'url': '/dark_mode_test', 'icon': 'fa-solid fa-moon text-gray-500', 'label': _('Dark_test')},
             ],
             'Hr': [
                 {'url': '/staff', 'icon': 'fa-solid fa-users text-purple-500', 'label': _('Staff')},

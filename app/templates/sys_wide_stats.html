@@ -1,25 +1,25 @@
-{# System-wide Stats - Visible to  Superadmin #}
-<div class="bg-white rounded-lg shadow-lg p-6 md:col-span-3 mt-6" id="systemStatsCard">
+{# System-wide Stats - Visible to Superadmin #}
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-gray-900/30 p-6 md:col-span-3 mt-6 transition-all duration-300" id="systemStatsCard">
   <div class="flex items-center justify-between mb-4">
-    <h2 class="text-xl font-semibold">{{ _('System-wide Stats') }}</h2>
-    <div class="flex items-center text-sm text-gray-500">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-white transition-colors duration-300">{{ _('System-wide Stats') }}</h2>
+    <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
       <i class="fa-regular fa-clock mr-2"></i>
-      <span>{{ current_datetime }}</span>
+      <span>{{ current_datetime|default('2025-05-28 20:48:55') }}</span>
     </div>
   </div>
   
   <!-- User Status Banner -->
-  <div class="bg-indigo-50 rounded-lg p-3 mb-4 flex justify-between items-center">
+  <div class="bg-indigo-50 dark:bg-indigo-900/30 rounded-lg p-3 mb-4 flex justify-between items-center transition-colors duration-300">
     <div class="flex items-center">
-      <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
-        <i class="fa-solid fa-user text-indigo-600"></i>
+      <div class="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-800 flex items-center justify-center mr-3 transition-colors duration-300">
+        <i class="fa-solid fa-user text-indigo-600 dark:text-indigo-300 transition-colors duration-300"></i>
       </div>
       <div>
-        <p class="text-sm font-medium">{{ _('Welcome') }}, {{ current_user }}</p>
-        <p class="text-xs text-gray-500">{{ _('Role') }}: {{ session.get('user_role', 'None') }}</p>
+        <p class="text-sm font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300">{{ _('Welcome') }}, {{ current_user|default('Alyyyy88') }}</p>
+        <p class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">{{ _('Role') }}: {{ session.get('user_role', 'None') }}</p>
       </div>
     </div>
-    <div class="bg-green-100 px-3 py-1 rounded-full text-green-800 text-xs font-medium">
+    <div class="bg-green-100 dark:bg-green-800 px-3 py-1 rounded-full text-green-800 dark:text-green-200 text-xs font-medium transition-colors duration-300">
       {{ _('Online') }}
     </div>
   </div>
@@ -27,75 +27,75 @@
   <!-- System Metrics Grid -->
   <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
     <!-- System Uptime -->
-    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-4 flex flex-col items-center justify-center">
-      <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-2">
-        <i class="fa-solid fa-server text-blue-600 text-xl"></i>
+    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-lg p-4 flex flex-col items-center justify-center transition-colors duration-300">
+      <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-800/50 flex items-center justify-center mb-2 transition-colors duration-300">
+        <i class="fa-solid fa-server text-blue-600 dark:text-blue-300 text-xl transition-colors duration-300"></i>
       </div>
-      <p class="text-2xl font-bold">99.8%</p>
-      <p class="text-sm text-gray-600">{{ _('System Uptime') }}</p>
+      <p class="text-2xl font-bold text-gray-800 dark:text-white transition-colors duration-300">99.8%</p>
+      <p class="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">{{ _('System Uptime') }}</p>
     </div>
     
     <!-- Active Users -->
-    <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-lg p-4 flex flex-col items-center justify-center">
-      <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center mb-2">
-        <i class="fa-solid fa-users text-indigo-600 text-xl"></i>
+    <div class="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/30 dark:to-purple-900/30 rounded-lg p-4 flex flex-col items-center justify-center transition-colors duration-300">
+      <div class="w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-800/50 flex items-center justify-center mb-2 transition-colors duration-300">
+        <i class="fa-solid fa-users text-indigo-600 dark:text-indigo-300 text-xl transition-colors duration-300"></i>
       </div>
-      <p class="text-2xl font-bold count-up" data-target="28">0</p>
-      <p class="text-sm text-gray-600">{{ _('Active Users') }}</p>
+      <p class="text-2xl font-bold count-up text-gray-800 dark:text-white transition-colors duration-300" data-target="28">0</p>
+      <p class="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">{{ _('Active Users') }}</p>
     </div>
     
     <!-- Pending Tasks -->
-    <div class="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg p-4 flex flex-col items-center justify-center">
-      <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-2">
-        <i class="fa-solid fa-list-check text-purple-600 text-xl"></i>
+    <div class="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/30 dark:to-blue-900/30 rounded-lg p-4 flex flex-col items-center justify-center transition-colors duration-300">
+      <div class="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-800/50 flex items-center justify-center mb-2 transition-colors duration-300">
+        <i class="fa-solid fa-list-check text-purple-600 dark:text-purple-300 text-xl transition-colors duration-300"></i>
       </div>
-      <p class="text-2xl font-bold count-up" data-target="42">0</p>
-      <p class="text-sm text-gray-600">{{ _('Pending Tasks') }}</p>
+      <p class="text-2xl font-bold count-up text-gray-800 dark:text-white transition-colors duration-300" data-target="42">0</p>
+      <p class="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">{{ _('Pending Tasks') }}</p>
     </div>
     
     <!-- System Health -->
-    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-lg p-4 flex flex-col items-center justify-center">
-      <div class="w-12 h-12 rounded-full bg-cyan-100 flex items-center justify-center mb-2">
-        <i class="fa-solid fa-heart-pulse text-cyan-600 text-xl"></i>
+    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 rounded-lg p-4 flex flex-col items-center justify-center transition-colors duration-300">
+      <div class="w-12 h-12 rounded-full bg-cyan-100 dark:bg-cyan-800/50 flex items-center justify-center mb-2 transition-colors duration-300">
+        <i class="fa-solid fa-heart-pulse text-cyan-600 dark:text-cyan-300 text-xl transition-colors duration-300"></i>
       </div>
-      <p class="text-2xl font-bold">Good</p>
-      <p class="text-sm text-gray-600">{{ _('System Health') }}</p>
+      <p class="text-2xl font-bold text-gray-800 dark:text-white transition-colors duration-300">Good</p>
+      <p class="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">{{ _('System Health') }}</p>
     </div>
   </div>
   
   <!-- System Resources -->
-  <h3 class="text-lg font-medium mb-3">{{ _('Resource Utilization') }}</h3>
+  <h3 class="text-lg font-medium mb-3 text-gray-800 dark:text-gray-200 transition-colors duration-300">{{ _('Resource Utilization') }}</h3>
   <div class="space-y-4">
     <!-- CPU Usage -->
     <div>
       <div class="flex justify-between mb-1">
-        <span class="text-sm font-medium text-gray-700">{{ _('CPU Usage') }}</span>
-        <span class="text-sm font-medium text-gray-700">45%</span>
+        <span class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">{{ _('CPU Usage') }}</span>
+        <span class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">45%</span>
       </div>
-      <div class="w-full bg-gray-200 rounded-full h-2.5">
-        <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
+      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 transition-colors duration-300">
+        <div class="bg-blue-600 dark:bg-blue-500 h-2.5 rounded-full transition-colors duration-300" style="width: 45%"></div>
       </div>
     </div>
     
     <!-- Memory Usage -->
     <div>
       <div class="flex justify-between mb-1">
-        <span class="text-sm font-medium text-gray-700">{{ _('Memory Usage') }}</span>
-        <span class="text-sm font-medium text-gray-700">62%</span>
+        <span class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">{{ _('Memory Usage') }}</span>
+        <span class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">62%</span>
       </div>
-      <div class="w-full bg-gray-200 rounded-full h-2.5">
-        <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 62%"></div>
+      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 transition-colors duration-300">
+        <div class="bg-indigo-600 dark:bg-indigo-500 h-2.5 rounded-full transition-colors duration-300" style="width: 62%"></div>
       </div>
     </div>
     
     <!-- Database Load -->
     <div>
       <div class="flex justify-between mb-1">
-        <span class="text-sm font-medium text-gray-700">{{ _('Database Load') }}</span>
-        <span class="text-sm font-medium text-gray-700">38%</span>
+        <span class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">{{ _('Database Load') }}</span>
+        <span class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">38%</span>
       </div>
-      <div class="w-full bg-gray-200 rounded-full h-2.5">
-        <div class="bg-purple-600 h-2.5 rounded-full" style="width: 38%"></div>
+      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 transition-colors duration-300">
+        <div class="bg-purple-600 dark:bg-purple-500 h-2.5 rounded-full transition-colors duration-300" style="width: 38%"></div>
       </div>
     </div>
   </div>
@@ -103,44 +103,44 @@
   <!-- Recent System Activities -->
   <div class="mt-6">
     <div class="flex items-center justify-between mb-3">
-      <h3 class="text-lg font-medium">{{ _('Recent System Activities') }}</h3>
-      <a href="#" class="text-sm text-indigo-600 hover:text-indigo-800">{{ _('View All') }}</a>
+      <h3 class="text-lg font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300">{{ _('Recent System Activities') }}</h3>
+      <a href="#" class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-300">{{ _('View All') }}</a>
     </div>
     
     <div class="space-y-3 max-h-48 overflow-y-auto pr-2">
-      <div class="bg-gray-50 rounded-lg p-3 flex items-start">
+      <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 flex items-start transition-colors duration-300">
         <div class="flex-shrink-0 mr-3">
-          <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
-            <i class="fa-solid fa-check text-green-600"></i>
+          <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-800/50 flex items-center justify-center transition-colors duration-300">
+            <i class="fa-solid fa-check text-green-600 dark:text-green-300 transition-colors duration-300"></i>
           </div>
         </div>
         <div class="flex-grow">
-          <p class="text-sm font-medium">{{ _('Database Backup Completed') }}</p>
-          <p class="text-xs text-gray-500">{{ _('Today') }} 14:30</p>
+          <p class="text-sm font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300">{{ _('Database Backup Completed') }}</p>
+          <p class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">{{ _('Today') }} 14:30</p>
         </div>
       </div>
       
-      <div class="bg-gray-50 rounded-lg p-3 flex items-start">
+      <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 flex items-start transition-colors duration-300">
         <div class="flex-shrink-0 mr-3">
-          <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-            <i class="fa-solid fa-arrow-up text-blue-600"></i>
+          <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-800/50 flex items-center justify-center transition-colors duration-300">
+            <i class="fa-solid fa-arrow-up text-blue-600 dark:text-blue-300 transition-colors duration-300"></i>
           </div>
         </div>
         <div class="flex-grow">
-          <p class="text-sm font-medium">{{ _('System Update Installed') }}</p>
-          <p class="text-xs text-gray-500">{{ _('Today') }} 09:15</p>
+          <p class="text-sm font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300">{{ _('System Update Installed') }}</p>
+          <p class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">{{ _('Today') }} 09:15</p>
         </div>
       </div>
       
-      <div class="bg-gray-50 rounded-lg p-3 flex items-start">
+      <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 flex items-start transition-colors duration-300">
         <div class="flex-shrink-0 mr-3">
-          <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center">
-            <i class="fa-solid fa-exclamation text-yellow-600"></i>
+          <div class="w-8 h-8 rounded-full bg-yellow-100 dark:bg-yellow-800/50 flex items-center justify-center transition-colors duration-300">
+            <i class="fa-solid fa-exclamation text-yellow-600 dark:text-yellow-300 transition-colors duration-300"></i>
           </div>
         </div>
         <div class="flex-grow">
-          <p class="text-sm font-medium">{{ _('Disk Space Warning') }}</p>
-          <p class="text-xs text-gray-500">{{ _('Yesterday') }} 18:22</p>
+          <p class="text-sm font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300">{{ _('Disk Space Warning') }}</p>
+          <p class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">{{ _('Yesterday') }} 18:22</p>
         </div>
       </div>
     </div>

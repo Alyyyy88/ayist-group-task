@@ -1,6 +1,6 @@
 <!-- topbar with  user menu -->
 <div
-  class="bg-cyan-700 p-4 flex justify-between items-center rounded-md shadow-lg"
+  class="bg-cyan-700 p-4 flex justify-between items-center rounded-md shadow-lg dark:bg-gray-800 dark:text-white  transition-colors duration-300"
 >
   <h1 class="text-3xl text-white">{{ _('Welcome') }}</h1>
 
@@ -106,10 +106,19 @@
       </div>
     </div>
 
-    <div class="xl:hidden cursor-pointer" onclick="toggleMobileMenu()">
+     <div class="xl:hidden cursor-pointer" onclick="toggleMobileMenu()">
       <i class="fa-solid fa-bars text-white text-xl"></i>
     </div>
+
+     <!-- Dark Mode Toggle Button -->
+    <button
+      id="darkModeToggle"
+      onclick="toggleDarkMode()"
+      class="inline-flex justify-center items-center p-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg shadow-sm cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 focus:outline-none"
+      aria-label="Toggle Dark Mode"
+    >
+      <i class="fa-solid fa-moon"></i>
+    </button>
+   
   </div>
 </div>
-
-<script src="../static/js/topbar.js"></script>

@@ -1,11 +1,11 @@
 {% extends "layout.html" %} {% block content %}
 <div class="container mx-auto px-4 py-8">
   <div class="flex gap-4 items-center mb-6">
-    <h1 class="text-2xl font-bold">{{ _('Dashboard') }}</h1>
+    <h1 class="text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300">{{ _('Dashboard') }}</h1>
     {% if session.get('user_role') in ['Finance', 'Superadmin'] %}
     <button
       id="toggleFinancialSnapshot"
-      class="bg-indigo-500 cursor-pointer hover:bg-indigo-600 text-white rounded-full p-2"
+      class="bg-indigo-500 cursor-pointer hover:bg-indigo-600 text-white rounded-full p-2 transition-all duration-300"
       title="{{ _('Show Financial Snapshot') }}"
     >
       <i class="fa-solid fa-eye"></i>
@@ -13,87 +13,150 @@
     {% endif %}
   </div>
 
-  <div class="grid grid-cols-1 m</div>d:grid-cols-2 lg:grid-cols-3 gap-6">
-    {# Total Staff - Visible to Admin, HR, Superadmin #} {% if
-    session.get('user_role') in ['Admin', 'Hr', 'Superadmin'] %} {% include
-    'totalstaff.html' %} {%endif %} {# Active Projects - Visible to Admin,
-    Finance, Superadmin #} {% if session.get('user_role') in ['Admin',
-    'Finance', 'Superadmin'] %} {% include 'acitveprojects.html' %} {% endif %}
-    {# Total Companies - Visible to Superadmin #} {% if session.get('user_role')
-    in ['Superadmin'] %} {% include 'totalcompanies.html' %} {% endif %} {% if
-    session.get('user_role') in ['Admin', 'Finance', 'Superadmin' , 'Hr'] %}
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {# Total Staff - Visible to Admin, HR, Superadmin #} 
+    {% if session.get('user_role') in ['Admin', 'Hr', 'Superadmin'] %}
     <div
-      class="bg-white rounded-lg shadow-md p-6 {% if session.get('user_role') == 'Finance' %}hover:shadow-lg transition-shadow duration-300 md:col-span-2 lg:col-span-1{% endif %}"
-      id="card3"
+      class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/30 p-6 {% if session.get('user_role') == 'Hr' %}hover:shadow-lg dark:hover:shadow-gray-900/40 transition-shadow duration-300 lg:col-span-2{% endif %} transition-all duration-300"
+      id="card1"
     >
       <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold">{{_('Document Count')}}</h3>
-        <i class="fa-solid fa-file-alt text-orange-500 text-2xl"></i>
+        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300">{{ _('Total Staff') }}</h3>
+        <i class="fa-solid fa-users text-purple-500 dark:text-purple-400 text-2xl transition-colors duration-300"></i>
       </div>
 
       <div class="flex items-center justify-between">
         <div>
-          <p class="text-3xl font-bold count-up" data-target="150">0</p>
-          <p class="text-sm text-gray-500 mt-2">{{ _('Total documents') }}</p>
+          <p class="text-3xl font-bold count-up text-gray-800 dark:text-white transition-colors duration-300" data-target="42">0</p>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 transition-colors duration-300">{{ _('Active employees') }}</p>
+        </div>
+
+        <div
+          class="flex items-center justify-center gap-2 py-2 px-4 rounded bg-purple-500 dark:bg-purple-600 transition-colors duration-300"
+        >
+          <i class="fa-solid fa-user-plus text-white"></i>
+          <p class="text-white count-up" data-target="3">0</p>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    
+    {# Active Projects - Visible to Admin, Finance, Superadmin #} 
+    {% if session.get('user_role') in ['Admin', 'Finance', 'Superadmin'] %}
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/30 p-6 transition-all duration-300" id="card2">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300">{{ _('Active Projects') }}</h3>
+        <i class="fa-solid fa-folder text-yellow-600 dark:text-yellow-500 text-2xl transition-colors duration-300"></i>
+      </div>
+      <p class="text-3xl font-bold count-up text-gray-800 dark:text-white transition-colors duration-300" data-target="7">0</p>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 transition-colors duration-300">{{ _('In progress') }}</p>
+    </div>
+    {% endif %} 
+    
+    {# Total Companies - Visible to Superadmin #} 
+    {% if session.get('user_role') in ['Superadmin'] %}
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/30 p-6 transition-all duration-300" id="card-companies">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300">{{ _('Total Companies') }}</h3>
+        <i class="fa-solid fa-building text-teal-500 dark:text-teal-400 text-2xl transition-colors duration-300"></i>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-3xl font-bold count-up text-gray-800 dark:text-white transition-colors duration-300" data-target="24">0</p>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 transition-colors duration-300">
+            {{ _('Registered companies') }}
+          </p>
+        </div>
+
+        <div
+          class="flex items-center justify-center gap-2 py-2 px-4 rounded bg-teal-500 dark:bg-teal-600 transition-colors duration-300"
+        >
+          <i class="fa-solid fa-plus text-white"></i>
+          <p class="text-white count-up" data-target="1">0</p>
+        </div>
+      </div>
+    </div>
+    {% endif %} 
+    
+    {% if session.get('user_role') in ['Admin', 'Finance', 'Superadmin' , 'Hr'] %}
+    <div
+      class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/30 p-6 {% if session.get('user_role') == 'Finance' %}hover:shadow-lg dark:hover:shadow-gray-900/40 transition-shadow duration-300 md:col-span-2 lg:col-span-1{% endif %} transition-all duration-300"
+      id="card3"
+    >
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300">{{_('Document Count')}}</h3>
+        <i class="fa-solid fa-file-alt text-orange-500 dark:text-orange-400 text-2xl transition-colors duration-300"></i>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-3xl font-bold count-up text-gray-800 dark:text-white transition-colors duration-300" data-target="150">0</p>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 transition-colors duration-300">{{ _('Total documents') }}</p>
         </div>
         <div
-          class="flex items-center justify-center gap-2 py-1 px-2 rounded bg-orange-500"
+          class="flex items-center justify-center gap-2 py-1 px-2 rounded bg-orange-500 dark:bg-orange-600 transition-colors duration-300"
         >
           <p class="text-white count-up" data-target="5">0</p>
           <i class="fa-solid fa-plus text-white"></i>
         </div>
       </div>
     </div>
-    {% endif %} {# Profit - Visible to Finance and Superadmin #} {% if
-    session.get('user_role') in ['Finance', 'Superadmin'] %}
-    <div class="bg-white rounded-lg shadow-md p-6" id="card3">
+    {% endif %} 
+    
+    {# Profit - Visible to Finance and Superadmin #} 
+    {% if session.get('user_role') in ['Finance', 'Superadmin'] %}
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/30 p-6 transition-all duration-300" id="card3">
       <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold">{{ _('Profit') }}</h3>
-        <i class="fa-solid fa-sack-dollar text-green-500 text-2xl"></i>
+        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300">{{ _('Profit') }}</h3>
+        <i class="fa-solid fa-sack-dollar text-green-500 dark:text-green-400 text-2xl transition-colors duration-300"></i>
       </div>
 
       <div
         class="flex items-center justify-between md:flex-col lg:flex-row flex-row"
       >
         <div>
-          <p class="text-3xl font-bold currency-count-up" data-target="24500">
+          <p class="text-3xl font-bold currency-count-up text-gray-800 dark:text-white transition-colors duration-300" data-target="24500">
             0
           </p>
-          <p class="text-sm text-gray-500 mt-2">{{ _('Current month') }}</p>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 transition-colors duration-300">{{ _('Current month') }}</p>
         </div>
 
         <div
-          class="flex items-center justify-center gap-2 lg:py-2 lg:px-4 py-2 px-4 md:py-1 md:mt-4 lg:mt-0 md:px-2 rounded bg-green-500"
+          class="flex items-center justify-center gap-2 lg:py-2 lg:px-4 py-2 px-4 md:py-1 md:mt-4 lg:mt-0 md:px-2 rounded bg-green-500 dark:bg-green-600 transition-colors duration-300"
         >
           <p class="text-white percent-count-up" data-target="24.6">0%</p>
           <i class="fa-solid fa-arrow-trend-up text-white"></i>
         </div>
       </div>
     </div>
-    {% endif %} {# Finance Cards - Visible to Finance and Superadmin #} {% if
-    session.get('user_role') in ['Finance', 'Superadmin'] %} {% include
-    'financeCards.html' %} {% endif %}
+    {% endif %} 
+    
+    {# Finance Cards - Visible to Finance and Superadmin #} 
+    {% if session.get('user_role') in ['Finance', 'Superadmin'] %} 
+    {% include 'financeCards.html' %} 
+    {% endif %}
 
     <!-- Cash Flow Chart -->
     {% if session.get('user_role') in ['Finance', 'Superadmin' , 'Admin'] %}
     <div
-      class="bg-white rounded-lg shadow-md p-6 col-span-1 md:col-span-3"
+      class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/30 p-6 col-span-1 md:col-span-3 transition-all duration-300"
       id="cashFlowCard"
     >
       <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold">
+        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300">
           {{ _('Cash Flow (Last 6 Months)') }}
         </h3>
-        <i class="fa-solid fa-chart-line text-indigo-500 text-2xl"></i>
+        <i class="fa-solid fa-chart-line text-indigo-500 dark:text-indigo-400 text-2xl transition-colors duration-300"></i>
       </div>
 
       <div class="h-64" id="cashFlowChart">
         <div class="flex items-center justify-center h-full">
           <div class="flex flex-col items-center">
             <div
-              class="w-8 h-8 border-t-4 border-r-4 border-b-4 border-l-4 border-blue-500 rounded-full animate-spin mb-2"
+              class="w-8 h-8 border-t-4 border-r-4 border-b-4 border-l-4 border-blue-500 dark:border-blue-400 rounded-full animate-spin mb-2 transition-colors duration-300"
             ></div>
-            <p class="text-gray-500">{{ _('Loading chart...') }}</p>
+            <p class="text-gray-500 dark:text-gray-400 transition-colors duration-300">{{ _('Loading chart...') }}</p>
           </div>
         </div>
         <canvas id="mychart" class="w-full h-full"></canvas>
@@ -101,78 +164,122 @@
 
       <div class="flex justify-between mt-4">
         <div class="flex items-center">
-          <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
-          <span class="text-sm text-gray-600">{{ _('Income') }}</span>
+          <div class="w-3 h-3 bg-green-500 dark:bg-green-400 rounded-full mr-2 transition-colors duration-300"></div>
+          <span class="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">{{ _('Income') }}</span>
         </div>
         <div class="flex items-center">
-          <div class="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
-          <span class="text-sm text-gray-600">{{ _('Expenses') }}</span>
+          <div class="w-3 h-3 bg-red-500 dark:bg-red-400 rounded-full mr-2 transition-colors duration-300"></div>
+          <span class="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">{{ _('Expenses') }}</span>
         </div>
         <div class="flex items-center">
-          <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
-          <span class="text-sm text-gray-600">{{ _('Profit') }}</span>
+          <div class="w-3 h-3 bg-blue-500 dark:bg-blue-400 rounded-full mr-2 transition-colors duration-300"></div>
+          <span class="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">{{ _('Profit') }}</span>
         </div>
       </div>
     </div>
-    {% endif %} {% if session.get('user_role') in ['Superadmin'] %} {% include
-    'sys_wide_stats.html' %} {% endif %}
+    {% endif %} 
+    
+    {% if session.get('user_role') in ['Superadmin'] %} 
+    {% include 'sys_wide_stats.html' %} 
+    {% endif %}
 
     <!-- Project Summaries - Visible to Admin -->
-    {% if session.get('user_role') in ['Admin'] %} {% include
-    'projectsummaries.html' %} {% endif %}
+    {% if session.get('user_role') in ['Admin'] %} 
+    {% include 'projectsummaries.html' %} 
+    {% endif %}
 
     <!-- Employee Activities - Visible to HR -->
-    {% if session.get('user_role') in ['Hr'] %} {# HR Section - Employee
-    Activities and New Joiners - Visible to HR #} {% include 'Hr_dashboard.html'
-    %} {% endif %}
+    {% if session.get('user_role') in ['Hr'] %} 
+    {% include 'Hr_dashboard.html' %}
+    {% endif %}
+    
     <!-- Quick Financial Snapshots - Visible to Finance and Superadmin -->
-    {# Quick Financial Snapshots - Visible to Finance and Superadmin #} {% if
-    session.get('user_role') in ['Finance', 'Superadmin'] %} {% include
-    'financialsnap.html' %} {% endif %} {# Company Storage Usage - Visible to
-    Admin and Superadmin #} {% if session.get('user_role') in ['Admin',
-    'Superadmin'] %}
-    <div class="bg-white rounded-lg shadow-md p-6 lg:col-span-3" id="card4">
+    {% if session.get('user_role') in ['Finance', 'Superadmin'] %} 
+    {% include 'financialsnap.html' %} 
+    {% endif %} 
+    
+    {# Company Storage Usage - Visible to Admin and Superadmin #} 
+    {% if session.get('user_role') in ['Admin', 'Superadmin'] %}
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/30 p-6 lg:col-span-3 transition-all duration-300" id="card4">
       <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold">{{ _('Company Storage Usage') }}</h3>
-        <i class="fa-solid fa-database text-blue-500 text-2xl"></i>
+        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300">{{ _('Company Storage Usage') }}</h3>
+        <i class="fa-solid fa-database text-blue-500 dark:text-blue-400 text-2xl transition-colors duration-300"></i>
       </div>
       <div class="mt-2">
-        <div class="w-full bg-gray-200 rounded-full h-2.5">
+        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 transition-colors duration-300">
           <div
             id="storageBar"
-            class="bg-blue-600 h-2.5 rounded-full"
+            class="bg-blue-600 dark:bg-blue-500 h-2.5 rounded-full transition-colors duration-300"
             style="width: 0%"
           ></div>
         </div>
-        <p class="mt-2">
+        <p class="mt-2 text-gray-800 dark:text-gray-200 transition-colors duration-300">
           <span class="font-bold decimal-count-up" data-target="4.5">0</span> GB
           / 10 GB
         </p>
       </div>
     </div>
-    {% endif %} {# System Version & Footer Info - Visible to all users #}
+    {% endif %} 
+    
+    {# System Version & Footer Info - Visible to all users #}
     <div
-      class="bg-white rounded-lg shadow-md p-6 md:col-span-2 lg:col-span-3 {% if session.get('user_role') in ['Finance'] %} md:col-span-3 {% endif %}"
+      class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/30 p-6 md:col-span-2 lg:col-span-3 {% if session.get('user_role') in ['Finance'] %} md:col-span-3 {% endif %} transition-all duration-300"
       id="card5"
     >
       <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold">{{ _('System Info') }}</h3>
-        <i class="fa-solid fa-info-circle text-gray-500 text-2xl"></i>
+        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300">{{ _('System Info') }}</h3>
+        <i class="fa-solid fa-info-circle text-gray-500 dark:text-gray-400 text-2xl transition-colors duration-300"></i>
       </div>
-      <p class="mb-2">{{ _('Version') }}: 1.0.0</p>
-      <p class="text-sm text-gray-500">
+      <p class="mb-2 text-gray-800 dark:text-gray-200 transition-colors duration-300">{{ _('Version') }}: 1.0.0</p>
+      <p class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
         {{ _('Last updated') }}: {{ '2025-05-24' }}
       </p>
-      <p class="text-xs text-gray-400 mt-4">© 2025 AysitGroup</p>
-      <p class="text-xs text-gray-400">
+      <p class="text-xs text-gray-400 dark:text-gray-500 mt-4 transition-colors duration-300">© 2025 AysitGroup</p>
+      <p class="text-xs text-gray-400 dark:text-gray-500 transition-colors duration-300">
         Current User: {{ session.get('user_role', 'None') }}
       </p>
     </div>
   </div>
 
   {% endblock %} {% block scripts %}
-  <!--  -->
-
-
+  <!-- Add dark mode toggle script here -->
+  <script>
+    // Initialize dark mode based on saved preference
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedMode = localStorage.getItem('darkMode');
+      
+      // Initialize chart colors based on dark mode
+      updateChartColors();
+      
+      // When dark mode changes, update chart colors
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.attributeName === 'class') {
+            updateChartColors();
+          }
+        });
+      });
+      
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+    });
+    
+    // Function to update chart colors based on dark mode
+    function updateChartColors() {
+      const isDarkMode = document.documentElement.classList.contains('dark');
+      const chart = window.cashFlowChart; // Assuming your chart is stored in a global variable
+      
+      if (chart) {
+        // Update chart colors for dark mode
+        chart.options.scales.x.grid.color = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+        chart.options.scales.y.grid.color = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+        chart.options.scales.x.ticks.color = isDarkMode ? '#9ca3af' : '#6b7280';
+        chart.options.scales.y.ticks.color = isDarkMode ? '#9ca3af' : '#6b7280';
+        chart.update();
+      }
+    }
+  </script>
   {% endblock %}
 </div>

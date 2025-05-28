@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}Dashboard{% endblock %}</title>
+    
+
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/output.css') }}"
@@ -12,10 +14,37 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
+
+
+     <script>
+      // Initialize dark mode as early as possible to prevent flickering
+      (function() {
+        // Check localStorage first (user preference)
+        const savedMode = localStorage.getItem('darkMode');
+        
+        if (savedMode === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else if (savedMode === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          // If no preference is saved in localStorage, check server-side session
+          const serverTheme = "{{ session.get('theme', '') }}";
+          if (serverTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('darkMode', 'dark');
+          } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // If no preference is saved anywhere, use system preference
+            document.documentElement.classList.add('dark');
+          }
+        }
+      })();
+    </script>
+
     {% block styles %}{% endblock %}
+
   </head>
 
-  <body class="min-h-screen flex">
+  <body class="min-h-screen flex dark:bg-gray-900 dark:text-gray-200  text-gray-800">
     <div>{% include 'sidebar.html' %} {% include 'mobileSidebar.html' %}</div>
 
     <div class="flex-1 flex flex-col p-4">
@@ -46,14 +75,17 @@
         Saturday: "{{ _('Saturday') }}",
         Sunday: "{{ _('Sunday') }}",
         Attendance: "{{ _('Attendance') }}",
-        Users:"{{ _('Users') }}",
+        Users: "{{ _('Users') }}",
       };
 
       function __(key) {
         return window.translations[key] || key;
       }
+
     </script>
 
+
+<script src="{{ url_for('static', filename='js/dark-mode.js') }}"></script>
     <script src="../static/js/dashboard.js"></script>
     <script src="../static/js/chart.js"></script>
     <script src="../static/js/projects.js"></script>
@@ -61,6 +93,7 @@
     <script src="../static/js/useractivity.js"></script>
     <script src="../static/js/attendance_chart.js"></script>
     <script src="../static/js/activity_chart.js"></script>
+    <script src="../static/js/topbar.js"></script>
 
     {% block scripts %} {% endblock %}
   </body>

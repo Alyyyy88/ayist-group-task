@@ -1,14 +1,22 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-            --sidebar-width: 280px;
-            --sidebar-collapsed-width: 70px;
-            --primary-color: #0046b5;
-            --primary-hover: #003580;
-            --bg-color: #f8f9fe;
-            --border-color: #e5e7eb;
-            --text-color: #4b5563;
-            --text-dark: #1a1a1a;
-            --active-bg: #e7efff;
-            --active-text: #0046b5;
-            --transition-speed: 0.3s;
-        }
+
+--primary-background:bg-gray-900;
+--card-background:bg-gray-800;
+--elevated-card-dialog:bg-gray-700;
+--secondary-background:bg-gray-600;
+--primary-text:text-gray-100;
+--secondary-text:text-gray-300;
+--subtle-text:text-gray-400;
+--very-subtle-text:text-gray-500;
+--primary-border:border-gray-700;
+--subtle-border:border-gray-600;
+--primary-button:bg-indigo-600;
+--primary-button-hover:bg-indigo-500;
+--secondary-button:bg-gray-700;
+--secondary-button-hover:bg-gray-600;
+--regular-shadow:shadow-gray-800/30;
+--hover-shadow:hover:shadow-gray-700/40;
+}
