@@ -15,7 +15,7 @@
         <i class="fa-solid fa-user text-indigo-600 dark:text-indigo-300 transition-colors duration-300"></i>
       </div>
       <div>
-        <p class="text-sm font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300">{{ _('Welcome') }}, {{ current_user|default('Alyyyy88') }}</p>
+        <p class="text-sm font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300">{{ _('Welcome') }}, {{ current_user }}</p>
         <p class="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">{{ _('Role') }}: {{ session.get('user_role', 'None') }}</p>
       </div>
     </div>
